@@ -20,6 +20,7 @@ Book _$BookFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Book {
+  String? get isbn => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
   String? get author => throw _privateConstructorUsedError;
   String? get itemCaption => throw _privateConstructorUsedError;
@@ -39,7 +40,8 @@ abstract class $BookCopyWith<$Res> {
       _$BookCopyWithImpl<$Res, Book>;
   @useResult
   $Res call(
-      {String? title,
+      {String? isbn,
+      String? title,
       String? author,
       String? itemCaption,
       int? itemPrice,
@@ -61,6 +63,7 @@ class _$BookCopyWithImpl<$Res, $Val extends Book>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? isbn = freezed,
     Object? title = freezed,
     Object? author = freezed,
     Object? itemCaption = freezed,
@@ -70,6 +73,10 @@ class _$BookCopyWithImpl<$Res, $Val extends Book>
     Object? publisherName = freezed,
   }) {
     return _then(_value.copyWith(
+      isbn: freezed == isbn
+          ? _value.isbn
+          : isbn // ignore: cast_nullable_to_non_nullable
+              as String?,
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -110,7 +117,8 @@ abstract class _$$BookImplCopyWith<$Res> implements $BookCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String? title,
+      {String? isbn,
+      String? title,
       String? author,
       String? itemCaption,
       int? itemPrice,
@@ -129,6 +137,7 @@ class __$$BookImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? isbn = freezed,
     Object? title = freezed,
     Object? author = freezed,
     Object? itemCaption = freezed,
@@ -138,6 +147,10 @@ class __$$BookImplCopyWithImpl<$Res>
     Object? publisherName = freezed,
   }) {
     return _then(_$BookImpl(
+      isbn: freezed == isbn
+          ? _value.isbn
+          : isbn // ignore: cast_nullable_to_non_nullable
+              as String?,
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -174,7 +187,8 @@ class __$$BookImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$BookImpl implements _Book {
   _$BookImpl(
-      {this.title,
+      {this.isbn,
+      this.title,
       this.author,
       this.itemCaption,
       this.itemPrice,
@@ -185,6 +199,8 @@ class _$BookImpl implements _Book {
   factory _$BookImpl.fromJson(Map<String, dynamic> json) =>
       _$$BookImplFromJson(json);
 
+  @override
+  final String? isbn;
   @override
   final String? title;
   @override
@@ -202,7 +218,7 @@ class _$BookImpl implements _Book {
 
   @override
   String toString() {
-    return 'Book(title: $title, author: $author, itemCaption: $itemCaption, itemPrice: $itemPrice, largeImageUrl: $largeImageUrl, mediumImageUrl: $mediumImageUrl, publisherName: $publisherName)';
+    return 'Book(isbn: $isbn, title: $title, author: $author, itemCaption: $itemCaption, itemPrice: $itemPrice, largeImageUrl: $largeImageUrl, mediumImageUrl: $mediumImageUrl, publisherName: $publisherName)';
   }
 
   @override
@@ -210,6 +226,7 @@ class _$BookImpl implements _Book {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BookImpl &&
+            (identical(other.isbn, isbn) || other.isbn == isbn) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.author, author) || other.author == author) &&
             (identical(other.itemCaption, itemCaption) ||
@@ -226,7 +243,7 @@ class _$BookImpl implements _Book {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, title, author, itemCaption,
+  int get hashCode => Object.hash(runtimeType, isbn, title, author, itemCaption,
       itemPrice, largeImageUrl, mediumImageUrl, publisherName);
 
   @JsonKey(ignore: true)
@@ -245,7 +262,8 @@ class _$BookImpl implements _Book {
 
 abstract class _Book implements Book {
   factory _Book(
-      {final String? title,
+      {final String? isbn,
+      final String? title,
       final String? author,
       final String? itemCaption,
       final int? itemPrice,
@@ -255,6 +273,8 @@ abstract class _Book implements Book {
 
   factory _Book.fromJson(Map<String, dynamic> json) = _$BookImpl.fromJson;
 
+  @override
+  String? get isbn;
   @override
   String? get title;
   @override

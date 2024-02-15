@@ -7,6 +7,7 @@ part 'domain.g.dart';
 @freezed
 class Book with _$Book {
   factory Book({
+    String? isbn,
     String? title,
     String? author,
     String? itemCaption,
@@ -17,6 +18,7 @@ class Book with _$Book {
   }) = _Book;
 
   factory Book.fromJson(Map<String, dynamic> json) => Book(
+        isbn: json['Items'][0]['Item']['isbn'],
         title: json['Items'][0]['Item']['title'],
         author: json['Items'][0]['Item']['author'],
         itemCaption: json['Items'][0]['Item']['itemCaption'],
