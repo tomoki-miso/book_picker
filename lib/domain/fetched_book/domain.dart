@@ -5,8 +5,8 @@ part 'domain.freezed.dart';
 part 'domain.g.dart';
 
 @freezed
-class Book with _$Book {
-  factory Book({
+class FetchedBook with _$FetchedBook {
+  factory FetchedBook({
     String? isbn,
     String? title,
     String? author,
@@ -15,9 +15,9 @@ class Book with _$Book {
     String? largeImageUrl,
     String? mediumImageUrl,
     String? publisherName,
-  }) = _Book;
+  }) = _FetchedBook;
 
-  factory Book.fromJson(Map<String, dynamic> json) => Book(
+  factory FetchedBook.fromJson(Map<String, dynamic> json) => FetchedBook(
         isbn: json['Items'][0]['Item']['isbn'],
         title: json['Items'][0]['Item']['title'],
         author: json['Items'][0]['Item']['author'],
