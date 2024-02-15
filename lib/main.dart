@@ -1,5 +1,5 @@
-import 'package:book_picker/features/top/page.dart';
 import 'package:book_picker/firebase_options.dart';
+import 'package:book_picker/route/router.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -19,23 +19,14 @@ void main() async {
   );
 }
 
-class MainApp extends StatelessWidget {
+class MainApp extends ConsumerWidget {
   const MainApp({super.key});
 
   @override
-  Widget build(BuildContext context) => MaterialApp(
-        home: Scaffold(
-          body: Center(
-            child: ElevatedButton(
-              onPressed: () async => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const TopPage(),
-                ),
-              ),
-              child: const Text('hello'),
-            ),
-          ),
-        ),
-      );
+  Widget build(BuildContext context, WidgetRef ref) {
+    final goRouter = ref.watch(goRouterProvider);
+    return MaterialApp.router(
+      routerConfig: goRouter,
+    );
+  }
 }
