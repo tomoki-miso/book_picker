@@ -10,7 +10,7 @@ _$BookImpl _$$BookImplFromJson(Map<String, dynamic> json) => _$BookImpl(
       title: json['title'] as String?,
       author: json['author'] as String?,
       itemCaption: json['itemCaption'] as String?,
-      itemPrice: json['itemPrice'] as String?,
+      itemPrice: json['itemPrice'] as int?,
       largeImageUrl: json['largeImageUrl'] as String?,
       mediumImageUrl: json['mediumImageUrl'] as String?,
       publisherName: json['publisherName'] as String?,

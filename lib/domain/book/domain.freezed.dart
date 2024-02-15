@@ -23,7 +23,7 @@ mixin _$Book {
   String? get title => throw _privateConstructorUsedError;
   String? get author => throw _privateConstructorUsedError;
   String? get itemCaption => throw _privateConstructorUsedError;
-  String? get itemPrice => throw _privateConstructorUsedError;
+  int? get itemPrice => throw _privateConstructorUsedError;
   String? get largeImageUrl => throw _privateConstructorUsedError;
   String? get mediumImageUrl => throw _privateConstructorUsedError;
   String? get publisherName => throw _privateConstructorUsedError;
@@ -42,7 +42,7 @@ abstract class $BookCopyWith<$Res> {
       {String? title,
       String? author,
       String? itemCaption,
-      String? itemPrice,
+      int? itemPrice,
       String? largeImageUrl,
       String? mediumImageUrl,
       String? publisherName});
@@ -85,7 +85,7 @@ class _$BookCopyWithImpl<$Res, $Val extends Book>
       itemPrice: freezed == itemPrice
           ? _value.itemPrice
           : itemPrice // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       largeImageUrl: freezed == largeImageUrl
           ? _value.largeImageUrl
           : largeImageUrl // ignore: cast_nullable_to_non_nullable
@@ -113,7 +113,7 @@ abstract class _$$BookImplCopyWith<$Res> implements $BookCopyWith<$Res> {
       {String? title,
       String? author,
       String? itemCaption,
-      String? itemPrice,
+      int? itemPrice,
       String? largeImageUrl,
       String? mediumImageUrl,
       String? publisherName});
@@ -153,7 +153,7 @@ class __$$BookImplCopyWithImpl<$Res>
       itemPrice: freezed == itemPrice
           ? _value.itemPrice
           : itemPrice // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as int?,
       largeImageUrl: freezed == largeImageUrl
           ? _value.largeImageUrl
           : largeImageUrl // ignore: cast_nullable_to_non_nullable
@@ -192,7 +192,7 @@ class _$BookImpl implements _Book {
   @override
   final String? itemCaption;
   @override
-  final String? itemPrice;
+  final int? itemPrice;
   @override
   final String? largeImageUrl;
   @override
@@ -248,7 +248,7 @@ abstract class _Book implements Book {
       {final String? title,
       final String? author,
       final String? itemCaption,
-      final String? itemPrice,
+      final int? itemPrice,
       final String? largeImageUrl,
       final String? mediumImageUrl,
       final String? publisherName}) = _$BookImpl;
@@ -262,7 +262,7 @@ abstract class _Book implements Book {
   @override
   String? get itemCaption;
   @override
-  String? get itemPrice;
+  int? get itemPrice;
   @override
   String? get largeImageUrl;
   @override
