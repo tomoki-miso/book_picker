@@ -1,9 +1,12 @@
+import 'package:book_picker/features/book_details/page.dart';
 import 'package:book_picker/features/top/view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class TopPage extends ConsumerWidget {
   const TopPage({super.key});
+  static const rootName = '/top';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -16,6 +19,12 @@ class TopPage extends ConsumerWidget {
             children: [
               Text(data.book.title ?? 'aa'),
               const Text('aa'),
+              ElevatedButton(
+                onPressed: () {
+                  context.goNamed(BookInfoPage.rootName);
+                },
+                child: const Text('kuwasiku'),
+              ),
             ],
           ),
         ),
