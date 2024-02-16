@@ -6,7 +6,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'repository.g.dart';
 
 @Riverpod(keepAlive: true)
-class BookRepo extends _$BookRepo {
+class FetchBookRepo extends _$FetchBookRepo {
   @override
   void build() {}
 
