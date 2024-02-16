@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TopPageState {
-  Book get book => throw _privateConstructorUsedError;
+  FetchedBook get book => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TopPageStateCopyWith<TopPageState> get copyWith =>
@@ -29,9 +29,9 @@ abstract class $TopPageStateCopyWith<$Res> {
           TopPageState value, $Res Function(TopPageState) then) =
       _$TopPageStateCopyWithImpl<$Res, TopPageState>;
   @useResult
-  $Res call({Book book});
+  $Res call({FetchedBook book});
 
-  $BookCopyWith<$Res> get book;
+  $FetchedBookCopyWith<$Res> get book;
 }
 
 /// @nodoc
@@ -53,14 +53,14 @@ class _$TopPageStateCopyWithImpl<$Res, $Val extends TopPageState>
       book: null == book
           ? _value.book
           : book // ignore: cast_nullable_to_non_nullable
-              as Book,
+              as FetchedBook,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $BookCopyWith<$Res> get book {
-    return $BookCopyWith<$Res>(_value.book, (value) {
+  $FetchedBookCopyWith<$Res> get book {
+    return $FetchedBookCopyWith<$Res>(_value.book, (value) {
       return _then(_value.copyWith(book: value) as $Val);
     });
   }
@@ -74,10 +74,10 @@ abstract class _$$TopPageStateImplCopyWith<$Res>
       __$$TopPageStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Book book});
+  $Res call({FetchedBook book});
 
   @override
-  $BookCopyWith<$Res> get book;
+  $FetchedBookCopyWith<$Res> get book;
 }
 
 /// @nodoc
@@ -97,7 +97,7 @@ class __$$TopPageStateImplCopyWithImpl<$Res>
       book: null == book
           ? _value.book
           : book // ignore: cast_nullable_to_non_nullable
-              as Book,
+              as FetchedBook,
     ));
   }
 }
@@ -108,7 +108,7 @@ class _$TopPageStateImpl implements _TopPageState {
   const _$TopPageStateImpl({required this.book});
 
   @override
-  final Book book;
+  final FetchedBook book;
 
   @override
   String toString() {
@@ -134,10 +134,11 @@ class _$TopPageStateImpl implements _TopPageState {
 }
 
 abstract class _TopPageState implements TopPageState {
-  const factory _TopPageState({required final Book book}) = _$TopPageStateImpl;
+  const factory _TopPageState({required final FetchedBook book}) =
+      _$TopPageStateImpl;
 
   @override
-  Book get book;
+  FetchedBook get book;
   @override
   @JsonKey(ignore: true)
   _$$TopPageStateImplCopyWith<_$TopPageStateImpl> get copyWith =>

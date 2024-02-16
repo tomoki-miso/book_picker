@@ -1,6 +1,5 @@
-import 'package:book_picker/domain/book/domain.dart';
+import 'package:book_picker/domain/fetched_book/domain.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 
 // 生成されるdartファイルを記述
 part 'state.freezed.dart';
@@ -12,6 +11,6 @@ class TopPageState with _$TopPageState {
 
   // プロパティを指定
   const factory TopPageState({
-    required Book book,
+    required FetchedBook book,
   }) = _TopPageState;
 }
