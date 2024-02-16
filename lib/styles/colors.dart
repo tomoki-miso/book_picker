@@ -16,14 +16,15 @@ class ColorName {
   static const Color whiteBase = Color(0xFFFFFFFF);
 
   /// grass
-  static Color grassWhiteStart = const Color(0xFFFFFFFF).withOpacity(0.5);
-  static Color grassWhiteEnd = const Color(0xFFFFFFFF).withOpacity(0.3);
+  static Color grassWhiteStart = const Color(0xFFFFFFFF).withOpacity(0.6);
+  static Color grassWhiteEnd = const Color(0xFFFFFFFF).withOpacity(0.4);
   static const Color grassLineStart = Color(0xFFF5F5F5);
   static const Color grassLineEnd = Color(0xFF848484);
 
   /// Garadation
-  static const Color gradationStart = Color(0xFFaccbeb);
-  static const Color gradationEnd = Color(0x00e7f0fd);
+  static const Color gradationStart = Color(0xFF16CAFB);
+  static const Color gradationMid = Color(0xFF5fc3e4);
+  static const Color gradationEnd = Color(0xFFa6ffcb);
 
   /// Grey
   static const Color greyBase = Color(0xFF848484);
