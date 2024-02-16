@@ -17,6 +17,7 @@ _$CommonStoringBookImpl _$$CommonStoringBookImplFromJson(
       largeImageUrl: json['largeImageUrl'] as String?,
       mediumImageUrl: json['mediumImageUrl'] as String?,
       publisherName: json['publisherName'] as String?,
+      numberOfStored: json['numberOfStored'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$$CommonStoringBookImplToJson(
@@ -30,4 +31,5 @@ Map<String, dynamic> _$$CommonStoringBookImplToJson(
       'largeImageUrl': instance.largeImageUrl,
       'mediumImageUrl': instance.mediumImageUrl,
       'publisherName': instance.publisherName,
+      'numberOfStored': instance.numberOfStored,
     };

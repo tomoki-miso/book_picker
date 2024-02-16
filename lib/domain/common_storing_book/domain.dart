@@ -15,6 +15,7 @@ class CommonStoringBook with _$CommonStoringBook {
     String? largeImageUrl,
     String? mediumImageUrl,
     String? publisherName,
+    @Default(0) int  numberOfStored, 
   }) = _CommonStoringBook;
 
   factory CommonStoringBook.fromJson(Map<String, dynamic> json) =>

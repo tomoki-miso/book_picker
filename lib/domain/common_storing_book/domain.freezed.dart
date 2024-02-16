@@ -28,6 +28,7 @@ mixin _$CommonStoringBook {
   String? get largeImageUrl => throw _privateConstructorUsedError;
   String? get mediumImageUrl => throw _privateConstructorUsedError;
   String? get publisherName => throw _privateConstructorUsedError;
+  int get numberOfStored => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,7 +50,8 @@ abstract class $CommonStoringBookCopyWith<$Res> {
       int? itemPrice,
       String? largeImageUrl,
       String? mediumImageUrl,
-      String? publisherName});
+      String? publisherName,
+      int numberOfStored});
 }
 
 /// @nodoc
@@ -73,6 +75,7 @@ class _$CommonStoringBookCopyWithImpl<$Res, $Val extends CommonStoringBook>
     Object? largeImageUrl = freezed,
     Object? mediumImageUrl = freezed,
     Object? publisherName = freezed,
+    Object? numberOfStored = null,
   }) {
     return _then(_value.copyWith(
       isbn: freezed == isbn
@@ -107,6 +110,10 @@ class _$CommonStoringBookCopyWithImpl<$Res, $Val extends CommonStoringBook>
           ? _value.publisherName
           : publisherName // ignore: cast_nullable_to_non_nullable
               as String?,
+      numberOfStored: null == numberOfStored
+          ? _value.numberOfStored
+          : numberOfStored // ignore: cast_nullable_to_non_nullable
+              as int,
     ) as $Val);
   }
 }
@@ -127,7 +134,8 @@ abstract class _$$CommonStoringBookImplCopyWith<$Res>
       int? itemPrice,
       String? largeImageUrl,
       String? mediumImageUrl,
-      String? publisherName});
+      String? publisherName,
+      int numberOfStored});
 }
 
 /// @nodoc
@@ -149,6 +157,7 @@ class __$$CommonStoringBookImplCopyWithImpl<$Res>
     Object? largeImageUrl = freezed,
     Object? mediumImageUrl = freezed,
     Object? publisherName = freezed,
+    Object? numberOfStored = null,
   }) {
     return _then(_$CommonStoringBookImpl(
       isbn: freezed == isbn
@@ -183,6 +192,10 @@ class __$$CommonStoringBookImplCopyWithImpl<$Res>
           ? _value.publisherName
           : publisherName // ignore: cast_nullable_to_non_nullable
               as String?,
+      numberOfStored: null == numberOfStored
+          ? _value.numberOfStored
+          : numberOfStored // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 }
@@ -198,7 +211,8 @@ class _$CommonStoringBookImpl implements _CommonStoringBook {
       this.itemPrice,
       this.largeImageUrl,
       this.mediumImageUrl,
-      this.publisherName});
+      this.publisherName,
+      this.numberOfStored = 0});
 
   factory _$CommonStoringBookImpl.fromJson(Map<String, dynamic> json) =>
       _$$CommonStoringBookImplFromJson(json);
@@ -219,10 +233,13 @@ class _$CommonStoringBookImpl implements _CommonStoringBook {
   final String? mediumImageUrl;
   @override
   final String? publisherName;
+  @override
+  @JsonKey()
+  final int numberOfStored;
 
   @override
   String toString() {
-    return 'CommonStoringBook(isbn: $isbn, title: $title, author: $author, itemCaption: $itemCaption, itemPrice: $itemPrice, largeImageUrl: $largeImageUrl, mediumImageUrl: $mediumImageUrl, publisherName: $publisherName)';
+    return 'CommonStoringBook(isbn: $isbn, title: $title, author: $author, itemCaption: $itemCaption, itemPrice: $itemPrice, largeImageUrl: $largeImageUrl, mediumImageUrl: $mediumImageUrl, publisherName: $publisherName, numberOfStored: $numberOfStored)';
   }
 
   @override
@@ -242,13 +259,15 @@ class _$CommonStoringBookImpl implements _CommonStoringBook {
             (identical(other.mediumImageUrl, mediumImageUrl) ||
                 other.mediumImageUrl == mediumImageUrl) &&
             (identical(other.publisherName, publisherName) ||
-                other.publisherName == publisherName));
+                other.publisherName == publisherName) &&
+            (identical(other.numberOfStored, numberOfStored) ||
+                other.numberOfStored == numberOfStored));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, isbn, title, author, itemCaption,
-      itemPrice, largeImageUrl, mediumImageUrl, publisherName);
+      itemPrice, largeImageUrl, mediumImageUrl, publisherName, numberOfStored);
 
   @JsonKey(ignore: true)
   @override
@@ -274,7 +293,8 @@ abstract class _CommonStoringBook implements CommonStoringBook {
       final int? itemPrice,
       final String? largeImageUrl,
       final String? mediumImageUrl,
-      final String? publisherName}) = _$CommonStoringBookImpl;
+      final String? publisherName,
+      final int numberOfStored}) = _$CommonStoringBookImpl;
 
   factory _CommonStoringBook.fromJson(Map<String, dynamic> json) =
       _$CommonStoringBookImpl.fromJson;
@@ -295,6 +315,8 @@ abstract class _CommonStoringBook implements CommonStoringBook {
   String? get mediumImageUrl;
   @override
   String? get publisherName;
+  @override
+  int get numberOfStored;
   @override
   @JsonKey(ignore: true)
   _$$CommonStoringBookImplCopyWith<_$CommonStoringBookImpl> get copyWith =>
