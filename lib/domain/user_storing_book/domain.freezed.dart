@@ -28,6 +28,8 @@ mixin _$UserStoringBook {
   String? get largeImageUrl => throw _privateConstructorUsedError;
   String? get mediumImageUrl => throw _privateConstructorUsedError;
   String? get publisherName => throw _privateConstructorUsedError;
+  @TimestampConverter()
+  DateTime? get storedTime => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,7 +51,8 @@ abstract class $UserStoringBookCopyWith<$Res> {
       int? itemPrice,
       String? largeImageUrl,
       String? mediumImageUrl,
-      String? publisherName});
+      String? publisherName,
+      @TimestampConverter() DateTime? storedTime});
 }
 
 /// @nodoc
@@ -73,6 +76,7 @@ class _$UserStoringBookCopyWithImpl<$Res, $Val extends UserStoringBook>
     Object? largeImageUrl = freezed,
     Object? mediumImageUrl = freezed,
     Object? publisherName = freezed,
+    Object? storedTime = freezed,
   }) {
     return _then(_value.copyWith(
       isbn: freezed == isbn
@@ -107,6 +111,10 @@ class _$UserStoringBookCopyWithImpl<$Res, $Val extends UserStoringBook>
           ? _value.publisherName
           : publisherName // ignore: cast_nullable_to_non_nullable
               as String?,
+      storedTime: freezed == storedTime
+          ? _value.storedTime
+          : storedTime // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -127,7 +135,8 @@ abstract class _$$UserStoringBookImplCopyWith<$Res>
       int? itemPrice,
       String? largeImageUrl,
       String? mediumImageUrl,
-      String? publisherName});
+      String? publisherName,
+      @TimestampConverter() DateTime? storedTime});
 }
 
 /// @nodoc
@@ -149,6 +158,7 @@ class __$$UserStoringBookImplCopyWithImpl<$Res>
     Object? largeImageUrl = freezed,
     Object? mediumImageUrl = freezed,
     Object? publisherName = freezed,
+    Object? storedTime = freezed,
   }) {
     return _then(_$UserStoringBookImpl(
       isbn: freezed == isbn
@@ -183,6 +193,10 @@ class __$$UserStoringBookImplCopyWithImpl<$Res>
           ? _value.publisherName
           : publisherName // ignore: cast_nullable_to_non_nullable
               as String?,
+      storedTime: freezed == storedTime
+          ? _value.storedTime
+          : storedTime // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -198,7 +212,8 @@ class _$UserStoringBookImpl implements _UserStoringBook {
       this.itemPrice,
       this.largeImageUrl,
       this.mediumImageUrl,
-      this.publisherName});
+      this.publisherName,
+      @TimestampConverter() this.storedTime});
 
   factory _$UserStoringBookImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserStoringBookImplFromJson(json);
@@ -219,10 +234,13 @@ class _$UserStoringBookImpl implements _UserStoringBook {
   final String? mediumImageUrl;
   @override
   final String? publisherName;
+  @override
+  @TimestampConverter()
+  final DateTime? storedTime;
 
   @override
   String toString() {
-    return 'UserStoringBook(isbn: $isbn, title: $title, author: $author, itemCaption: $itemCaption, itemPrice: $itemPrice, largeImageUrl: $largeImageUrl, mediumImageUrl: $mediumImageUrl, publisherName: $publisherName)';
+    return 'UserStoringBook(isbn: $isbn, title: $title, author: $author, itemCaption: $itemCaption, itemPrice: $itemPrice, largeImageUrl: $largeImageUrl, mediumImageUrl: $mediumImageUrl, publisherName: $publisherName, storedTime: $storedTime)';
   }
 
   @override
@@ -242,13 +260,15 @@ class _$UserStoringBookImpl implements _UserStoringBook {
             (identical(other.mediumImageUrl, mediumImageUrl) ||
                 other.mediumImageUrl == mediumImageUrl) &&
             (identical(other.publisherName, publisherName) ||
-                other.publisherName == publisherName));
+                other.publisherName == publisherName) &&
+            (identical(other.storedTime, storedTime) ||
+                other.storedTime == storedTime));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, isbn, title, author, itemCaption,
-      itemPrice, largeImageUrl, mediumImageUrl, publisherName);
+      itemPrice, largeImageUrl, mediumImageUrl, publisherName, storedTime);
 
   @JsonKey(ignore: true)
   @override
@@ -267,14 +287,16 @@ class _$UserStoringBookImpl implements _UserStoringBook {
 
 abstract class _UserStoringBook implements UserStoringBook {
   factory _UserStoringBook(
-      {final String? isbn,
-      final String? title,
-      final String? author,
-      final String? itemCaption,
-      final int? itemPrice,
-      final String? largeImageUrl,
-      final String? mediumImageUrl,
-      final String? publisherName}) = _$UserStoringBookImpl;
+          {final String? isbn,
+          final String? title,
+          final String? author,
+          final String? itemCaption,
+          final int? itemPrice,
+          final String? largeImageUrl,
+          final String? mediumImageUrl,
+          final String? publisherName,
+          @TimestampConverter() final DateTime? storedTime}) =
+      _$UserStoringBookImpl;
 
   factory _UserStoringBook.fromJson(Map<String, dynamic> json) =
       _$UserStoringBookImpl.fromJson;
@@ -295,6 +317,9 @@ abstract class _UserStoringBook implements UserStoringBook {
   String? get mediumImageUrl;
   @override
   String? get publisherName;
+  @override
+  @TimestampConverter()
+  DateTime? get storedTime;
   @override
   @JsonKey(ignore: true)
   _$$UserStoringBookImplCopyWith<_$UserStoringBookImpl> get copyWith =>

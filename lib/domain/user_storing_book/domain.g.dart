@@ -17,6 +17,8 @@ _$UserStoringBookImpl _$$UserStoringBookImplFromJson(
       largeImageUrl: json['largeImageUrl'] as String?,
       mediumImageUrl: json['mediumImageUrl'] as String?,
       publisherName: json['publisherName'] as String?,
+      storedTime:
+          const TimestampConverter().fromJson(json['storedTime'] as Timestamp?),
     );
 
 Map<String, dynamic> _$$UserStoringBookImplToJson(
@@ -30,4 +32,5 @@ Map<String, dynamic> _$$UserStoringBookImplToJson(
       'largeImageUrl': instance.largeImageUrl,
       'mediumImageUrl': instance.mediumImageUrl,
       'publisherName': instance.publisherName,
+      'storedTime': const TimestampConverter().toJson(instance.storedTime),
     };
