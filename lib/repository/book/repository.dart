@@ -1,4 +1,4 @@
-import 'package:book_picker/domain/book/domain.dart';
+import 'package:book_picker/domain/fetched_book/domain.dart';
 import 'package:book_picker/env/env.dart';
 import 'package:dio/dio.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -10,7 +10,7 @@ class BookRepo extends _$BookRepo {
   @override
   void build() {}
 
-  Future<Book> fetchBookInfo(String isbn) async {
+  Future<FetchedBook> fetchBookInfo(String isbn) async {
     final dio = Dio();
     final String appId = Env.key;
     const apiUrl =
@@ -25,7 +25,7 @@ class BookRepo extends _$BookRepo {
     try {
       final data = response.data;
       print(data);
-      final Book book = Book.fromJson(data);
+      final FetchedBook book = FetchedBook.fromJson(data);
       return book;
     } catch (e) {
       throw e;
