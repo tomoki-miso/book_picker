@@ -16,6 +16,7 @@ class GradatioonContainer extends StatelessWidget {
             end: Alignment.bottomRight,
             colors: <Color>[
               ColorName.gradationStart,
+              ColorName.gradationMid,
               ColorName.gradationEnd,
             ],
           ),
