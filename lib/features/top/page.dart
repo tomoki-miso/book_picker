@@ -1,4 +1,5 @@
 import 'package:book_picker/components/gradation_container.dart';
+import 'package:book_picker/components/original_app_bar.dart';
 import 'package:book_picker/domain/fetched_book/domain.dart';
 import 'package:book_picker/features/top/components/app_ad.dart';
 import 'package:book_picker/features/top/components/grass_carousel_item.dart';
@@ -22,24 +23,10 @@ class TopPage extends ConsumerWidget {
         final FetchedBook bookData = data.book;
         return Scaffold(
           backgroundColor: ColorName.skyBlue,
-          appBar: AppBar(),
+          appBar: const OriginalAppBar(),
           body: GradatioonContainer(
             child: ListView(
               children: [
-                const SizedBox(
-                  height: kDefaultPadding,
-                ),
-
-                /// ロゴ
-                Container(
-                  color: ColorName.base,
-                  width: 10,
-                  height: 100,
-                  child: const Text(
-                    'LOGO',
-                    style: TextStyle(color: ColorName.whiteBase),
-                  ),
-                ),
                 const SizedBox(
                   height: kDefaultPadding,
                 ),
@@ -57,6 +44,7 @@ class TopPage extends ConsumerWidget {
                 ),
 
                 PickedBookContainer(
+                  isbn: data.book.isbn,
                   title: bookData.title,
                   author: bookData.author,
                   itemCaption: bookData.itemCaption,
