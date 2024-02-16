@@ -1,5 +1,6 @@
 import 'package:book_picker/features/selected_books/page.dart';
 import 'package:book_picker/features/top/page.dart';
+import 'package:book_picker/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
@@ -22,6 +23,7 @@ class BottomNav extends StatelessWidget {
         controller: PersistentTabController(initialIndex: 1),
         screens: pages,
         navBarStyle: NavBarStyle.simple,
+        backgroundColor: ColorName.skyBlueSec,
         items: [
           PersistentBottomNavBarItem(
             icon: const Icon(Icons.abc_outlined),
