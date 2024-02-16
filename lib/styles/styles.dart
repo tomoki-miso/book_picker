@@ -33,6 +33,13 @@ class Styles {
     fontWeight: FontWeight.bold,
     color: ColorName.greyBase,
   );
+
+  static const defaultBoldStyle = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.bold,
+    color: ColorName.blackBase,
+    overflow: TextOverflow.ellipsis,
+  );
 }
 
 const double kDefaultPadding = 16;
