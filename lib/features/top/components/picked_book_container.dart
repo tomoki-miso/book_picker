@@ -1,5 +1,7 @@
 import 'package:book_picker/components/grass_container.dart';
-import 'package:book_picker/features/book_details/page.dart';
+import 'package:book_picker/domain/fetched_book/domain.dart';
+import 'package:book_picker/features/book_info/page.dart';
+import 'package:book_picker/features/book_info/page_type.dart';
 import 'package:book_picker/features/top/view_model.dart';
 import 'package:book_picker/styles/colors.dart';
 import 'package:book_picker/styles/styles.dart';
@@ -9,6 +11,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class PickedBookContainer extends ConsumerWidget {
   const PickedBookContainer({
+    this.fetchedBook,
     this.isbn,
     this.title,
     this.author,
@@ -18,6 +21,7 @@ class PickedBookContainer extends ConsumerWidget {
     super.key,
   });
 
+  final FetchedBook? fetchedBook;
   final String? title;
   final String? author;
   final int? itemPrice;
@@ -29,7 +33,12 @@ class PickedBookContainer extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) => GestureDetector(
         onTap: () async => Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const BookInfoPage()),
+          MaterialPageRoute(
+            builder: (context) => BookInfoPage(
+              pageType: PageType.fetched,
+              fetchedBook: fetchedBook,
+            ),
+          ),
         ),
         child: GrassContainer(
           width: 0.96,
