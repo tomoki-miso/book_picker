@@ -9,18 +9,25 @@ part 'view_model.g.dart';
 
 @riverpod
 class TopPageViewModel extends _$TopPageViewModel {
-  FetchBookRepo get bookRepo => ref.read(fetchBookRepoProvider.notifier);
+  FetchedBookRepo get fetchedBookRepo =>
+      ref.read(fetchedBookRepoProvider.notifier);
   UserStoringBookRepo get userStoringBookRepo =>
       ref.read(userStoringBookRepoProvider.notifier);
 
   @override
   FutureOr<TopPageState> build(String isbn) async {
-    final FetchedBook book = await bookRepo.fetchBookInfo(isbn);
+    final FetchedBook book = await fetchedBookRepo.fetchBookInfo(isbn);
     print(book);
     final TopPageState state = TopPageState(book: book);
     return state;
   }
 
+  /// Pickされた本を一時的に保存
+  Future<void> setTodaysPickedBook(FetchedBook fetchedBook) async {
+    await fetchedBookRepo.setTodaysBook(fetchedBook);
+  }
+
+  /// 本をアーカイブ（セレクト）
   Future<void> storePickedBook() async {
     final bookData = state.requireValue.book;
     final UserStoringBook storingBook = UserStoringBook(

@@ -44,12 +44,24 @@ class TopPage extends ConsumerWidget {
                 ),
 
                 PickedBookContainer(
-                  isbn: data.book.isbn,
+                  fetchedBook: bookData,
+                  isbn: bookData.isbn,
                   title: bookData.title,
                   author: bookData.author,
                   itemCaption: bookData.itemCaption,
                   imageUrl: bookData.largeImageUrl,
                   itemPrice: bookData.itemPrice,
+                ),
+
+                ElevatedButton(
+                  onPressed: () async {
+                    await ref
+                        .read(
+                          topPageViewModelProvider(bookData.isbn!).notifier,
+                        )
+                        .setTodaysPickedBook(bookData);
+                  },
+                  child: const Text('hozonn'),
                 ),
 
                 const Padding(
@@ -69,7 +81,7 @@ class TopPage extends ConsumerWidget {
                     autoPlay: true,
                     autoPlayInterval: const Duration(seconds: 8),
                     autoPlayAnimationDuration: const Duration(seconds: 8),
-                    viewportFraction: 0.45,
+                    viewportFraction: 0.42,
                   ),
                   items: [
                     GrassCarouselItem(
@@ -97,7 +109,7 @@ class TopPage extends ConsumerWidget {
                     autoPlay: true,
                     autoPlayInterval: const Duration(seconds: 8),
                     autoPlayAnimationDuration: const Duration(seconds: 8),
-                    viewportFraction: 0.45,
+                    viewportFraction: 0.42,
                   ),
                   items: [
                     GrassCarouselItem(
