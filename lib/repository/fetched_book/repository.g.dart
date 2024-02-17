@@ -6,20 +6,38 @@ part of 'repository.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$fetchBookRepoHash() => r'2e024808fe03ce5d42167025d00e7288ae27b094';
+String _$fetchedBookFirestoreHash() =>
+    r'f7c0482a1627a3ce95cbf313d8367e826e992608';
 
-/// See also [FetchBookRepo].
-@ProviderFor(FetchBookRepo)
-final fetchBookRepoProvider = NotifierProvider<FetchBookRepo, void>.internal(
-  FetchBookRepo.new,
-  name: r'fetchBookRepoProvider',
+/// See also [fetchedBookFirestore].
+@ProviderFor(fetchedBookFirestore)
+final fetchedBookFirestoreProvider =
+    Provider<CollectionReference<FetchedBook>>.internal(
+  fetchedBookFirestore,
+  name: r'fetchedBookFirestoreProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$fetchBookRepoHash,
+      : _$fetchedBookFirestoreHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$FetchBookRepo = Notifier<void>;
+typedef FetchedBookFirestoreRef = ProviderRef<CollectionReference<FetchedBook>>;
+String _$fetchedBookRepoHash() => r'd93cf95bd5c9aa9be7132a0b7532d4792d371984';
+
+/// See also [FetchedBookRepo].
+@ProviderFor(FetchedBookRepo)
+final fetchedBookRepoProvider =
+    NotifierProvider<FetchedBookRepo, void>.internal(
+  FetchedBookRepo.new,
+  name: r'fetchedBookRepoProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$fetchedBookRepoHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$FetchedBookRepo = Notifier<void>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

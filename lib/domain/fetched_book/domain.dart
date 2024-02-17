@@ -27,4 +27,8 @@ class FetchedBook with _$FetchedBook {
         mediumImageUrl: json['Items'][0]['Item']['mediumImageUrl'],
         publisherName: json['Items'][0]['Item']['publisherName'],
       );
+
+  /// FireStore用
+  factory FetchedBook.fromJsonStore(Map<String, dynamic> json) =>
+      _$FetchedBookFromJson(json);
 }
