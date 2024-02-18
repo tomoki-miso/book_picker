@@ -25,7 +25,7 @@ final userStoringBookFirestoreProvider =
 typedef UserStoringBookFirestoreRef
     = ProviderRef<CollectionReference<UserStoringBook>>;
 String _$userStoringBookRepoHash() =>
-    r'acb319c98d749cc5415ef734becd410fcfe9af43';
+    r'a45c40f0ca0f3bf8d088cd41ec63fb295651e4ba';
 
 /// See also [UserStoringBookRepo].
 @ProviderFor(UserStoringBookRepo)

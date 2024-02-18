@@ -48,6 +48,7 @@ class UserStoringBookRepo extends _$UserStoringBookRepo {
   Future<List<UserStoringBook>> getUserStoringBooks() async {
     final List<UserStoringBook> userStoringBooks = [
       ...await collection
+          .orderBy('storedTime')
           .get()
           .then((value) => value.docs.map((e) => e.data()).toList()),
     ];
