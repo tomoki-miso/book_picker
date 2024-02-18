@@ -32,7 +32,7 @@ class GrassCarouselItem extends StatelessWidget {
             ),
             Text(
               author ?? '',
-              style: Styles.greyDefaultStyle,
+              style: Styles.greyDefaultBoldStyle,
             ),
             const SizedBox(
               height: kDefaultSize * 2,

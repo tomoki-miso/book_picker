@@ -1,6 +1,8 @@
 import 'package:book_picker/components/back_ground.dart';
+import 'package:book_picker/components/error_page.dart';
 import 'package:book_picker/components/original_app_bar.dart';
 import 'package:book_picker/domain/fetched_book/domain.dart';
+import 'package:book_picker/features/many_selected_books/page.dart';
 import 'package:book_picker/features/top/components/app_ad.dart';
 import 'package:book_picker/features/top/components/grass_carousel_item.dart';
 import 'package:book_picker/features/top/components/picked_book_container.dart';
@@ -36,15 +38,14 @@ class TopPage extends ConsumerWidget {
                   ),
                   child: Text(
                     '今日のPicked BOOK!',
-                    style: Styles.greyDefaultStyle,
+                    style: Styles.greyDefaultBoldStyle,
                   ),
                 ),
-
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: kDefaultPadding),
                   child: PickedBookContainer(
-                    fetchedBook: bookData,
+                    todaysPickedBook: data.todaysPickedBook,
                     isbn: bookData.isbn,
                     title: bookData.title,
                     author: bookData.author,
@@ -62,19 +63,36 @@ class TopPage extends ConsumerWidget {
                         )
                         .setTodaysPickedBook();
                   },
-                  child: const Text('hozonn'),
+                  child: const Text('BookPICK'),
                 ),
 
                 /// よくセレクトされてる本
-                const Padding(
-                  padding: EdgeInsets.only(
+                Padding(
+                  padding: const EdgeInsets.only(
                     top: kDefaultPadding * 2,
                     left: kDefaultPadding,
                     bottom: kDefaultSize * 2,
                   ),
-                  child: Text(
-                    'よくSELECTされてる本',
-                    style: Styles.greyDefaultStyle,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'よくSELECTされてる本',
+                        style: Styles.greyDefaultBoldStyle,
+                      ),
+                      TextButton(
+                        onPressed: () async => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ManySelectedBooksPage(),
+                          ),
+                        ),
+                        child: const Text(
+                          'もっとみる ＞',
+                          style: Styles.greyDefaultStyle,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 CarouselSlider.builder(
@@ -94,15 +112,27 @@ class TopPage extends ConsumerWidget {
                   ),
                 ),
 
-                const Padding(
-                  padding: EdgeInsets.only(
+                Padding(
+                  padding: const EdgeInsets.only(
                     top: kDefaultPadding * 2,
                     left: kDefaultPadding,
                     bottom: kDefaultSize * 2,
                   ),
-                  child: Text(
-                    '最近SELECTされた本',
-                    style: Styles.greyDefaultStyle,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        '最近SELECTされた本',
+                        style: Styles.greyDefaultBoldStyle,
+                      ),
+                      TextButton(
+                        onPressed: () {},
+                        child: const Text(
+                          'もっとみる ＞',
+                          style: Styles.greyDefaultStyle,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 CarouselSlider.builder(
@@ -130,7 +160,7 @@ class TopPage extends ConsumerWidget {
                   ),
                   child: Text(
                     '令和最新版高機能サイコーアプリ',
-                    style: Styles.greyDefaultStyle,
+                    style: Styles.greyDefaultBoldStyle,
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -150,12 +180,7 @@ class TopPage extends ConsumerWidget {
           ),
         );
       },
-      error: (error, stackTrace) => ElevatedButton(
-        onPressed: () {
-          print(error);
-        },
-        child: Text(error.toString()),
-      ),
+      error: (error, stackTrace) => ErrorPage(error: error),
       loading: () => const Center(child: CircularProgressIndicator()),
     );
   }

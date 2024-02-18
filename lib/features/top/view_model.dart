@@ -25,6 +25,8 @@ class TopPageViewModel extends _$TopPageViewModel {
   @override
   FutureOr<TopPageState> build(String isbn) async {
     final FetchedBook book = await fetchedBookRepo.fetchBookInfo(isbn);
+    final TodaysPickedBook todaysPickedBook =
+        await todaysPickedBookRepo.getTodaysBook();
     final List<CommonStoringBook> commonStoringBookOrderByAmount =
         await commonStoringBookRepo.getComomonStoringBookOrderByAmount();
     final List<CommonStoringBook> commonStoringBookOrderByTime =
@@ -34,6 +36,7 @@ class TopPageViewModel extends _$TopPageViewModel {
       book: book,
       commonStoringBookOrderByAmount: commonStoringBookOrderByAmount,
       commonStoringBookOrderByTime: commonStoringBookOrderByTime,
+      todaysPickedBook: todaysPickedBook,
     );
     print(state);
     print(state.commonStoringBookOrderByAmount);
@@ -47,6 +50,7 @@ class TopPageViewModel extends _$TopPageViewModel {
       isbn: bookData.isbn,
       title: bookData.title,
       author: bookData.author,
+      itemPrice: bookData.itemPrice,
       itemCaption: bookData.itemCaption,
       largeImageUrl: bookData.largeImageUrl,
       mediumImageUrl: bookData.mediumImageUrl,
@@ -66,6 +70,7 @@ class TopPageViewModel extends _$TopPageViewModel {
       largeImageUrl: bookData.largeImageUrl,
       mediumImageUrl: bookData.mediumImageUrl,
       publisherName: bookData.publisherName,
+      itemPrice: bookData.itemPrice,
     );
     final CommonStoringBook commonStoringBook = CommonStoringBook(
       isbn: bookData.isbn,
@@ -75,6 +80,7 @@ class TopPageViewModel extends _$TopPageViewModel {
       largeImageUrl: bookData.largeImageUrl,
       mediumImageUrl: bookData.mediumImageUrl,
       publisherName: bookData.publisherName,
+      itemPrice: bookData.itemPrice,
     );
 
     // ユーザーの本と一般的な本をそれぞれ保存
