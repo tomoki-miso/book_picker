@@ -17,7 +17,9 @@ _$CommonStoringBookImpl _$$CommonStoringBookImplFromJson(
       largeImageUrl: json['largeImageUrl'] as String?,
       mediumImageUrl: json['mediumImageUrl'] as String?,
       publisherName: json['publisherName'] as String?,
-      numberOfStored: json['numberOfStored'] as int? ?? 0,
+      numberOfStored: json['numberOfStored'] as int?,
+      storedTime:
+          const TimestampConverter().fromJson(json['storedTime'] as Timestamp?),
     );
 
 Map<String, dynamic> _$$CommonStoringBookImplToJson(
@@ -32,4 +34,5 @@ Map<String, dynamic> _$$CommonStoringBookImplToJson(
       'mediumImageUrl': instance.mediumImageUrl,
       'publisherName': instance.publisherName,
       'numberOfStored': instance.numberOfStored,
+      'storedTime': const TimestampConverter().toJson(instance.storedTime),
     };
