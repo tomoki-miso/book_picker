@@ -30,6 +30,10 @@ class Styles {
 
   static const greyDefaultStyle = TextStyle(
     fontSize: 12,
+    color: ColorName.greyBase,
+  );
+  static const greyDefaultBoldStyle = TextStyle(
+    fontSize: 12,
     fontWeight: FontWeight.bold,
     color: ColorName.greyBase,
   );
