@@ -8,11 +8,13 @@ class GrassContainer extends StatelessWidget {
     super.key,
     this.height = 0.8,
     this.width = 0.8,
+    this.colors,
   });
 
   final Widget child;
   final double height;
   final double width;
+  final List<Color>? colors;
 
   @override
   Widget build(BuildContext context) => GlassmorphicContainer(
@@ -21,21 +23,20 @@ class GrassContainer extends StatelessWidget {
         height: MediaQuery.of(context).size.height * height,
         borderRadius: 20,
         blur: 10,
-        border: 1,
+        border: 0,
         linearGradient: LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
+          colors: colors ??
+              [
+                ColorName.grassWhiteStart,
+                ColorName.grassWhiteEnd,
+              ],
+        ),
+        borderGradient: LinearGradient(
           colors: [
             ColorName.grassWhiteStart,
             ColorName.grassWhiteEnd,
-          ],
-        ),
-        borderGradient: const LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            ColorName.grassLineStart,
-            ColorName.grassLineEnd,
           ],
         ),
         child: child,
