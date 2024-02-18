@@ -1,4 +1,5 @@
-import 'package:book_picker/domain/user_storing_book/domain.dart';
+import 'package:book_picker/domain/book/domain.dart';
+import 'package:book_picker/features/selected_books/bookListType.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 // 生成されるdartファイルを記述
@@ -11,6 +12,7 @@ class SelectedBooksPageState with _$SelectedBooksPageState {
 
   // プロパティを指定
   const factory SelectedBooksPageState({
-    required List<UserStoringBook> storingBooks,
+    required List<Book> storingBooks,
+    BookListType? bookListType,
   }) = _SelectedBooksPageState;
 }

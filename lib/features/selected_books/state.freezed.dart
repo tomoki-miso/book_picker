@@ -16,7 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$SelectedBooksPageState {
-  List<UserStoringBook> get storingBooks => throw _privateConstructorUsedError;
+  List<Book> get storingBooks => throw _privateConstructorUsedError;
+  BookListType? get bookListType => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SelectedBooksPageStateCopyWith<SelectedBooksPageState> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $SelectedBooksPageStateCopyWith<$Res> {
           $Res Function(SelectedBooksPageState) then) =
       _$SelectedBooksPageStateCopyWithImpl<$Res, SelectedBooksPageState>;
   @useResult
-  $Res call({List<UserStoringBook> storingBooks});
+  $Res call({List<Book> storingBooks, BookListType? bookListType});
 }
 
 /// @nodoc
@@ -47,12 +48,17 @@ class _$SelectedBooksPageStateCopyWithImpl<$Res,
   @override
   $Res call({
     Object? storingBooks = null,
+    Object? bookListType = freezed,
   }) {
     return _then(_value.copyWith(
       storingBooks: null == storingBooks
           ? _value.storingBooks
           : storingBooks // ignore: cast_nullable_to_non_nullable
-              as List<UserStoringBook>,
+              as List<Book>,
+      bookListType: freezed == bookListType
+          ? _value.bookListType
+          : bookListType // ignore: cast_nullable_to_non_nullable
+              as BookListType?,
     ) as $Val);
   }
 }
@@ -66,7 +72,7 @@ abstract class _$$SelectedBooksPageStateImplCopyWith<$Res>
       __$$SelectedBooksPageStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<UserStoringBook> storingBooks});
+  $Res call({List<Book> storingBooks, BookListType? bookListType});
 }
 
 /// @nodoc
@@ -83,12 +89,17 @@ class __$$SelectedBooksPageStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? storingBooks = null,
+    Object? bookListType = freezed,
   }) {
     return _then(_$SelectedBooksPageStateImpl(
       storingBooks: null == storingBooks
           ? _value._storingBooks
           : storingBooks // ignore: cast_nullable_to_non_nullable
-              as List<UserStoringBook>,
+              as List<Book>,
+      bookListType: freezed == bookListType
+          ? _value.bookListType
+          : bookListType // ignore: cast_nullable_to_non_nullable
+              as BookListType?,
     ));
   }
 }
@@ -97,20 +108,23 @@ class __$$SelectedBooksPageStateImplCopyWithImpl<$Res>
 
 class _$SelectedBooksPageStateImpl implements _SelectedBooksPageState {
   const _$SelectedBooksPageStateImpl(
-      {required final List<UserStoringBook> storingBooks})
+      {required final List<Book> storingBooks, this.bookListType})
       : _storingBooks = storingBooks;
 
-  final List<UserStoringBook> _storingBooks;
+  final List<Book> _storingBooks;
   @override
-  List<UserStoringBook> get storingBooks {
+  List<Book> get storingBooks {
     if (_storingBooks is EqualUnmodifiableListView) return _storingBooks;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_storingBooks);
   }
 
   @override
+  final BookListType? bookListType;
+
+  @override
   String toString() {
-    return 'SelectedBooksPageState(storingBooks: $storingBooks)';
+    return 'SelectedBooksPageState(storingBooks: $storingBooks, bookListType: $bookListType)';
   }
 
   @override
@@ -119,12 +133,14 @@ class _$SelectedBooksPageStateImpl implements _SelectedBooksPageState {
         (other.runtimeType == runtimeType &&
             other is _$SelectedBooksPageStateImpl &&
             const DeepCollectionEquality()
-                .equals(other._storingBooks, _storingBooks));
+                .equals(other._storingBooks, _storingBooks) &&
+            (identical(other.bookListType, bookListType) ||
+                other.bookListType == bookListType));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_storingBooks));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(_storingBooks), bookListType);
 
   @JsonKey(ignore: true)
   @override
@@ -136,11 +152,13 @@ class _$SelectedBooksPageStateImpl implements _SelectedBooksPageState {
 
 abstract class _SelectedBooksPageState implements SelectedBooksPageState {
   const factory _SelectedBooksPageState(
-          {required final List<UserStoringBook> storingBooks}) =
-      _$SelectedBooksPageStateImpl;
+      {required final List<Book> storingBooks,
+      final BookListType? bookListType}) = _$SelectedBooksPageStateImpl;
 
   @override
-  List<UserStoringBook> get storingBooks;
+  List<Book> get storingBooks;
+  @override
+  BookListType? get bookListType;
   @override
   @JsonKey(ignore: true)
   _$$SelectedBooksPageStateImplCopyWith<_$SelectedBooksPageStateImpl>
