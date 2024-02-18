@@ -12,6 +12,7 @@ class BookInfoTile extends StatelessWidget {
     this.isbn,
     this.itemPrice,
     this.itemCaption,
+    this.publisherName,
     super.key,
   });
 
@@ -21,6 +22,7 @@ class BookInfoTile extends StatelessWidget {
   final String? isbn;
   final String? itemPrice;
   final String? itemCaption;
+  final String? publisherName;
 
   @override
   Widget build(BuildContext context) => GrassContainer(
@@ -95,21 +97,49 @@ class BookInfoTile extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center, // 横方向に中央に寄せる
                   children: [
-                    const Text('ISBN-13'),
+                    const Text(
+                      'ISBN-13',
+                      style: Styles.greyDefaultBoldStyle,
+                    ),
                     const SizedBox(
                       width: kDefaultSize * 2,
                     ),
-                    Text(isbn ?? ''),
+                    Text(
+                      isbn ?? '',
+                      style: Styles.defaultStyle,
+                    ),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center, // 横方向に中央に寄せる
                   children: [
-                    const Text('価格'),
+                    const Text(
+                      '出版社',
+                      style: Styles.greyDefaultBoldStyle,
+                    ),
                     const SizedBox(
                       width: kDefaultSize * 2,
                     ),
-                    Text('$itemPrice円'), // TODO:null円とならないように
+                    Text(
+                      publisherName ?? '',
+                      style: Styles.defaultStyle,
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center, // 横方向に中央に寄せる
+                  children: [
+                    const Text(
+                      '価格',
+                      style: Styles.greyDefaultBoldStyle,
+                    ),
+                    const SizedBox(
+                      width: kDefaultSize * 2,
+                    ),
+                    Text(
+                      '$itemPrice円',
+                      style: Styles.greyDefaultBoldStyle,
+                    ), // TODO:null円とならないように
                   ],
                 ),
                 const SizedBox(
@@ -117,19 +147,29 @@ class BookInfoTile extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: kDefaultPadding * 1.5),
-                  child: Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      itemCaption! * 100 ?? '', //TODO:テスト用後に修正
-                      textAlign: TextAlign.left,
-                    ),
+                    horizontal: kDefaultPadding * 1.5,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'あらすじ',
+                        style: Styles.greyDefaultBoldStyle,
+                      ),
+                      const SizedBox(
+                        height: kDefaultSize,
+                      ),
+                      Text(
+                        itemCaption ?? '',
+                        textAlign: TextAlign.left,
+                      ),
+                    ],
                   ),
                 ),
               ],
             ),
-            ElevatedButton(onPressed: () {}, child: Text('aa')),
-            ElevatedButton(onPressed: () {}, child: Text('aa')),
+            ElevatedButton(onPressed: () {}, child: const Text('aa')),
+            ElevatedButton(onPressed: () {}, child: const Text('aa')),
           ],
         ),
       );
