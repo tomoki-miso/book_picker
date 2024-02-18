@@ -10,6 +10,7 @@ class AppAd with _$AppAd {
     String? appId,
     String? imageUrl,
     String? appUrl,
+    String? googleUrl,
   }) = _AppAd;
 
   factory AppAd.fromJson(Map<String, dynamic> json) => _$AppAdFromJson(json);

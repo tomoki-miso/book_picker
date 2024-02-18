@@ -23,6 +23,7 @@ mixin _$AppAd {
   String? get appId => throw _privateConstructorUsedError;
   String? get imageUrl => throw _privateConstructorUsedError;
   String? get appUrl => throw _privateConstructorUsedError;
+  String? get googleUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +35,8 @@ abstract class $AppAdCopyWith<$Res> {
   factory $AppAdCopyWith(AppAd value, $Res Function(AppAd) then) =
       _$AppAdCopyWithImpl<$Res, AppAd>;
   @useResult
-  $Res call({String? appId, String? imageUrl, String? appUrl});
+  $Res call(
+      {String? appId, String? imageUrl, String? appUrl, String? googleUrl});
 }
 
 /// @nodoc
@@ -53,6 +55,7 @@ class _$AppAdCopyWithImpl<$Res, $Val extends AppAd>
     Object? appId = freezed,
     Object? imageUrl = freezed,
     Object? appUrl = freezed,
+    Object? googleUrl = freezed,
   }) {
     return _then(_value.copyWith(
       appId: freezed == appId
@@ -67,6 +70,10 @@ class _$AppAdCopyWithImpl<$Res, $Val extends AppAd>
           ? _value.appUrl
           : appUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      googleUrl: freezed == googleUrl
+          ? _value.googleUrl
+          : googleUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -78,7 +85,8 @@ abstract class _$$AppAdImplCopyWith<$Res> implements $AppAdCopyWith<$Res> {
       __$$AppAdImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? appId, String? imageUrl, String? appUrl});
+  $Res call(
+      {String? appId, String? imageUrl, String? appUrl, String? googleUrl});
 }
 
 /// @nodoc
@@ -95,6 +103,7 @@ class __$$AppAdImplCopyWithImpl<$Res>
     Object? appId = freezed,
     Object? imageUrl = freezed,
     Object? appUrl = freezed,
+    Object? googleUrl = freezed,
   }) {
     return _then(_$AppAdImpl(
       appId: freezed == appId
@@ -109,6 +118,10 @@ class __$$AppAdImplCopyWithImpl<$Res>
           ? _value.appUrl
           : appUrl // ignore: cast_nullable_to_non_nullable
               as String?,
+      googleUrl: freezed == googleUrl
+          ? _value.googleUrl
+          : googleUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -116,7 +129,7 @@ class __$$AppAdImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AppAdImpl implements _AppAd {
-  _$AppAdImpl({this.appId, this.imageUrl, this.appUrl});
+  _$AppAdImpl({this.appId, this.imageUrl, this.appUrl, this.googleUrl});
 
   factory _$AppAdImpl.fromJson(Map<String, dynamic> json) =>
       _$$AppAdImplFromJson(json);
@@ -127,10 +140,12 @@ class _$AppAdImpl implements _AppAd {
   final String? imageUrl;
   @override
   final String? appUrl;
+  @override
+  final String? googleUrl;
 
   @override
   String toString() {
-    return 'AppAd(appId: $appId, imageUrl: $imageUrl, appUrl: $appUrl)';
+    return 'AppAd(appId: $appId, imageUrl: $imageUrl, appUrl: $appUrl, googleUrl: $googleUrl)';
   }
 
   @override
@@ -141,12 +156,15 @@ class _$AppAdImpl implements _AppAd {
             (identical(other.appId, appId) || other.appId == appId) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
-            (identical(other.appUrl, appUrl) || other.appUrl == appUrl));
+            (identical(other.appUrl, appUrl) || other.appUrl == appUrl) &&
+            (identical(other.googleUrl, googleUrl) ||
+                other.googleUrl == googleUrl));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, appId, imageUrl, appUrl);
+  int get hashCode =>
+      Object.hash(runtimeType, appId, imageUrl, appUrl, googleUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -166,7 +184,8 @@ abstract class _AppAd implements AppAd {
   factory _AppAd(
       {final String? appId,
       final String? imageUrl,
-      final String? appUrl}) = _$AppAdImpl;
+      final String? appUrl,
+      final String? googleUrl}) = _$AppAdImpl;
 
   factory _AppAd.fromJson(Map<String, dynamic> json) = _$AppAdImpl.fromJson;
 
@@ -176,6 +195,8 @@ abstract class _AppAd implements AppAd {
   String? get imageUrl;
   @override
   String? get appUrl;
+  @override
+  String? get googleUrl;
   @override
   @JsonKey(ignore: true)
   _$$AppAdImplCopyWith<_$AppAdImpl> get copyWith =>
