@@ -12,6 +12,7 @@ class UserInfo with _$UserInfo {
   // プロパティを指定
   const factory UserInfo({
     required String userId,
+    required bool isCanGetTodaysBook,
     String? userName,
     String? userIcon,
   }) = _UserInfo;

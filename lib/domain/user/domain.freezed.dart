@@ -21,6 +21,7 @@ UserInfo _$UserInfoFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$UserInfo {
   String get userId => throw _privateConstructorUsedError;
+  bool get isCanGetTodaysBook => throw _privateConstructorUsedError;
   String? get userName => throw _privateConstructorUsedError;
   String? get userIcon => throw _privateConstructorUsedError;
 
@@ -35,7 +36,11 @@ abstract class $UserInfoCopyWith<$Res> {
   factory $UserInfoCopyWith(UserInfo value, $Res Function(UserInfo) then) =
       _$UserInfoCopyWithImpl<$Res, UserInfo>;
   @useResult
-  $Res call({String userId, String? userName, String? userIcon});
+  $Res call(
+      {String userId,
+      bool isCanGetTodaysBook,
+      String? userName,
+      String? userIcon});
 }
 
 /// @nodoc
@@ -52,6 +57,7 @@ class _$UserInfoCopyWithImpl<$Res, $Val extends UserInfo>
   @override
   $Res call({
     Object? userId = null,
+    Object? isCanGetTodaysBook = null,
     Object? userName = freezed,
     Object? userIcon = freezed,
   }) {
@@ -60,6 +66,10 @@ class _$UserInfoCopyWithImpl<$Res, $Val extends UserInfo>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
+      isCanGetTodaysBook: null == isCanGetTodaysBook
+          ? _value.isCanGetTodaysBook
+          : isCanGetTodaysBook // ignore: cast_nullable_to_non_nullable
+              as bool,
       userName: freezed == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
@@ -80,7 +90,11 @@ abstract class _$$UserInfoImplCopyWith<$Res>
       __$$UserInfoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String userId, String? userName, String? userIcon});
+  $Res call(
+      {String userId,
+      bool isCanGetTodaysBook,
+      String? userName,
+      String? userIcon});
 }
 
 /// @nodoc
@@ -95,6 +109,7 @@ class __$$UserInfoImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userId = null,
+    Object? isCanGetTodaysBook = null,
     Object? userName = freezed,
     Object? userIcon = freezed,
   }) {
@@ -103,6 +118,10 @@ class __$$UserInfoImplCopyWithImpl<$Res>
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
+      isCanGetTodaysBook: null == isCanGetTodaysBook
+          ? _value.isCanGetTodaysBook
+          : isCanGetTodaysBook // ignore: cast_nullable_to_non_nullable
+              as bool,
       userName: freezed == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
@@ -118,7 +137,11 @@ class __$$UserInfoImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$UserInfoImpl implements _UserInfo {
-  const _$UserInfoImpl({required this.userId, this.userName, this.userIcon});
+  const _$UserInfoImpl(
+      {required this.userId,
+      required this.isCanGetTodaysBook,
+      this.userName,
+      this.userIcon});
 
   factory _$UserInfoImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserInfoImplFromJson(json);
@@ -126,13 +149,15 @@ class _$UserInfoImpl implements _UserInfo {
   @override
   final String userId;
   @override
+  final bool isCanGetTodaysBook;
+  @override
   final String? userName;
   @override
   final String? userIcon;
 
   @override
   String toString() {
-    return 'UserInfo(userId: $userId, userName: $userName, userIcon: $userIcon)';
+    return 'UserInfo(userId: $userId, isCanGetTodaysBook: $isCanGetTodaysBook, userName: $userName, userIcon: $userIcon)';
   }
 
   @override
@@ -141,6 +166,8 @@ class _$UserInfoImpl implements _UserInfo {
         (other.runtimeType == runtimeType &&
             other is _$UserInfoImpl &&
             (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.isCanGetTodaysBook, isCanGetTodaysBook) ||
+                other.isCanGetTodaysBook == isCanGetTodaysBook) &&
             (identical(other.userName, userName) ||
                 other.userName == userName) &&
             (identical(other.userIcon, userIcon) ||
@@ -149,7 +176,8 @@ class _$UserInfoImpl implements _UserInfo {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, userId, userName, userIcon);
+  int get hashCode =>
+      Object.hash(runtimeType, userId, isCanGetTodaysBook, userName, userIcon);
 
   @JsonKey(ignore: true)
   @override
@@ -168,6 +196,7 @@ class _$UserInfoImpl implements _UserInfo {
 abstract class _UserInfo implements UserInfo {
   const factory _UserInfo(
       {required final String userId,
+      required final bool isCanGetTodaysBook,
       final String? userName,
       final String? userIcon}) = _$UserInfoImpl;
 
@@ -176,6 +205,8 @@ abstract class _UserInfo implements UserInfo {
 
   @override
   String get userId;
+  @override
+  bool get isCanGetTodaysBook;
   @override
   String? get userName;
   @override
