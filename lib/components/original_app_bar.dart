@@ -12,8 +12,7 @@ class OriginalAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) => AppBar(
-        iconTheme: const IconThemeData(color: ColorName.greyBase),
-        backgroundColor: ColorName.skyBlueSec,
+        backgroundColor: ColorName.pickedBookGrass,
         automaticallyImplyLeading: automaticallyImplyLeading,
       );
 
