@@ -1,11 +1,10 @@
-import 'package:book_picker/components/gradation_container.dart';
+import 'package:book_picker/components/back_ground.dart';
 import 'package:book_picker/components/original_app_bar.dart';
 import 'package:book_picker/domain/fetched_book/domain.dart';
 import 'package:book_picker/features/top/components/app_ad.dart';
 import 'package:book_picker/features/top/components/grass_carousel_item.dart';
 import 'package:book_picker/features/top/components/picked_book_container.dart';
 import 'package:book_picker/features/top/view_model.dart';
-import 'package:book_picker/styles/colors.dart';
 import 'package:book_picker/styles/styles.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -13,7 +12,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class TopPage extends ConsumerWidget {
   const TopPage({super.key});
-  static const rootName = '/top';
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -22,9 +20,8 @@ class TopPage extends ConsumerWidget {
       data: (data) {
         final FetchedBook bookData = data.book;
         return Scaffold(
-          backgroundColor: ColorName.skyBlue,
           appBar: const OriginalAppBar(),
-          body: GradatioonContainer(
+          body: BackGround(
             child: ListView(
               children: [
                 const SizedBox(
@@ -43,14 +40,18 @@ class TopPage extends ConsumerWidget {
                   ),
                 ),
 
-                PickedBookContainer(
-                  fetchedBook: bookData,
-                  isbn: bookData.isbn,
-                  title: bookData.title,
-                  author: bookData.author,
-                  itemCaption: bookData.itemCaption,
-                  imageUrl: bookData.largeImageUrl,
-                  itemPrice: bookData.itemPrice,
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                  child: PickedBookContainer(
+                    fetchedBook: bookData,
+                    isbn: bookData.isbn,
+                    title: bookData.title,
+                    author: bookData.author,
+                    itemCaption: bookData.itemCaption,
+                    imageUrl: bookData.largeImageUrl,
+                    itemPrice: bookData.itemPrice,
+                  ),
                 ),
 
                 ElevatedButton(
@@ -59,11 +60,12 @@ class TopPage extends ConsumerWidget {
                         .read(
                           topPageViewModelProvider(bookData.isbn!).notifier,
                         )
-                        .setTodaysPickedBook(bookData);
+                        .setTodaysPickedBook();
                   },
                   child: const Text('hozonn'),
                 ),
 
+                /// よくセレクトされてる本
                 const Padding(
                   padding: EdgeInsets.only(
                     top: kDefaultPadding * 2,
@@ -75,7 +77,7 @@ class TopPage extends ConsumerWidget {
                     style: Styles.greyDefaultStyle,
                   ),
                 ),
-                CarouselSlider(
+                CarouselSlider.builder(
                   options: CarouselOptions(
                     height: MediaQuery.of(context).size.height * 0.25,
                     autoPlay: true,
@@ -83,13 +85,13 @@ class TopPage extends ConsumerWidget {
                     autoPlayAnimationDuration: const Duration(seconds: 8),
                     viewportFraction: 0.42,
                   ),
-                  items: [
-                    GrassCarouselItem(
-                      title: '痴人の愛',
-                      author: '谷崎潤一郎',
-                      imageUrl: data.book.largeImageUrl,
-                    ),
-                  ],
+                  itemCount: data.commonStoringBookOrderByAmount.length,
+                  itemBuilder: (context, index, realIndex) => GrassCarouselItem(
+                    title: data.commonStoringBookOrderByAmount[index].title,
+                    author: data.commonStoringBookOrderByAmount[index].author,
+                    imageUrl: data
+                        .commonStoringBookOrderByAmount[index].largeImageUrl,
+                  ),
                 ),
 
                 const Padding(
@@ -103,7 +105,7 @@ class TopPage extends ConsumerWidget {
                     style: Styles.greyDefaultStyle,
                   ),
                 ),
-                CarouselSlider(
+                CarouselSlider.builder(
                   options: CarouselOptions(
                     height: MediaQuery.of(context).size.height * 0.25,
                     autoPlay: true,
@@ -111,13 +113,13 @@ class TopPage extends ConsumerWidget {
                     autoPlayAnimationDuration: const Duration(seconds: 8),
                     viewportFraction: 0.42,
                   ),
-                  items: [
-                    GrassCarouselItem(
-                      title: '痴人の愛',
-                      author: '谷崎潤一郎',
-                      imageUrl: data.book.largeImageUrl,
-                    ),
-                  ],
+                  itemCount: data.commonStoringBookOrderByTime.length,
+                  itemBuilder: (context, index, realIndex) => GrassCarouselItem(
+                    title: data.commonStoringBookOrderByTime[index].title,
+                    author: data.commonStoringBookOrderByTime[index].author,
+                    imageUrl:
+                        data.commonStoringBookOrderByTime[index].largeImageUrl,
+                  ),
                 ),
 
                 const Padding(

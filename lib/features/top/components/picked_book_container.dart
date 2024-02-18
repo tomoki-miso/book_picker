@@ -41,7 +41,11 @@ class PickedBookContainer extends ConsumerWidget {
           ),
         ),
         child: GrassContainer(
-          width: 0.96,
+          colors: [
+            ColorName.pickedBookGrass,
+            ColorName.pickedBookGrass,
+          ],
+          width: 0.9,
           height: 0.4,
           child: Column(
             children: [
@@ -50,16 +54,17 @@ class PickedBookContainer extends ConsumerWidget {
               ),
 
               /// 上半分
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.96,
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: kDefaultSize * 2),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const SizedBox(
-                      width: kDefaultPadding * 2,
+                      width: kDefaultSize * 2,
                     ),
                     Expanded(
                       child: SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.6,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -78,6 +83,8 @@ class PickedBookContainer extends ConsumerWidget {
                         ),
                       ),
                     ),
+
+                    /// 共有ボタン
                     IconButton(
                       onPressed: () {},
                       icon: const Icon(
@@ -85,6 +92,8 @@ class PickedBookContainer extends ConsumerWidget {
                         color: ColorName.greyBase,
                       ),
                     ),
+
+                    /// 保存ボタン
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: ColorName.skyBlue,
@@ -96,6 +105,9 @@ class PickedBookContainer extends ConsumerWidget {
                           .storePickedBook(),
                       child: const Icon(Icons.people),
                     ),
+                    const SizedBox(
+                      width: kDefaultPadding,
+                    ),
                   ],
                 ),
               ),
@@ -104,36 +116,43 @@ class PickedBookContainer extends ConsumerWidget {
               ),
 
               /// 下半分
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CachedNetworkImage(
-                    imageUrl: imageUrl ?? '',
-                  ),
-                  const SizedBox(
-                    width: kDefaultPadding * 1.5,
-                  ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.45,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          '$itemPrice 円',
-                          style: Styles.defaultStyle,
-                        ),
-                        const SizedBox(
-                          height: kDefaultSize * 2,
-                        ),
-                        Text(
-                          itemCaption ?? '',
-                          style: Styles.defaultStyle,
-                          maxLines: 10,
-                        ),
-                      ],
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: kDefaultSize * 2),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    const SizedBox(
+                      width: kDefaultSize,
                     ),
-                  ),
-                ],
+                    CachedNetworkImage(
+                      imageUrl: imageUrl ?? '',
+                    ),
+                    const SizedBox(
+                      width: kDefaultPadding,
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.42,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            '$itemPrice 円',
+                            style: Styles.defaultStyle,
+                          ),
+                          const SizedBox(
+                            height: kDefaultSize * 2,
+                          ),
+                          Text(
+                            itemCaption ?? '',
+                            style: Styles.defaultStyle,
+                            maxLines: 10,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
