@@ -17,6 +17,10 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$TopPageState {
   FetchedBook get book => throw _privateConstructorUsedError;
+  List<CommonStoringBook> get commonStoringBookOrderByAmount =>
+      throw _privateConstructorUsedError;
+  List<CommonStoringBook> get commonStoringBookOrderByTime =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TopPageStateCopyWith<TopPageState> get copyWith =>
@@ -29,7 +33,10 @@ abstract class $TopPageStateCopyWith<$Res> {
           TopPageState value, $Res Function(TopPageState) then) =
       _$TopPageStateCopyWithImpl<$Res, TopPageState>;
   @useResult
-  $Res call({FetchedBook book});
+  $Res call(
+      {FetchedBook book,
+      List<CommonStoringBook> commonStoringBookOrderByAmount,
+      List<CommonStoringBook> commonStoringBookOrderByTime});
 
   $FetchedBookCopyWith<$Res> get book;
 }
@@ -48,12 +55,22 @@ class _$TopPageStateCopyWithImpl<$Res, $Val extends TopPageState>
   @override
   $Res call({
     Object? book = null,
+    Object? commonStoringBookOrderByAmount = null,
+    Object? commonStoringBookOrderByTime = null,
   }) {
     return _then(_value.copyWith(
       book: null == book
           ? _value.book
           : book // ignore: cast_nullable_to_non_nullable
               as FetchedBook,
+      commonStoringBookOrderByAmount: null == commonStoringBookOrderByAmount
+          ? _value.commonStoringBookOrderByAmount
+          : commonStoringBookOrderByAmount // ignore: cast_nullable_to_non_nullable
+              as List<CommonStoringBook>,
+      commonStoringBookOrderByTime: null == commonStoringBookOrderByTime
+          ? _value.commonStoringBookOrderByTime
+          : commonStoringBookOrderByTime // ignore: cast_nullable_to_non_nullable
+              as List<CommonStoringBook>,
     ) as $Val);
   }
 
@@ -74,7 +91,10 @@ abstract class _$$TopPageStateImplCopyWith<$Res>
       __$$TopPageStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({FetchedBook book});
+  $Res call(
+      {FetchedBook book,
+      List<CommonStoringBook> commonStoringBookOrderByAmount,
+      List<CommonStoringBook> commonStoringBookOrderByTime});
 
   @override
   $FetchedBookCopyWith<$Res> get book;
@@ -92,12 +112,22 @@ class __$$TopPageStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? book = null,
+    Object? commonStoringBookOrderByAmount = null,
+    Object? commonStoringBookOrderByTime = null,
   }) {
     return _then(_$TopPageStateImpl(
       book: null == book
           ? _value.book
           : book // ignore: cast_nullable_to_non_nullable
               as FetchedBook,
+      commonStoringBookOrderByAmount: null == commonStoringBookOrderByAmount
+          ? _value._commonStoringBookOrderByAmount
+          : commonStoringBookOrderByAmount // ignore: cast_nullable_to_non_nullable
+              as List<CommonStoringBook>,
+      commonStoringBookOrderByTime: null == commonStoringBookOrderByTime
+          ? _value._commonStoringBookOrderByTime
+          : commonStoringBookOrderByTime // ignore: cast_nullable_to_non_nullable
+              as List<CommonStoringBook>,
     ));
   }
 }
@@ -105,14 +135,36 @@ class __$$TopPageStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$TopPageStateImpl implements _TopPageState {
-  const _$TopPageStateImpl({required this.book});
+  const _$TopPageStateImpl(
+      {required this.book,
+      required final List<CommonStoringBook> commonStoringBookOrderByAmount,
+      required final List<CommonStoringBook> commonStoringBookOrderByTime})
+      : _commonStoringBookOrderByAmount = commonStoringBookOrderByAmount,
+        _commonStoringBookOrderByTime = commonStoringBookOrderByTime;
 
   @override
   final FetchedBook book;
+  final List<CommonStoringBook> _commonStoringBookOrderByAmount;
+  @override
+  List<CommonStoringBook> get commonStoringBookOrderByAmount {
+    if (_commonStoringBookOrderByAmount is EqualUnmodifiableListView)
+      return _commonStoringBookOrderByAmount;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_commonStoringBookOrderByAmount);
+  }
+
+  final List<CommonStoringBook> _commonStoringBookOrderByTime;
+  @override
+  List<CommonStoringBook> get commonStoringBookOrderByTime {
+    if (_commonStoringBookOrderByTime is EqualUnmodifiableListView)
+      return _commonStoringBookOrderByTime;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_commonStoringBookOrderByTime);
+  }
 
   @override
   String toString() {
-    return 'TopPageState(book: $book)';
+    return 'TopPageState(book: $book, commonStoringBookOrderByAmount: $commonStoringBookOrderByAmount, commonStoringBookOrderByTime: $commonStoringBookOrderByTime)';
   }
 
   @override
@@ -120,11 +172,21 @@ class _$TopPageStateImpl implements _TopPageState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TopPageStateImpl &&
-            (identical(other.book, book) || other.book == book));
+            (identical(other.book, book) || other.book == book) &&
+            const DeepCollectionEquality().equals(
+                other._commonStoringBookOrderByAmount,
+                _commonStoringBookOrderByAmount) &&
+            const DeepCollectionEquality().equals(
+                other._commonStoringBookOrderByTime,
+                _commonStoringBookOrderByTime));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, book);
+  int get hashCode => Object.hash(
+      runtimeType,
+      book,
+      const DeepCollectionEquality().hash(_commonStoringBookOrderByAmount),
+      const DeepCollectionEquality().hash(_commonStoringBookOrderByTime));
 
   @JsonKey(ignore: true)
   @override
@@ -134,11 +196,18 @@ class _$TopPageStateImpl implements _TopPageState {
 }
 
 abstract class _TopPageState implements TopPageState {
-  const factory _TopPageState({required final FetchedBook book}) =
-      _$TopPageStateImpl;
+  const factory _TopPageState(
+      {required final FetchedBook book,
+      required final List<CommonStoringBook> commonStoringBookOrderByAmount,
+      required final List<CommonStoringBook>
+          commonStoringBookOrderByTime}) = _$TopPageStateImpl;
 
   @override
   FetchedBook get book;
+  @override
+  List<CommonStoringBook> get commonStoringBookOrderByAmount;
+  @override
+  List<CommonStoringBook> get commonStoringBookOrderByTime;
   @override
   @JsonKey(ignore: true)
   _$$TopPageStateImplCopyWith<_$TopPageStateImpl> get copyWith =>

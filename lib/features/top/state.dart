@@ -1,3 +1,4 @@
+import 'package:book_picker/domain/common_storing_book/domain.dart';
 import 'package:book_picker/domain/fetched_book/domain.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -12,5 +13,7 @@ class TopPageState with _$TopPageState {
   // プロパティを指定
   const factory TopPageState({
     required FetchedBook book,
+    required List<CommonStoringBook> commonStoringBookOrderByAmount,
+    required List<CommonStoringBook> commonStoringBookOrderByTime,
   }) = _TopPageState;
 }
