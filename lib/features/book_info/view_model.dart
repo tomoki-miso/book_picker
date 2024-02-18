@@ -20,10 +20,25 @@ class BookInfoPageViewModel extends _$BookInfoPageViewModel {
     CommonStoringBook? commonStoringBook,
     UserStoringBook? userStoringBook,
   ) async {
-    final BookInfoPageState state = BookInfoPageState(fetchedBook: fetchedBook);
+
+    final BookInfoPageState state = BookInfoPageState(
+      fetchedBook: fetchedBook,
+      commonStoringBook: commonStoringBook,
+      userStoringBook: userStoringBook,
+    );
 
     print(this.pageType);
     print(state.fetchedBook);
     return state;
   }
+// void switchPageType(){
+// switch(pageType) async {
+//     case 'todaysBook';
+//     final BookInfo=fetchedBook;
+//     return BookInfo;
+
+//   }
+
+// }
+    
 }
