@@ -16,10 +16,8 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$BookInfoPageState {
-  FetchedBook? get fetchedBook => throw _privateConstructorUsedError;
-  CommonStoringBook? get commonStoringBook =>
-      throw _privateConstructorUsedError;
-  UserStoringBook? get userStoringBook => throw _privateConstructorUsedError;
+  Book get book => throw _privateConstructorUsedError;
+  PageType? get pagetype => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BookInfoPageStateCopyWith<BookInfoPageState> get copyWith =>
@@ -32,14 +30,9 @@ abstract class $BookInfoPageStateCopyWith<$Res> {
           BookInfoPageState value, $Res Function(BookInfoPageState) then) =
       _$BookInfoPageStateCopyWithImpl<$Res, BookInfoPageState>;
   @useResult
-  $Res call(
-      {FetchedBook? fetchedBook,
-      CommonStoringBook? commonStoringBook,
-      UserStoringBook? userStoringBook});
+  $Res call({Book book, PageType? pagetype});
 
-  $FetchedBookCopyWith<$Res>? get fetchedBook;
-  $CommonStoringBookCopyWith<$Res>? get commonStoringBook;
-  $UserStoringBookCopyWith<$Res>? get userStoringBook;
+  $BookCopyWith<$Res> get book;
 }
 
 /// @nodoc
@@ -55,59 +48,26 @@ class _$BookInfoPageStateCopyWithImpl<$Res, $Val extends BookInfoPageState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? fetchedBook = freezed,
-    Object? commonStoringBook = freezed,
-    Object? userStoringBook = freezed,
+    Object? book = null,
+    Object? pagetype = freezed,
   }) {
     return _then(_value.copyWith(
-      fetchedBook: freezed == fetchedBook
-          ? _value.fetchedBook
-          : fetchedBook // ignore: cast_nullable_to_non_nullable
-              as FetchedBook?,
-      commonStoringBook: freezed == commonStoringBook
-          ? _value.commonStoringBook
-          : commonStoringBook // ignore: cast_nullable_to_non_nullable
-              as CommonStoringBook?,
-      userStoringBook: freezed == userStoringBook
-          ? _value.userStoringBook
-          : userStoringBook // ignore: cast_nullable_to_non_nullable
-              as UserStoringBook?,
+      book: null == book
+          ? _value.book
+          : book // ignore: cast_nullable_to_non_nullable
+              as Book,
+      pagetype: freezed == pagetype
+          ? _value.pagetype
+          : pagetype // ignore: cast_nullable_to_non_nullable
+              as PageType?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $FetchedBookCopyWith<$Res>? get fetchedBook {
-    if (_value.fetchedBook == null) {
-      return null;
-    }
-
-    return $FetchedBookCopyWith<$Res>(_value.fetchedBook!, (value) {
-      return _then(_value.copyWith(fetchedBook: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $CommonStoringBookCopyWith<$Res>? get commonStoringBook {
-    if (_value.commonStoringBook == null) {
-      return null;
-    }
-
-    return $CommonStoringBookCopyWith<$Res>(_value.commonStoringBook!, (value) {
-      return _then(_value.copyWith(commonStoringBook: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $UserStoringBookCopyWith<$Res>? get userStoringBook {
-    if (_value.userStoringBook == null) {
-      return null;
-    }
-
-    return $UserStoringBookCopyWith<$Res>(_value.userStoringBook!, (value) {
-      return _then(_value.copyWith(userStoringBook: value) as $Val);
+  $BookCopyWith<$Res> get book {
+    return $BookCopyWith<$Res>(_value.book, (value) {
+      return _then(_value.copyWith(book: value) as $Val);
     });
   }
 }
@@ -120,17 +80,10 @@ abstract class _$$BookInfoPageStateImplCopyWith<$Res>
       __$$BookInfoPageStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {FetchedBook? fetchedBook,
-      CommonStoringBook? commonStoringBook,
-      UserStoringBook? userStoringBook});
+  $Res call({Book book, PageType? pagetype});
 
   @override
-  $FetchedBookCopyWith<$Res>? get fetchedBook;
-  @override
-  $CommonStoringBookCopyWith<$Res>? get commonStoringBook;
-  @override
-  $UserStoringBookCopyWith<$Res>? get userStoringBook;
+  $BookCopyWith<$Res> get book;
 }
 
 /// @nodoc
@@ -144,23 +97,18 @@ class __$$BookInfoPageStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? fetchedBook = freezed,
-    Object? commonStoringBook = freezed,
-    Object? userStoringBook = freezed,
+    Object? book = null,
+    Object? pagetype = freezed,
   }) {
     return _then(_$BookInfoPageStateImpl(
-      fetchedBook: freezed == fetchedBook
-          ? _value.fetchedBook
-          : fetchedBook // ignore: cast_nullable_to_non_nullable
-              as FetchedBook?,
-      commonStoringBook: freezed == commonStoringBook
-          ? _value.commonStoringBook
-          : commonStoringBook // ignore: cast_nullable_to_non_nullable
-              as CommonStoringBook?,
-      userStoringBook: freezed == userStoringBook
-          ? _value.userStoringBook
-          : userStoringBook // ignore: cast_nullable_to_non_nullable
-              as UserStoringBook?,
+      book: null == book
+          ? _value.book
+          : book // ignore: cast_nullable_to_non_nullable
+              as Book,
+      pagetype: freezed == pagetype
+          ? _value.pagetype
+          : pagetype // ignore: cast_nullable_to_non_nullable
+              as PageType?,
     ));
   }
 }
@@ -168,19 +116,16 @@ class __$$BookInfoPageStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$BookInfoPageStateImpl implements _BookInfoPageState {
-  const _$BookInfoPageStateImpl(
-      {this.fetchedBook, this.commonStoringBook, this.userStoringBook});
+  const _$BookInfoPageStateImpl({required this.book, this.pagetype});
 
   @override
-  final FetchedBook? fetchedBook;
+  final Book book;
   @override
-  final CommonStoringBook? commonStoringBook;
-  @override
-  final UserStoringBook? userStoringBook;
+  final PageType? pagetype;
 
   @override
   String toString() {
-    return 'BookInfoPageState(fetchedBook: $fetchedBook, commonStoringBook: $commonStoringBook, userStoringBook: $userStoringBook)';
+    return 'BookInfoPageState(book: $book, pagetype: $pagetype)';
   }
 
   @override
@@ -188,17 +133,13 @@ class _$BookInfoPageStateImpl implements _BookInfoPageState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BookInfoPageStateImpl &&
-            (identical(other.fetchedBook, fetchedBook) ||
-                other.fetchedBook == fetchedBook) &&
-            (identical(other.commonStoringBook, commonStoringBook) ||
-                other.commonStoringBook == commonStoringBook) &&
-            (identical(other.userStoringBook, userStoringBook) ||
-                other.userStoringBook == userStoringBook));
+            (identical(other.book, book) || other.book == book) &&
+            (identical(other.pagetype, pagetype) ||
+                other.pagetype == pagetype));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, fetchedBook, commonStoringBook, userStoringBook);
+  int get hashCode => Object.hash(runtimeType, book, pagetype);
 
   @JsonKey(ignore: true)
   @override
@@ -210,16 +151,13 @@ class _$BookInfoPageStateImpl implements _BookInfoPageState {
 
 abstract class _BookInfoPageState implements BookInfoPageState {
   const factory _BookInfoPageState(
-      {final FetchedBook? fetchedBook,
-      final CommonStoringBook? commonStoringBook,
-      final UserStoringBook? userStoringBook}) = _$BookInfoPageStateImpl;
+      {required final Book book,
+      final PageType? pagetype}) = _$BookInfoPageStateImpl;
 
   @override
-  FetchedBook? get fetchedBook;
+  Book get book;
   @override
-  CommonStoringBook? get commonStoringBook;
-  @override
-  UserStoringBook? get userStoringBook;
+  PageType? get pagetype;
   @override
   @JsonKey(ignore: true)
   _$$BookInfoPageStateImplCopyWith<_$BookInfoPageStateImpl> get copyWith =>

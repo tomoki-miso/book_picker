@@ -1,6 +1,5 @@
-import 'package:book_picker/domain/common_storing_book/domain.dart';
-import 'package:book_picker/domain/fetched_book/domain.dart';
-import 'package:book_picker/domain/user_storing_book/domain.dart';
+import 'package:book_picker/domain/book/domain.dart';
+import 'package:book_picker/features/book_info/page_type.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 // 生成されるdartファイルを記述
@@ -13,8 +12,7 @@ class BookInfoPageState with _$BookInfoPageState {
 
   // プロパティを指定
   const factory BookInfoPageState({
-    FetchedBook? fetchedBook,
-    CommonStoringBook? commonStoringBook,
-    UserStoringBook? userStoringBook,
+    required Book book,
+    PageType? pagetype,
   }) = _BookInfoPageState;
 }
