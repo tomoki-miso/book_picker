@@ -34,7 +34,12 @@ class TodaysPickedBookRepo extends _$TodaysPickedBookRepo {
     await collection.doc('1').set(todaysPickedBook);
   }
 
-  Future<void> getTodaysBook(TodaysPickedBook todaysPickedBook) async {
-    await collection.doc('1').get();
-  }
+  /// 今日のPICKBOOK取得
+  Future<TodaysPickedBook> getTodaysBook() async =>
+      collection.doc('1').get().then((value) {
+        if (value.data() == null) {
+          throw ArgumentError('データが存在しません');
+        }
+        return value.data()!;
+      });
 }

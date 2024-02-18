@@ -25,7 +25,7 @@ final todaysPickedBookFirestoreProvider =
 typedef TodaysPickedBookFirestoreRef
     = ProviderRef<CollectionReference<TodaysPickedBook>>;
 String _$todaysPickedBookRepoHash() =>
-    r'e58cf542d68493ce5c3feebc397a6b6a1a84e218';
+    r'febc4f4bdf9f9e18314cd41f2700e09d70486937';
 
 /// See also [TodaysPickedBookRepo].
 @ProviderFor(TodaysPickedBookRepo)
