@@ -1,6 +1,6 @@
+import 'package:book_picker/features/selected_books/bookListType.dart';
 import 'package:book_picker/features/selected_books/page.dart';
 import 'package:book_picker/features/top/page.dart';
-import 'package:book_picker/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
@@ -14,7 +14,9 @@ class BottomNav extends StatelessWidget {
   ) {
     final pages = [
       const TopPage(),
-      const SelectedBooksPage(),
+      const SelectedBooksPage(
+        bookListType: BookListType.userStoringBooks,
+      ),
     ];
 
     return Scaffold(
@@ -23,7 +25,6 @@ class BottomNav extends StatelessWidget {
         controller: PersistentTabController(initialIndex: 1),
         screens: pages,
         navBarStyle: NavBarStyle.simple,
-        backgroundColor: ColorName.skyBlueSec,
         items: [
           PersistentBottomNavBarItem(
             icon: const Icon(Icons.abc_outlined),
