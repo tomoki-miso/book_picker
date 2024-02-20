@@ -28,6 +28,7 @@ mixin _$FetchedBook {
   String? get largeImageUrl => throw _privateConstructorUsedError;
   String? get mediumImageUrl => throw _privateConstructorUsedError;
   String? get publisherName => throw _privateConstructorUsedError;
+  String? get affiUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,7 +50,8 @@ abstract class $FetchedBookCopyWith<$Res> {
       int? itemPrice,
       String? largeImageUrl,
       String? mediumImageUrl,
-      String? publisherName});
+      String? publisherName,
+      String? affiUrl});
 }
 
 /// @nodoc
@@ -73,6 +75,7 @@ class _$FetchedBookCopyWithImpl<$Res, $Val extends FetchedBook>
     Object? largeImageUrl = freezed,
     Object? mediumImageUrl = freezed,
     Object? publisherName = freezed,
+    Object? affiUrl = freezed,
   }) {
     return _then(_value.copyWith(
       isbn: freezed == isbn
@@ -107,6 +110,10 @@ class _$FetchedBookCopyWithImpl<$Res, $Val extends FetchedBook>
           ? _value.publisherName
           : publisherName // ignore: cast_nullable_to_non_nullable
               as String?,
+      affiUrl: freezed == affiUrl
+          ? _value.affiUrl
+          : affiUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -127,7 +134,8 @@ abstract class _$$FetchedBookImplCopyWith<$Res>
       int? itemPrice,
       String? largeImageUrl,
       String? mediumImageUrl,
-      String? publisherName});
+      String? publisherName,
+      String? affiUrl});
 }
 
 /// @nodoc
@@ -149,6 +157,7 @@ class __$$FetchedBookImplCopyWithImpl<$Res>
     Object? largeImageUrl = freezed,
     Object? mediumImageUrl = freezed,
     Object? publisherName = freezed,
+    Object? affiUrl = freezed,
   }) {
     return _then(_$FetchedBookImpl(
       isbn: freezed == isbn
@@ -183,6 +192,10 @@ class __$$FetchedBookImplCopyWithImpl<$Res>
           ? _value.publisherName
           : publisherName // ignore: cast_nullable_to_non_nullable
               as String?,
+      affiUrl: freezed == affiUrl
+          ? _value.affiUrl
+          : affiUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -198,7 +211,8 @@ class _$FetchedBookImpl implements _FetchedBook {
       this.itemPrice,
       this.largeImageUrl,
       this.mediumImageUrl,
-      this.publisherName});
+      this.publisherName,
+      this.affiUrl});
 
   factory _$FetchedBookImpl.fromJson(Map<String, dynamic> json) =>
       _$$FetchedBookImplFromJson(json);
@@ -219,10 +233,12 @@ class _$FetchedBookImpl implements _FetchedBook {
   final String? mediumImageUrl;
   @override
   final String? publisherName;
+  @override
+  final String? affiUrl;
 
   @override
   String toString() {
-    return 'FetchedBook(isbn: $isbn, title: $title, author: $author, itemCaption: $itemCaption, itemPrice: $itemPrice, largeImageUrl: $largeImageUrl, mediumImageUrl: $mediumImageUrl, publisherName: $publisherName)';
+    return 'FetchedBook(isbn: $isbn, title: $title, author: $author, itemCaption: $itemCaption, itemPrice: $itemPrice, largeImageUrl: $largeImageUrl, mediumImageUrl: $mediumImageUrl, publisherName: $publisherName, affiUrl: $affiUrl)';
   }
 
   @override
@@ -242,13 +258,14 @@ class _$FetchedBookImpl implements _FetchedBook {
             (identical(other.mediumImageUrl, mediumImageUrl) ||
                 other.mediumImageUrl == mediumImageUrl) &&
             (identical(other.publisherName, publisherName) ||
-                other.publisherName == publisherName));
+                other.publisherName == publisherName) &&
+            (identical(other.affiUrl, affiUrl) || other.affiUrl == affiUrl));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, isbn, title, author, itemCaption,
-      itemPrice, largeImageUrl, mediumImageUrl, publisherName);
+      itemPrice, largeImageUrl, mediumImageUrl, publisherName, affiUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -273,7 +290,8 @@ abstract class _FetchedBook implements FetchedBook {
       final int? itemPrice,
       final String? largeImageUrl,
       final String? mediumImageUrl,
-      final String? publisherName}) = _$FetchedBookImpl;
+      final String? publisherName,
+      final String? affiUrl}) = _$FetchedBookImpl;
 
   factory _FetchedBook.fromJson(Map<String, dynamic> json) =
       _$FetchedBookImpl.fromJson;
@@ -294,6 +312,8 @@ abstract class _FetchedBook implements FetchedBook {
   String? get mediumImageUrl;
   @override
   String? get publisherName;
+  @override
+  String? get affiUrl;
   @override
   @JsonKey(ignore: true)
   _$$FetchedBookImplCopyWith<_$FetchedBookImpl> get copyWith =>

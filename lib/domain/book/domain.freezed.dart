@@ -28,6 +28,7 @@ mixin _$Book {
   String? get imageUrl => throw _privateConstructorUsedError;
   String? get mediumImageUrl => throw _privateConstructorUsedError;
   String? get publisherName => throw _privateConstructorUsedError;
+  String? get affiUrl => throw _privateConstructorUsedError;
   int? get numberOfStored => throw _privateConstructorUsedError;
   @TimestampConverter()
   DateTime? get storedTime => throw _privateConstructorUsedError;
@@ -51,6 +52,7 @@ abstract class $BookCopyWith<$Res> {
       String? imageUrl,
       String? mediumImageUrl,
       String? publisherName,
+      String? affiUrl,
       int? numberOfStored,
       @TimestampConverter() DateTime? storedTime});
 }
@@ -76,6 +78,7 @@ class _$BookCopyWithImpl<$Res, $Val extends Book>
     Object? imageUrl = freezed,
     Object? mediumImageUrl = freezed,
     Object? publisherName = freezed,
+    Object? affiUrl = freezed,
     Object? numberOfStored = freezed,
     Object? storedTime = freezed,
   }) {
@@ -112,6 +115,10 @@ class _$BookCopyWithImpl<$Res, $Val extends Book>
           ? _value.publisherName
           : publisherName // ignore: cast_nullable_to_non_nullable
               as String?,
+      affiUrl: freezed == affiUrl
+          ? _value.affiUrl
+          : affiUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
       numberOfStored: freezed == numberOfStored
           ? _value.numberOfStored
           : numberOfStored // ignore: cast_nullable_to_non_nullable
@@ -140,6 +147,7 @@ abstract class _$$BookImplCopyWith<$Res> implements $BookCopyWith<$Res> {
       String? imageUrl,
       String? mediumImageUrl,
       String? publisherName,
+      String? affiUrl,
       int? numberOfStored,
       @TimestampConverter() DateTime? storedTime});
 }
@@ -162,6 +170,7 @@ class __$$BookImplCopyWithImpl<$Res>
     Object? imageUrl = freezed,
     Object? mediumImageUrl = freezed,
     Object? publisherName = freezed,
+    Object? affiUrl = freezed,
     Object? numberOfStored = freezed,
     Object? storedTime = freezed,
   }) {
@@ -198,6 +207,10 @@ class __$$BookImplCopyWithImpl<$Res>
           ? _value.publisherName
           : publisherName // ignore: cast_nullable_to_non_nullable
               as String?,
+      affiUrl: freezed == affiUrl
+          ? _value.affiUrl
+          : affiUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
       numberOfStored: freezed == numberOfStored
           ? _value.numberOfStored
           : numberOfStored // ignore: cast_nullable_to_non_nullable
@@ -222,6 +235,7 @@ class _$BookImpl implements _Book {
       this.imageUrl,
       this.mediumImageUrl,
       this.publisherName,
+      this.affiUrl,
       this.numberOfStored,
       @TimestampConverter() this.storedTime});
 
@@ -245,6 +259,8 @@ class _$BookImpl implements _Book {
   @override
   final String? publisherName;
   @override
+  final String? affiUrl;
+  @override
   final int? numberOfStored;
   @override
   @TimestampConverter()
@@ -252,7 +268,7 @@ class _$BookImpl implements _Book {
 
   @override
   String toString() {
-    return 'Book(isbn: $isbn, title: $title, author: $author, itemCaption: $itemCaption, itemPrice: $itemPrice, imageUrl: $imageUrl, mediumImageUrl: $mediumImageUrl, publisherName: $publisherName, numberOfStored: $numberOfStored, storedTime: $storedTime)';
+    return 'Book(isbn: $isbn, title: $title, author: $author, itemCaption: $itemCaption, itemPrice: $itemPrice, imageUrl: $imageUrl, mediumImageUrl: $mediumImageUrl, publisherName: $publisherName, affiUrl: $affiUrl, numberOfStored: $numberOfStored, storedTime: $storedTime)';
   }
 
   @override
@@ -273,6 +289,7 @@ class _$BookImpl implements _Book {
                 other.mediumImageUrl == mediumImageUrl) &&
             (identical(other.publisherName, publisherName) ||
                 other.publisherName == publisherName) &&
+            (identical(other.affiUrl, affiUrl) || other.affiUrl == affiUrl) &&
             (identical(other.numberOfStored, numberOfStored) ||
                 other.numberOfStored == numberOfStored) &&
             (identical(other.storedTime, storedTime) ||
@@ -291,6 +308,7 @@ class _$BookImpl implements _Book {
       imageUrl,
       mediumImageUrl,
       publisherName,
+      affiUrl,
       numberOfStored,
       storedTime);
 
@@ -318,6 +336,7 @@ abstract class _Book implements Book {
       final String? imageUrl,
       final String? mediumImageUrl,
       final String? publisherName,
+      final String? affiUrl,
       final int? numberOfStored,
       @TimestampConverter() final DateTime? storedTime}) = _$BookImpl;
 
@@ -339,6 +358,8 @@ abstract class _Book implements Book {
   String? get mediumImageUrl;
   @override
   String? get publisherName;
+  @override
+  String? get affiUrl;
   @override
   int? get numberOfStored;
   @override

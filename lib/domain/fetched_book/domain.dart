@@ -15,16 +15,19 @@ class FetchedBook with _$FetchedBook {
     String? largeImageUrl,
     String? mediumImageUrl,
     String? publisherName,
+    String? affiUrl,
   }) = _FetchedBook;
 
-  factory FetchedBook.fromJson(Map<String, dynamic> json) => FetchedBook(
-        isbn: json['Items'][0]['Item']['isbn'],
-        title: json['Items'][0]['Item']['title'],
-        author: json['Items'][0]['Item']['author'],
-        itemCaption: json['Items'][0]['Item']['itemCaption'],
-        itemPrice: json['Items'][0]['Item']['itemPrice'],
-        largeImageUrl: json['Items'][0]['Item']['largeImageUrl'],
-        mediumImageUrl: json['Items'][0]['Item']['mediumImageUrl'],
-        publisherName: json['Items'][0]['Item']['publisherName'],
+  factory FetchedBook.fromJson(Map<String, dynamic> json, int index) =>
+      FetchedBook(
+        isbn: json['Items'][index]['Item']['isbn'],
+        title: json['Items'][index]['Item']['title'],
+        author: json['Items'][index]['Item']['author'],
+        itemCaption: json['Items'][index]['Item']['itemCaption'],
+        itemPrice: json['Items'][index]['Item']['itemPrice'],
+        largeImageUrl: json['Items'][index]['Item']['largeImageUrl'],
+        mediumImageUrl: json['Items'][index]['Item']['mediumImageUrl'],
+        publisherName: json['Items'][index]['Item']['publisherName'],
+        affiUrl: json['Items'][index]['Item']['affiliateUrl'],
       );
 }

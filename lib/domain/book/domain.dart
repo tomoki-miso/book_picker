@@ -1,4 +1,5 @@
 import 'package:book_picker/converter/time_stamp_conveter.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 // build_runnerを使うことで自動生成されるファイル
@@ -16,6 +17,7 @@ class Book with _$Book {
     String? imageUrl,
     String? mediumImageUrl,
     String? publisherName,
+    String? affiUrl,
     int? numberOfStored,
     @TimestampConverter() DateTime? storedTime,
   }) = _Book;

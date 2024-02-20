@@ -15,6 +15,7 @@ _$BookImpl _$$BookImplFromJson(Map<String, dynamic> json) => _$BookImpl(
       imageUrl: json['imageUrl'] as String?,
       mediumImageUrl: json['mediumImageUrl'] as String?,
       publisherName: json['publisherName'] as String?,
+      affiUrl: json['affiUrl'] as String?,
       numberOfStored: json['numberOfStored'] as int?,
       storedTime:
           const TimestampConverter().fromJson(json['storedTime'] as Timestamp?),
@@ -30,6 +31,7 @@ Map<String, dynamic> _$$BookImplToJson(_$BookImpl instance) =>
       'imageUrl': instance.imageUrl,
       'mediumImageUrl': instance.mediumImageUrl,
       'publisherName': instance.publisherName,
+      'affiUrl': instance.affiUrl,
       'numberOfStored': instance.numberOfStored,
       'storedTime': const TimestampConverter().toJson(instance.storedTime),
     };

@@ -16,6 +16,7 @@ _$FetchedBookImpl _$$FetchedBookImplFromJson(Map<String, dynamic> json) =>
       largeImageUrl: json['largeImageUrl'] as String?,
       mediumImageUrl: json['mediumImageUrl'] as String?,
       publisherName: json['publisherName'] as String?,
+      affiUrl: json['affiUrl'] as String?,
     );
 
 Map<String, dynamic> _$$FetchedBookImplToJson(_$FetchedBookImpl instance) =>
@@ -28,4 +29,5 @@ Map<String, dynamic> _$$FetchedBookImplToJson(_$FetchedBookImpl instance) =>
       'largeImageUrl': instance.largeImageUrl,
       'mediumImageUrl': instance.mediumImageUrl,
       'publisherName': instance.publisherName,
+      'affiUrl': instance.affiUrl,
     };
