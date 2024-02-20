@@ -16,12 +16,13 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$TopPageState {
-  FetchedBook get book => throw _privateConstructorUsedError;
-  List<CommonStoringBook> get commonStoringBookOrderByAmount =>
+  List<Book> get commonStoringBookOrderByAmount =>
       throw _privateConstructorUsedError;
-  List<CommonStoringBook> get commonStoringBookOrderByTime =>
+  List<Book> get commonStoringBookOrderByTime =>
       throw _privateConstructorUsedError;
-  TodaysPickedBook? get todaysPickedBook => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
+  FetchedBook? get fetchedBook => throw _privateConstructorUsedError;
+  Book? get todaysPickedBook => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TopPageStateCopyWith<TopPageState> get copyWith =>
@@ -35,13 +36,14 @@ abstract class $TopPageStateCopyWith<$Res> {
       _$TopPageStateCopyWithImpl<$Res, TopPageState>;
   @useResult
   $Res call(
-      {FetchedBook book,
-      List<CommonStoringBook> commonStoringBookOrderByAmount,
-      List<CommonStoringBook> commonStoringBookOrderByTime,
-      TodaysPickedBook? todaysPickedBook});
+      {List<Book> commonStoringBookOrderByAmount,
+      List<Book> commonStoringBookOrderByTime,
+      bool isLoading,
+      FetchedBook? fetchedBook,
+      Book? todaysPickedBook});
 
-  $FetchedBookCopyWith<$Res> get book;
-  $TodaysPickedBookCopyWith<$Res>? get todaysPickedBook;
+  $FetchedBookCopyWith<$Res>? get fetchedBook;
+  $BookCopyWith<$Res>? get todaysPickedBook;
 }
 
 /// @nodoc
@@ -57,47 +59,56 @@ class _$TopPageStateCopyWithImpl<$Res, $Val extends TopPageState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? book = null,
     Object? commonStoringBookOrderByAmount = null,
     Object? commonStoringBookOrderByTime = null,
+    Object? isLoading = null,
+    Object? fetchedBook = freezed,
     Object? todaysPickedBook = freezed,
   }) {
     return _then(_value.copyWith(
-      book: null == book
-          ? _value.book
-          : book // ignore: cast_nullable_to_non_nullable
-              as FetchedBook,
       commonStoringBookOrderByAmount: null == commonStoringBookOrderByAmount
           ? _value.commonStoringBookOrderByAmount
           : commonStoringBookOrderByAmount // ignore: cast_nullable_to_non_nullable
-              as List<CommonStoringBook>,
+              as List<Book>,
       commonStoringBookOrderByTime: null == commonStoringBookOrderByTime
           ? _value.commonStoringBookOrderByTime
           : commonStoringBookOrderByTime // ignore: cast_nullable_to_non_nullable
-              as List<CommonStoringBook>,
+              as List<Book>,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      fetchedBook: freezed == fetchedBook
+          ? _value.fetchedBook
+          : fetchedBook // ignore: cast_nullable_to_non_nullable
+              as FetchedBook?,
       todaysPickedBook: freezed == todaysPickedBook
           ? _value.todaysPickedBook
           : todaysPickedBook // ignore: cast_nullable_to_non_nullable
-              as TodaysPickedBook?,
+              as Book?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $FetchedBookCopyWith<$Res> get book {
-    return $FetchedBookCopyWith<$Res>(_value.book, (value) {
-      return _then(_value.copyWith(book: value) as $Val);
+  $FetchedBookCopyWith<$Res>? get fetchedBook {
+    if (_value.fetchedBook == null) {
+      return null;
+    }
+
+    return $FetchedBookCopyWith<$Res>(_value.fetchedBook!, (value) {
+      return _then(_value.copyWith(fetchedBook: value) as $Val);
     });
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $TodaysPickedBookCopyWith<$Res>? get todaysPickedBook {
+  $BookCopyWith<$Res>? get todaysPickedBook {
     if (_value.todaysPickedBook == null) {
       return null;
     }
 
-    return $TodaysPickedBookCopyWith<$Res>(_value.todaysPickedBook!, (value) {
+    return $BookCopyWith<$Res>(_value.todaysPickedBook!, (value) {
       return _then(_value.copyWith(todaysPickedBook: value) as $Val);
     });
   }
@@ -112,15 +123,16 @@ abstract class _$$TopPageStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {FetchedBook book,
-      List<CommonStoringBook> commonStoringBookOrderByAmount,
-      List<CommonStoringBook> commonStoringBookOrderByTime,
-      TodaysPickedBook? todaysPickedBook});
+      {List<Book> commonStoringBookOrderByAmount,
+      List<Book> commonStoringBookOrderByTime,
+      bool isLoading,
+      FetchedBook? fetchedBook,
+      Book? todaysPickedBook});
 
   @override
-  $FetchedBookCopyWith<$Res> get book;
+  $FetchedBookCopyWith<$Res>? get fetchedBook;
   @override
-  $TodaysPickedBookCopyWith<$Res>? get todaysPickedBook;
+  $BookCopyWith<$Res>? get todaysPickedBook;
 }
 
 /// @nodoc
@@ -134,28 +146,33 @@ class __$$TopPageStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? book = null,
     Object? commonStoringBookOrderByAmount = null,
     Object? commonStoringBookOrderByTime = null,
+    Object? isLoading = null,
+    Object? fetchedBook = freezed,
     Object? todaysPickedBook = freezed,
   }) {
     return _then(_$TopPageStateImpl(
-      book: null == book
-          ? _value.book
-          : book // ignore: cast_nullable_to_non_nullable
-              as FetchedBook,
       commonStoringBookOrderByAmount: null == commonStoringBookOrderByAmount
           ? _value._commonStoringBookOrderByAmount
           : commonStoringBookOrderByAmount // ignore: cast_nullable_to_non_nullable
-              as List<CommonStoringBook>,
+              as List<Book>,
       commonStoringBookOrderByTime: null == commonStoringBookOrderByTime
           ? _value._commonStoringBookOrderByTime
           : commonStoringBookOrderByTime // ignore: cast_nullable_to_non_nullable
-              as List<CommonStoringBook>,
+              as List<Book>,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      fetchedBook: freezed == fetchedBook
+          ? _value.fetchedBook
+          : fetchedBook // ignore: cast_nullable_to_non_nullable
+              as FetchedBook?,
       todaysPickedBook: freezed == todaysPickedBook
           ? _value.todaysPickedBook
           : todaysPickedBook // ignore: cast_nullable_to_non_nullable
-              as TodaysPickedBook?,
+              as Book?,
     ));
   }
 }
@@ -164,27 +181,26 @@ class __$$TopPageStateImplCopyWithImpl<$Res>
 
 class _$TopPageStateImpl implements _TopPageState {
   const _$TopPageStateImpl(
-      {required this.book,
-      required final List<CommonStoringBook> commonStoringBookOrderByAmount,
-      required final List<CommonStoringBook> commonStoringBookOrderByTime,
+      {required final List<Book> commonStoringBookOrderByAmount,
+      required final List<Book> commonStoringBookOrderByTime,
+      this.isLoading = false,
+      this.fetchedBook,
       this.todaysPickedBook})
       : _commonStoringBookOrderByAmount = commonStoringBookOrderByAmount,
         _commonStoringBookOrderByTime = commonStoringBookOrderByTime;
 
+  final List<Book> _commonStoringBookOrderByAmount;
   @override
-  final FetchedBook book;
-  final List<CommonStoringBook> _commonStoringBookOrderByAmount;
-  @override
-  List<CommonStoringBook> get commonStoringBookOrderByAmount {
+  List<Book> get commonStoringBookOrderByAmount {
     if (_commonStoringBookOrderByAmount is EqualUnmodifiableListView)
       return _commonStoringBookOrderByAmount;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_commonStoringBookOrderByAmount);
   }
 
-  final List<CommonStoringBook> _commonStoringBookOrderByTime;
+  final List<Book> _commonStoringBookOrderByTime;
   @override
-  List<CommonStoringBook> get commonStoringBookOrderByTime {
+  List<Book> get commonStoringBookOrderByTime {
     if (_commonStoringBookOrderByTime is EqualUnmodifiableListView)
       return _commonStoringBookOrderByTime;
     // ignore: implicit_dynamic_type
@@ -192,11 +208,16 @@ class _$TopPageStateImpl implements _TopPageState {
   }
 
   @override
-  final TodaysPickedBook? todaysPickedBook;
+  @JsonKey()
+  final bool isLoading;
+  @override
+  final FetchedBook? fetchedBook;
+  @override
+  final Book? todaysPickedBook;
 
   @override
   String toString() {
-    return 'TopPageState(book: $book, commonStoringBookOrderByAmount: $commonStoringBookOrderByAmount, commonStoringBookOrderByTime: $commonStoringBookOrderByTime, todaysPickedBook: $todaysPickedBook)';
+    return 'TopPageState(commonStoringBookOrderByAmount: $commonStoringBookOrderByAmount, commonStoringBookOrderByTime: $commonStoringBookOrderByTime, isLoading: $isLoading, fetchedBook: $fetchedBook, todaysPickedBook: $todaysPickedBook)';
   }
 
   @override
@@ -204,13 +225,16 @@ class _$TopPageStateImpl implements _TopPageState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TopPageStateImpl &&
-            (identical(other.book, book) || other.book == book) &&
             const DeepCollectionEquality().equals(
                 other._commonStoringBookOrderByAmount,
                 _commonStoringBookOrderByAmount) &&
             const DeepCollectionEquality().equals(
                 other._commonStoringBookOrderByTime,
                 _commonStoringBookOrderByTime) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.fetchedBook, fetchedBook) ||
+                other.fetchedBook == fetchedBook) &&
             (identical(other.todaysPickedBook, todaysPickedBook) ||
                 other.todaysPickedBook == todaysPickedBook));
   }
@@ -218,9 +242,10 @@ class _$TopPageStateImpl implements _TopPageState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      book,
       const DeepCollectionEquality().hash(_commonStoringBookOrderByAmount),
       const DeepCollectionEquality().hash(_commonStoringBookOrderByTime),
+      isLoading,
+      fetchedBook,
       todaysPickedBook);
 
   @JsonKey(ignore: true)
@@ -232,19 +257,22 @@ class _$TopPageStateImpl implements _TopPageState {
 
 abstract class _TopPageState implements TopPageState {
   const factory _TopPageState(
-      {required final FetchedBook book,
-      required final List<CommonStoringBook> commonStoringBookOrderByAmount,
-      required final List<CommonStoringBook> commonStoringBookOrderByTime,
-      final TodaysPickedBook? todaysPickedBook}) = _$TopPageStateImpl;
+      {required final List<Book> commonStoringBookOrderByAmount,
+      required final List<Book> commonStoringBookOrderByTime,
+      final bool isLoading,
+      final FetchedBook? fetchedBook,
+      final Book? todaysPickedBook}) = _$TopPageStateImpl;
 
   @override
-  FetchedBook get book;
+  List<Book> get commonStoringBookOrderByAmount;
   @override
-  List<CommonStoringBook> get commonStoringBookOrderByAmount;
+  List<Book> get commonStoringBookOrderByTime;
   @override
-  List<CommonStoringBook> get commonStoringBookOrderByTime;
+  bool get isLoading;
   @override
-  TodaysPickedBook? get todaysPickedBook;
+  FetchedBook? get fetchedBook;
+  @override
+  Book? get todaysPickedBook;
   @override
   @JsonKey(ignore: true)
   _$$TopPageStateImplCopyWith<_$TopPageStateImpl> get copyWith =>
