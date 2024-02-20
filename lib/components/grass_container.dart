@@ -22,7 +22,7 @@ class GrassContainer extends StatelessWidget {
         width: MediaQuery.of(context).size.width * width,
         height: MediaQuery.of(context).size.height * height,
         borderRadius: 20,
-        blur: 10,
+        blur: 8,
         border: 0,
         linearGradient: LinearGradient(
           begin: Alignment.topLeft,
