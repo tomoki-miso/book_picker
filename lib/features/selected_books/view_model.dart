@@ -2,6 +2,7 @@ import 'package:book_picker/domain/book/domain.dart';
 import 'package:book_picker/features/selected_books/bookListType.dart';
 import 'package:book_picker/features/selected_books/state.dart';
 import 'package:book_picker/repository/common_storing_book/repository.dart';
+import 'package:book_picker/repository/keyword/repository.dart';
 import 'package:book_picker/repository/user_storing_book/repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -15,13 +16,15 @@ class SelectedBooksPageViewModel extends _$SelectedBooksPageViewModel {
   CommonStoringBookRepo get commonStoringBookRepo =>
       ref.read(commonStoringBookRepoProvider.notifier);
 
+  KeywordRepo get keywordRepo => ref.read(keywordRepoProvider.notifier);
+
   @override
   FutureOr<SelectedBooksPageState> build(BookListType bookListType) async {
     switch (bookListType) {
       /// Fetched
       case BookListType.popularBooks:
         final List<Book> storingBooks = await commonStoringBookRepo
-            .getComomonStoringBookOrderByAmount()
+            .getCommonStoringBookOrderByAmount()
             .then(
               (value) => value
                   .map(
@@ -29,7 +32,7 @@ class SelectedBooksPageViewModel extends _$SelectedBooksPageViewModel {
                       isbn: e.isbn,
                       title: e.title,
                       author: e.author,
-                      imageUrl: e.largeImageUrl,
+                      imageUrl: e.imageUrl,
                       itemCaption: e.itemCaption,
                       itemPrice: e.itemPrice,
                       publisherName: e.publisherName,
@@ -46,14 +49,14 @@ class SelectedBooksPageViewModel extends _$SelectedBooksPageViewModel {
       /// 最近Select
       case BookListType.recentStoredBooks:
         final List<Book> storingBooks =
-            await commonStoringBookRepo.getComomonStoringBookOrderByTime().then(
+            await commonStoringBookRepo.getCommonStoringBookOrderByTime().then(
                   (value) => value
                       .map(
                         (e) => Book(
                           isbn: e.isbn,
                           title: e.title,
                           author: e.author,
-                          imageUrl: e.largeImageUrl,
+                          imageUrl: e.imageUrl,
                           itemCaption: e.itemCaption,
                           itemPrice: e.itemPrice,
                           publisherName: e.publisherName,
@@ -77,10 +80,11 @@ class SelectedBooksPageViewModel extends _$SelectedBooksPageViewModel {
                           isbn: e.isbn,
                           title: e.title,
                           author: e.author,
-                          imageUrl: e.largeImageUrl,
+                          imageUrl: e.imageUrl,
                           itemCaption: e.itemCaption,
                           itemPrice: e.itemPrice,
                           publisherName: e.publisherName,
+                          affiUrl: e.affiUrl,
                         ),
                       )
                       .toList(),
@@ -91,5 +95,9 @@ class SelectedBooksPageViewModel extends _$SelectedBooksPageViewModel {
         );
         return state;
     }
+  }
+
+  Future<void> setKeywords() async {
+    await keywordRepo.getKeywords();
   }
 }
