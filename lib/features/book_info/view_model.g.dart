@@ -7,7 +7,7 @@ part of 'view_model.dart';
 // **************************************************************************
 
 String _$bookInfoPageViewModelHash() =>
-    r'fe653b020d0330d55d6648572381f1feb6fa5e67';
+    r'dd180491eca70a8d07d2ceb3cfc3e77484ef33e7';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -32,16 +32,10 @@ class _SystemHash {
 
 abstract class _$BookInfoPageViewModel
     extends BuildlessAutoDisposeAsyncNotifier<BookInfoPageState> {
-  late final PageType pageType;
-  late final TodaysPickedBook? todaysPickedBook;
-  late final CommonStoringBook? commonStoringBook;
-  late final UserStoringBook? userStoringBook;
+  late final Book book;
 
   FutureOr<BookInfoPageState> build(
-    PageType pageType,
-    TodaysPickedBook? todaysPickedBook,
-    CommonStoringBook? commonStoringBook,
-    UserStoringBook? userStoringBook,
+    Book book,
   );
 }
 
@@ -57,16 +51,10 @@ class BookInfoPageViewModelFamily
 
   /// See also [BookInfoPageViewModel].
   BookInfoPageViewModelProvider call(
-    PageType pageType,
-    TodaysPickedBook? todaysPickedBook,
-    CommonStoringBook? commonStoringBook,
-    UserStoringBook? userStoringBook,
+    Book book,
   ) {
     return BookInfoPageViewModelProvider(
-      pageType,
-      todaysPickedBook,
-      commonStoringBook,
-      userStoringBook,
+      book,
     );
   }
 
@@ -75,10 +63,7 @@ class BookInfoPageViewModelFamily
     covariant BookInfoPageViewModelProvider provider,
   ) {
     return call(
-      provider.pageType,
-      provider.todaysPickedBook,
-      provider.commonStoringBook,
-      provider.userStoringBook,
+      provider.book,
     );
   }
 
@@ -103,16 +88,9 @@ class BookInfoPageViewModelProvider
         BookInfoPageState> {
   /// See also [BookInfoPageViewModel].
   BookInfoPageViewModelProvider(
-    PageType pageType,
-    TodaysPickedBook? todaysPickedBook,
-    CommonStoringBook? commonStoringBook,
-    UserStoringBook? userStoringBook,
+    Book book,
   ) : this._internal(
-          () => BookInfoPageViewModel()
-            ..pageType = pageType
-            ..todaysPickedBook = todaysPickedBook
-            ..commonStoringBook = commonStoringBook
-            ..userStoringBook = userStoringBook,
+          () => BookInfoPageViewModel()..book = book,
           from: bookInfoPageViewModelProvider,
           name: r'bookInfoPageViewModelProvider',
           debugGetCreateSourceHash:
@@ -122,10 +100,7 @@ class BookInfoPageViewModelProvider
           dependencies: BookInfoPageViewModelFamily._dependencies,
           allTransitiveDependencies:
               BookInfoPageViewModelFamily._allTransitiveDependencies,
-          pageType: pageType,
-          todaysPickedBook: todaysPickedBook,
-          commonStoringBook: commonStoringBook,
-          userStoringBook: userStoringBook,
+          book: book,
         );
 
   BookInfoPageViewModelProvider._internal(
@@ -135,26 +110,17 @@ class BookInfoPageViewModelProvider
     required super.allTransitiveDependencies,
     required super.debugGetCreateSourceHash,
     required super.from,
-    required this.pageType,
-    required this.todaysPickedBook,
-    required this.commonStoringBook,
-    required this.userStoringBook,
+    required this.book,
   }) : super.internal();
 
-  final PageType pageType;
-  final TodaysPickedBook? todaysPickedBook;
-  final CommonStoringBook? commonStoringBook;
-  final UserStoringBook? userStoringBook;
+  final Book book;
 
   @override
   FutureOr<BookInfoPageState> runNotifierBuild(
     covariant BookInfoPageViewModel notifier,
   ) {
     return notifier.build(
-      pageType,
-      todaysPickedBook,
-      commonStoringBook,
-      userStoringBook,
+      book,
     );
   }
 
@@ -163,20 +129,13 @@ class BookInfoPageViewModelProvider
     return ProviderOverride(
       origin: this,
       override: BookInfoPageViewModelProvider._internal(
-        () => create()
-          ..pageType = pageType
-          ..todaysPickedBook = todaysPickedBook
-          ..commonStoringBook = commonStoringBook
-          ..userStoringBook = userStoringBook,
+        () => create()..book = book,
         from: from,
         name: null,
         dependencies: null,
         allTransitiveDependencies: null,
         debugGetCreateSourceHash: null,
-        pageType: pageType,
-        todaysPickedBook: todaysPickedBook,
-        commonStoringBook: commonStoringBook,
-        userStoringBook: userStoringBook,
+        book: book,
       ),
     );
   }
@@ -189,20 +148,13 @@ class BookInfoPageViewModelProvider
 
   @override
   bool operator ==(Object other) {
-    return other is BookInfoPageViewModelProvider &&
-        other.pageType == pageType &&
-        other.todaysPickedBook == todaysPickedBook &&
-        other.commonStoringBook == commonStoringBook &&
-        other.userStoringBook == userStoringBook;
+    return other is BookInfoPageViewModelProvider && other.book == book;
   }
 
   @override
   int get hashCode {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
-    hash = _SystemHash.combine(hash, pageType.hashCode);
-    hash = _SystemHash.combine(hash, todaysPickedBook.hashCode);
-    hash = _SystemHash.combine(hash, commonStoringBook.hashCode);
-    hash = _SystemHash.combine(hash, userStoringBook.hashCode);
+    hash = _SystemHash.combine(hash, book.hashCode);
 
     return _SystemHash.finish(hash);
   }
@@ -210,17 +162,8 @@ class BookInfoPageViewModelProvider
 
 mixin BookInfoPageViewModelRef
     on AutoDisposeAsyncNotifierProviderRef<BookInfoPageState> {
-  /// The parameter `pageType` of this provider.
-  PageType get pageType;
-
-  /// The parameter `todaysPickedBook` of this provider.
-  TodaysPickedBook? get todaysPickedBook;
-
-  /// The parameter `commonStoringBook` of this provider.
-  CommonStoringBook? get commonStoringBook;
-
-  /// The parameter `userStoringBook` of this provider.
-  UserStoringBook? get userStoringBook;
+  /// The parameter `book` of this provider.
+  Book get book;
 }
 
 class _BookInfoPageViewModelProviderElement
@@ -229,16 +172,7 @@ class _BookInfoPageViewModelProviderElement
   _BookInfoPageViewModelProviderElement(super.provider);
 
   @override
-  PageType get pageType => (origin as BookInfoPageViewModelProvider).pageType;
-  @override
-  TodaysPickedBook? get todaysPickedBook =>
-      (origin as BookInfoPageViewModelProvider).todaysPickedBook;
-  @override
-  CommonStoringBook? get commonStoringBook =>
-      (origin as BookInfoPageViewModelProvider).commonStoringBook;
-  @override
-  UserStoringBook? get userStoringBook =>
-      (origin as BookInfoPageViewModelProvider).userStoringBook;
+  Book get book => (origin as BookInfoPageViewModelProvider).book;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

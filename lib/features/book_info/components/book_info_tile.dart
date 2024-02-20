@@ -3,6 +3,7 @@ import 'package:book_picker/styles/colors.dart';
 import 'package:book_picker/styles/styles.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BookInfoTile extends StatelessWidget {
   const BookInfoTile({
@@ -13,6 +14,7 @@ class BookInfoTile extends StatelessWidget {
     this.itemPrice,
     this.itemCaption,
     this.publisherName,
+    this.affiUrl,
     super.key,
   });
 
@@ -23,6 +25,7 @@ class BookInfoTile extends StatelessWidget {
   final String? itemPrice;
   final String? itemCaption;
   final String? publisherName;
+  final String? affiUrl;
 
   @override
   Widget build(BuildContext context) => GrassContainer(
@@ -38,57 +41,38 @@ class BookInfoTile extends StatelessWidget {
                   padding:
                       const EdgeInsets.symmetric(horizontal: kDefaultPadding)
                           .copyWith(top: kDefaultPadding * 1.5),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center, // 横方向に中央に寄せる
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      Text(
+                        title ?? '',
+                        style: Styles.bookInfoTitleStyle,
+                      ),
                       const SizedBox(
-                        width: kDefaultSize,
+                        height: kDefaultSize * 2,
                       ),
-                      Expanded(
-                        child: SizedBox(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                title ?? '',
-                                style: Styles.bookTitleStyle,
-                              ),
-                              const SizedBox(
-                                height: kDefaultSize * 2,
-                              ),
-                              Text(
-                                author ?? '',
-                                style: Styles.bookAuthorStyle,
-                              ),
-                            ],
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(
+                              author ?? '',
+                              style: Styles.bookAuthorStyle,
+                            ),
                           ),
-                        ),
-                      ),
-
-                      /// 共有ボタン
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.ios_share,
-                          color: ColorName.greyBase,
-                        ),
-                      ),
-
-                      /// 保存ボタン
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: ColorName.skyBlue,
-                          foregroundColor: ColorName.whiteBase,
-                          shape: const CircleBorder(),
-                        ),
-                        onPressed: () {},
-                        child: const Icon(Icons.people),
+                          IconButton(
+                            onPressed: () {},
+                            icon: const Icon(
+                              Icons.ios_share,
+                              color: ColorName.greyBase,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
                 ),
                 const SizedBox(
-                  height: kDefaultPadding * 2,
+                  height: kDefaultPadding * 1.5,
                 ),
                 CachedNetworkImage(imageUrl: imageUrl ?? ''),
                 const SizedBox(
@@ -146,30 +130,29 @@ class BookInfoTile extends StatelessWidget {
                   height: kDefaultPadding * 2,
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: kDefaultPadding * 1.5,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        'あらすじ',
-                        style: Styles.greyDefaultBoldStyle,
-                      ),
-                      const SizedBox(
-                        height: kDefaultSize,
-                      ),
-                      Text(
-                        itemCaption ?? '',
-                        textAlign: TextAlign.left,
-                      ),
-                    ],
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+                  child: Text(
+                    itemCaption ?? '',
+                    textAlign: TextAlign.left,
                   ),
                 ),
               ],
             ),
-            ElevatedButton(onPressed: () {}, child: const Text('aa')),
-            ElevatedButton(onPressed: () {}, child: const Text('aa')),
+            const SizedBox(
+              height: kDefaultPadding,
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                final Uri url = Uri.parse(affiUrl!);
+                print(url);
+                await launchUrl(url);
+              },
+              child: const Text('楽天で買う'),
+            ),
+            const SizedBox(
+              height: kDefaultPadding,
+            ),
           ],
         ),
       );
