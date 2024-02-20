@@ -7,12 +7,12 @@ part of 'repository.dart';
 // **************************************************************************
 
 String _$commonStoringBookFirestoreHash() =>
-    r'c89676ca44dfb4b8873450f71b6cd6dcb7bdea4c';
+    r'e6555376a7649b6bee0e5dc2f274bf54ce2e5d40';
 
 /// See also [commonStoringBookFirestore].
 @ProviderFor(commonStoringBookFirestore)
 final commonStoringBookFirestoreProvider =
-    Provider<CollectionReference<CommonStoringBook>>.internal(
+    Provider<CollectionReference<Book>>.internal(
   commonStoringBookFirestore,
   name: r'commonStoringBookFirestoreProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -22,10 +22,9 @@ final commonStoringBookFirestoreProvider =
   allTransitiveDependencies: null,
 );
 
-typedef CommonStoringBookFirestoreRef
-    = ProviderRef<CollectionReference<CommonStoringBook>>;
+typedef CommonStoringBookFirestoreRef = ProviderRef<CollectionReference<Book>>;
 String _$commonStoringBookRepoHash() =>
-    r'b03b7b5092ff6f3397d0dd54cde1bc6e72ec1aa9';
+    r'3c257cf533f04b0fc907dd2f871054a27dfafb80';
 
 /// See also [CommonStoringBookRepo].
 @ProviderFor(CommonStoringBookRepo)

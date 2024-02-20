@@ -7,12 +7,12 @@ part of 'repository.dart';
 // **************************************************************************
 
 String _$todaysPickedBookFirestoreHash() =>
-    r'6e6064d770aa24a3f4408914091eb1d44dcbe2da';
+    r'126d5043b21e7dcdbd09c952cd38e338b3498fc0';
 
 /// See also [todaysPickedBookFirestore].
 @ProviderFor(todaysPickedBookFirestore)
 final todaysPickedBookFirestoreProvider =
-    Provider<CollectionReference<TodaysPickedBook>>.internal(
+    Provider<CollectionReference<Book>>.internal(
   todaysPickedBookFirestore,
   name: r'todaysPickedBookFirestoreProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -22,10 +22,9 @@ final todaysPickedBookFirestoreProvider =
   allTransitiveDependencies: null,
 );
 
-typedef TodaysPickedBookFirestoreRef
-    = ProviderRef<CollectionReference<TodaysPickedBook>>;
+typedef TodaysPickedBookFirestoreRef = ProviderRef<CollectionReference<Book>>;
 String _$todaysPickedBookRepoHash() =>
-    r'febc4f4bdf9f9e18314cd41f2700e09d70486937';
+    r'b7edabacd0ea5810a8c9e47a5e1c61a4a625b1f9';
 
 /// See also [TodaysPickedBookRepo].
 @ProviderFor(TodaysPickedBookRepo)

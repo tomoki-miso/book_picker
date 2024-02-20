@@ -1,4 +1,4 @@
-import 'package:book_picker/domain/user_storing_book/domain.dart';
+import 'package:book_picker/domain/book/domain.dart';
 import 'package:book_picker/firebase/firebase_provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -6,7 +6,7 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'repository.g.dart';
 
 @Riverpod(keepAlive: true)
-CollectionReference<UserStoringBook> userStoringBookFirestore(
+CollectionReference<Book> userStoringBookFirestore(
   UserStoringBookFirestoreRef ref,
 ) =>
     ref
@@ -14,9 +14,8 @@ CollectionReference<UserStoringBook> userStoringBookFirestore(
         .collection('user')
         .doc('Rrhwx2cGWjGWjNg7IcsY') // TODO:カレントユーザーに変更
         .collection('user_storing_book')
-        .withConverter<UserStoringBook>(
-          fromFirestore: (snapshot, _) =>
-              UserStoringBook.fromJson(snapshot.data()!),
+        .withConverter<Book>(
+          fromFirestore: (snapshot, _) => Book.fromJson(snapshot.data()!),
           toFirestore: (data, _) => data.toJson(),
         );
 
@@ -24,7 +23,7 @@ CollectionReference<UserStoringBook> userStoringBookFirestore(
 class UserStoringBookRepo extends _$UserStoringBookRepo {
   FirebaseFirestore get db => ref.read(firestoreProvider);
 
-  CollectionReference<UserStoringBook> get collection =>
+  CollectionReference<Book> get collection =>
       ref.read(userStoringBookFirestoreProvider);
 
   @override
@@ -32,7 +31,7 @@ class UserStoringBookRepo extends _$UserStoringBookRepo {
 
   /// 本の保存
   /// TODO:トランザクション検討
-  Future<void> storePickedBookUser(UserStoringBook userStoringBook) async {
+  Future<void> storePickedBookUser(Book userStoringBook) async {
     try {
       await collection.doc(userStoringBook.isbn).set(userStoringBook);
 
@@ -45,8 +44,8 @@ class UserStoringBookRepo extends _$UserStoringBookRepo {
     }
   }
 
-  Future<List<UserStoringBook>> getUserStoringBooks() async {
-    final List<UserStoringBook> userStoringBooks = [
+  Future<List<Book>> getUserStoringBooks() async {
+    final List<Book> userStoringBooks = [
       ...await collection
           .orderBy('storedTime')
           .get()
