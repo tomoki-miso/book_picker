@@ -9,6 +9,12 @@ class Styles {
     overflow: TextOverflow.ellipsis,
   );
 
+  static const bookInfoTitleStyle = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.bold,
+    color: ColorName.blackBase,
+  );
+
   static const bookAuthorStyle = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.bold,

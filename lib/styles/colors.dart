@@ -16,9 +16,9 @@ class ColorName {
   static const Color whiteBase = Color(0xFFFFFFFF);
 
   /// grass
-  static Color grassWhiteStart = const Color(0xFFFFFFFF).withOpacity(0.4);
-  static Color grassWhiteEnd = const Color(0xFFFFFFFF).withOpacity(0.4);
-  static Color pickedBookGrass = const Color(0xFFFFFFFF).withOpacity(0.6);
+  static Color grassWhiteStart = const Color(0xFFFFFFFF).withOpacity(0.3);
+  static Color grassWhiteEnd = const Color(0xFFFFFFFF).withOpacity(0.3);
+  static Color pickedBookGrass = const Color(0xFFFFFFFF).withOpacity(0.4);
 
   /// Garadation
   static const Color gradationStart = Color(0xFF3C3ABF);
