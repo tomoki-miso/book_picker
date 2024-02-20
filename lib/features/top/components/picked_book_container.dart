@@ -1,7 +1,6 @@
 import 'package:book_picker/components/grass_container.dart';
-import 'package:book_picker/domain/todays_picked_book/domain.dart';
+import 'package:book_picker/domain/book/domain.dart';
 import 'package:book_picker/features/book_info/page.dart';
-import 'package:book_picker/features/book_info/page_type.dart';
 import 'package:book_picker/features/top/view_model.dart';
 import 'package:book_picker/styles/colors.dart';
 import 'package:book_picker/styles/styles.dart';
@@ -11,23 +10,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class PickedBookContainer extends ConsumerWidget {
   const PickedBookContainer({
-    this.todaysPickedBook,
-    this.isbn,
-    this.title,
-    this.author,
-    this.itemPrice,
-    this.itemCaption,
-    this.imageUrl,
+    required this.todaysPickedBook,
     super.key,
   });
 
-  final TodaysPickedBook? todaysPickedBook;
-  final String? title;
-  final String? author;
-  final int? itemPrice;
-  final String? itemCaption;
-  final String? imageUrl;
-  final String? isbn;
+  final Book todaysPickedBook;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) => GestureDetector(
@@ -35,8 +22,7 @@ class PickedBookContainer extends ConsumerWidget {
           context,
           MaterialPageRoute(
             builder: (context) => BookInfoPage(
-              pageType: PageType.fetched,
-              todaysPickedBook: todaysPickedBook,
+              book: todaysPickedBook,
             ),
           ),
         ),
@@ -69,14 +55,14 @@ class PickedBookContainer extends ConsumerWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              title ?? '',
+                              todaysPickedBook.title ?? '',
                               style: Styles.bookTitleStyle,
                             ),
                             const SizedBox(
                               height: kDefaultSize * 2,
                             ),
                             Text(
-                              author ?? '',
+                              todaysPickedBook.author ?? '',
                               style: Styles.bookAuthorStyle,
                             ),
                           ],
@@ -101,7 +87,7 @@ class PickedBookContainer extends ConsumerWidget {
                         shape: const CircleBorder(),
                       ),
                       onPressed: () async => ref
-                          .read(TopPageViewModelProvider(isbn!).notifier)
+                          .read(topPageViewModelProvider.notifier)
                           .storePickedBook(),
                       child: const Icon(Icons.people),
                     ),
@@ -112,7 +98,7 @@ class PickedBookContainer extends ConsumerWidget {
                 ),
               ),
               const SizedBox(
-                height: kDefaultSize * 3,
+                height: kDefaultPadding * 1.5,
               ),
 
               /// 下半分
@@ -125,8 +111,12 @@ class PickedBookContainer extends ConsumerWidget {
                     const SizedBox(
                       width: kDefaultSize,
                     ),
-                    CachedNetworkImage(
-                      imageUrl: imageUrl ?? '',
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.4,
+                      height: MediaQuery.of(context).size.height * 0.25,
+                      child: CachedNetworkImage(
+                        imageUrl: todaysPickedBook.imageUrl ?? '',
+                      ),
                     ),
                     const SizedBox(
                       width: kDefaultPadding,
@@ -137,14 +127,14 @@ class PickedBookContainer extends ConsumerWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            '$itemPrice 円',
+                            '${todaysPickedBook.itemPrice}円',
                             style: Styles.defaultStyle,
                           ),
                           const SizedBox(
                             height: kDefaultSize * 2,
                           ),
                           Text(
-                            itemCaption ?? '',
+                            todaysPickedBook.itemCaption ?? '',
                             style: Styles.defaultStyle,
                             maxLines: 10,
                           ),
