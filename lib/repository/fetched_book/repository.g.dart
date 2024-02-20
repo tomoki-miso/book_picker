@@ -6,7 +6,7 @@ part of 'repository.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$fetchedBookRepoHash() => r'80e14fe567980571ce219b35b1c76c62525bff0a';
+String _$fetchedBookRepoHash() => r'cebee2f9dc55c616f9256c27797efad264d976d7';
 
 /// See also [FetchedBookRepo].
 @ProviderFor(FetchedBookRepo)
