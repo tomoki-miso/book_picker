@@ -20,6 +20,7 @@ mixin _$TopPageState {
       throw _privateConstructorUsedError;
   List<Book> get commonStoringBookOrderByTime =>
       throw _privateConstructorUsedError;
+  List<AppAd> get appAds => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   FetchedBook? get fetchedBook => throw _privateConstructorUsedError;
   Book? get todaysPickedBook => throw _privateConstructorUsedError;
@@ -38,6 +39,7 @@ abstract class $TopPageStateCopyWith<$Res> {
   $Res call(
       {List<Book> commonStoringBookOrderByAmount,
       List<Book> commonStoringBookOrderByTime,
+      List<AppAd> appAds,
       bool isLoading,
       FetchedBook? fetchedBook,
       Book? todaysPickedBook});
@@ -61,6 +63,7 @@ class _$TopPageStateCopyWithImpl<$Res, $Val extends TopPageState>
   $Res call({
     Object? commonStoringBookOrderByAmount = null,
     Object? commonStoringBookOrderByTime = null,
+    Object? appAds = null,
     Object? isLoading = null,
     Object? fetchedBook = freezed,
     Object? todaysPickedBook = freezed,
@@ -74,6 +77,10 @@ class _$TopPageStateCopyWithImpl<$Res, $Val extends TopPageState>
           ? _value.commonStoringBookOrderByTime
           : commonStoringBookOrderByTime // ignore: cast_nullable_to_non_nullable
               as List<Book>,
+      appAds: null == appAds
+          ? _value.appAds
+          : appAds // ignore: cast_nullable_to_non_nullable
+              as List<AppAd>,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -125,6 +132,7 @@ abstract class _$$TopPageStateImplCopyWith<$Res>
   $Res call(
       {List<Book> commonStoringBookOrderByAmount,
       List<Book> commonStoringBookOrderByTime,
+      List<AppAd> appAds,
       bool isLoading,
       FetchedBook? fetchedBook,
       Book? todaysPickedBook});
@@ -148,6 +156,7 @@ class __$$TopPageStateImplCopyWithImpl<$Res>
   $Res call({
     Object? commonStoringBookOrderByAmount = null,
     Object? commonStoringBookOrderByTime = null,
+    Object? appAds = null,
     Object? isLoading = null,
     Object? fetchedBook = freezed,
     Object? todaysPickedBook = freezed,
@@ -161,6 +170,10 @@ class __$$TopPageStateImplCopyWithImpl<$Res>
           ? _value._commonStoringBookOrderByTime
           : commonStoringBookOrderByTime // ignore: cast_nullable_to_non_nullable
               as List<Book>,
+      appAds: null == appAds
+          ? _value._appAds
+          : appAds // ignore: cast_nullable_to_non_nullable
+              as List<AppAd>,
       isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -183,11 +196,13 @@ class _$TopPageStateImpl implements _TopPageState {
   const _$TopPageStateImpl(
       {required final List<Book> commonStoringBookOrderByAmount,
       required final List<Book> commonStoringBookOrderByTime,
+      required final List<AppAd> appAds,
       this.isLoading = false,
       this.fetchedBook,
       this.todaysPickedBook})
       : _commonStoringBookOrderByAmount = commonStoringBookOrderByAmount,
-        _commonStoringBookOrderByTime = commonStoringBookOrderByTime;
+        _commonStoringBookOrderByTime = commonStoringBookOrderByTime,
+        _appAds = appAds;
 
   final List<Book> _commonStoringBookOrderByAmount;
   @override
@@ -207,6 +222,14 @@ class _$TopPageStateImpl implements _TopPageState {
     return EqualUnmodifiableListView(_commonStoringBookOrderByTime);
   }
 
+  final List<AppAd> _appAds;
+  @override
+  List<AppAd> get appAds {
+    if (_appAds is EqualUnmodifiableListView) return _appAds;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_appAds);
+  }
+
   @override
   @JsonKey()
   final bool isLoading;
@@ -217,7 +240,7 @@ class _$TopPageStateImpl implements _TopPageState {
 
   @override
   String toString() {
-    return 'TopPageState(commonStoringBookOrderByAmount: $commonStoringBookOrderByAmount, commonStoringBookOrderByTime: $commonStoringBookOrderByTime, isLoading: $isLoading, fetchedBook: $fetchedBook, todaysPickedBook: $todaysPickedBook)';
+    return 'TopPageState(commonStoringBookOrderByAmount: $commonStoringBookOrderByAmount, commonStoringBookOrderByTime: $commonStoringBookOrderByTime, appAds: $appAds, isLoading: $isLoading, fetchedBook: $fetchedBook, todaysPickedBook: $todaysPickedBook)';
   }
 
   @override
@@ -231,6 +254,7 @@ class _$TopPageStateImpl implements _TopPageState {
             const DeepCollectionEquality().equals(
                 other._commonStoringBookOrderByTime,
                 _commonStoringBookOrderByTime) &&
+            const DeepCollectionEquality().equals(other._appAds, _appAds) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.fetchedBook, fetchedBook) ||
@@ -244,6 +268,7 @@ class _$TopPageStateImpl implements _TopPageState {
       runtimeType,
       const DeepCollectionEquality().hash(_commonStoringBookOrderByAmount),
       const DeepCollectionEquality().hash(_commonStoringBookOrderByTime),
+      const DeepCollectionEquality().hash(_appAds),
       isLoading,
       fetchedBook,
       todaysPickedBook);
@@ -259,6 +284,7 @@ abstract class _TopPageState implements TopPageState {
   const factory _TopPageState(
       {required final List<Book> commonStoringBookOrderByAmount,
       required final List<Book> commonStoringBookOrderByTime,
+      required final List<AppAd> appAds,
       final bool isLoading,
       final FetchedBook? fetchedBook,
       final Book? todaysPickedBook}) = _$TopPageStateImpl;
@@ -267,6 +293,8 @@ abstract class _TopPageState implements TopPageState {
   List<Book> get commonStoringBookOrderByAmount;
   @override
   List<Book> get commonStoringBookOrderByTime;
+  @override
+  List<AppAd> get appAds;
   @override
   bool get isLoading;
   @override

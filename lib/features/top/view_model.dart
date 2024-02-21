@@ -1,8 +1,10 @@
 import 'dart:math' as math;
 
+import 'package:book_picker/domain/app_ad/domain.dart';
 import 'package:book_picker/domain/book/domain.dart';
 import 'package:book_picker/domain/fetched_book/domain.dart';
 import 'package:book_picker/features/top/state.dart';
+import 'package:book_picker/repository/app_ad/repository.dart';
 import 'package:book_picker/repository/common_storing_book/repository.dart';
 import 'package:book_picker/repository/fetched_book/repository.dart';
 import 'package:book_picker/repository/keyword/repository.dart';
@@ -22,6 +24,7 @@ class TopPageViewModel extends _$TopPageViewModel {
       ref.read(todaysPickedBookRepoProvider.notifier);
   CommonStoringBookRepo get commonStoringBookRepo =>
       ref.read(commonStoringBookRepoProvider.notifier);
+  AppAdRepo get appAdRepo => ref.read(appAdRepoProvider.notifier);
   KeywordRepo get keywordRepo => ref.read(keywordRepoProvider.notifier);
 
   @override
@@ -32,7 +35,10 @@ class TopPageViewModel extends _$TopPageViewModel {
     final List<Book> commonStoringBookOrderByTime =
         await commonStoringBookRepo.getCommonStoringBookOrderByTime();
 
+    final List<AppAd> appAds = await appAdRepo.getAppAds();
+
     final TopPageState state = TopPageState(
+      appAds: appAds,
       commonStoringBookOrderByAmount: commonStoringBookOrderByAmount,
       commonStoringBookOrderByTime: commonStoringBookOrderByTime,
       todaysPickedBook: todaysPickedBook,
@@ -149,22 +155,10 @@ class TopPageViewModel extends _$TopPageViewModel {
       _updateLoading(true);
       final String keyword = await keywordRepo.getKeywords();
 
-      final FetchedBook? fetchedBook =
-          await fetchedBookRepo.fetchBookInfoByKeword(keyword);
-      print('fetched:$fetchedBook');
-
-      if (fetchedBook != null) {
-        book = Book(
-          isbn: fetchedBook.isbn,
-          title: fetchedBook.title,
-          author: fetchedBook.author,
-          itemCaption: fetchedBook.itemCaption,
-          itemPrice: fetchedBook.itemPrice,
-          imageUrl: fetchedBook.largeImageUrl,
-          publisherName: fetchedBook.publisherName,
-          affiUrl: fetchedBook.affiUrl,
-        );
-      }
+      final List<Book> fetchedBooks =
+          await fetchedBookRepo.fetchBooksListByKeword(keyword);
+      fetchedBooks.shuffle();
+      book = fetchedBooks.first;
 
       // 1秒待機
       await Future.delayed(const Duration(seconds: 1));

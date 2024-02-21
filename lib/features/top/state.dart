@@ -1,3 +1,4 @@
+import 'package:book_picker/domain/app_ad/domain.dart';
 import 'package:book_picker/domain/book/domain.dart';
 import 'package:book_picker/domain/fetched_book/domain.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -14,6 +15,7 @@ class TopPageState with _$TopPageState {
   const factory TopPageState({
     required List<Book> commonStoringBookOrderByAmount,
     required List<Book> commonStoringBookOrderByTime,
+    required List<AppAd> appAds,
     @Default(false) bool isLoading,
     FetchedBook? fetchedBook,
     Book? todaysPickedBook,
