@@ -1,9 +1,11 @@
 import 'package:book_picker/components/back_ground.dart';
-import 'package:book_picker/features/book_info/components/book_info_tile.dart';
 import 'package:book_picker/components/error_page.dart';
 import 'package:book_picker/components/original_app_bar.dart';
+import 'package:book_picker/components/primary_button.dart';
 import 'package:book_picker/domain/book/domain.dart';
+import 'package:book_picker/features/book_info/components/book_info_tile.dart';
 import 'package:book_picker/features/book_info/view_model.dart';
+import 'package:book_picker/styles/colors.dart';
 import 'package:book_picker/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -45,7 +47,9 @@ class BookInfoPage extends ConsumerWidget {
         ),
         floatingActionButton: SizedBox(
           width: MediaQuery.of(context).size.width * 0.9,
-          child: ElevatedButton(
+          child: PrimaryButton(
+            isWithWidget: true,
+            foregroundColor: ColorName.whiteBase,
             onPressed: () {},
             child: const Text('この本をSELECT！'),
           ),
