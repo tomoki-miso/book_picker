@@ -1,4 +1,3 @@
-
 enum BookListType {
   popularBooks,
   recentStoredBooks,
