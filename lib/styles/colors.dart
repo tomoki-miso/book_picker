@@ -27,4 +27,5 @@ class ColorName {
 
   /// Grey
   static const Color greyBase = Color(0xFF848484);
+  static const Color greySecondBase = Color(0xFFe8e8e8);
 }
