@@ -13,8 +13,9 @@ class ErrorPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(
-                  height: 400,
-                  child: Lottie.asset('assets/lottie/error_cat.json')),
+                height: 400,
+                child: Lottie.asset('assets/lottie/error_cat.json'),
+              ),
               const Text(
                 'エラーが発生しました。',
                 style: Styles.bookTitleStyle,

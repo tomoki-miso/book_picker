@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 class OriginalAppBar extends StatelessWidget implements PreferredSizeWidget {
   const OriginalAppBar({
     super.key,
-    this.withIcon = true,
+    this.withSearchBox = true,
     this.automaticallyImplyLeading = true,
   });
-  final bool withIcon;
+  final bool withSearchBox;
   final bool automaticallyImplyLeading;
 
   @override

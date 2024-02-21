@@ -35,42 +35,48 @@ class SelectedBooksListTile extends StatelessWidget {
               const SizedBox(
                 width: kDefaultPadding,
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(
-                    height: kDefaultPadding,
-                  ),
-                  Text(
-                    title ?? '',
-                    style: Styles.bookAuthorStyle,
-                  ),
-                  const SizedBox(
-                    height: kDefaultSize * 2,
-                  ),
-                  Text(
-                    author ?? '',
-                    style: Styles.defaultBoldStyle,
-                  ),
-                  const SizedBox(
-                    height: kDefaultPadding,
-                  ),
-                  const Row(
-                    children: [
-                      Text(
-                        'Selectした日',
-                        style: Styles.greyDefaultBoldStyle,
-                      ),
-                      SizedBox(
-                        width: kDefaultSize * 2,
-                      ),
-                      Text(
-                        '2024/2/29',
-                        style: Styles.defaultStyle,
-                      ),
-                    ],
-                  ),
-                ],
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(
+                      height: kDefaultPadding,
+                    ),
+                    Text(
+                      title ?? '',
+                      style: Styles.bookAuthorStyle,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(
+                      height: kDefaultSize * 2,
+                    ),
+                    Text(
+                      author ?? '',
+                      style: Styles.defaultBoldStyle,
+                    ),
+                    const SizedBox(
+                      height: kDefaultPadding,
+                    ),
+                    const Row(
+                      children: [
+                        Text(
+                          'Selectした日',
+                          style: Styles.greyDefaultBoldStyle,
+                        ),
+                        SizedBox(
+                          width: kDefaultSize * 2,
+                        ),
+                        Text(
+                          '2024/2/29',
+                          style: Styles.defaultStyle,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                width: kDefaultPadding,
               ),
             ],
           ),
