@@ -74,7 +74,14 @@ class BookInfoTile extends StatelessWidget {
                 const SizedBox(
                   height: kDefaultPadding * 1.5,
                 ),
-                CachedNetworkImage(imageUrl: imageUrl ?? ''),
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  alignment: Alignment.center,
+                  child: imageUrl ==
+                          'https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/noimage_01.gif?_ex=200x200'
+                      ? Image.asset('assets/images/no_image.png')
+                      : CachedNetworkImage(imageUrl: imageUrl ?? ''),
+                ),
                 const SizedBox(
                   height: kDefaultSize * 2,
                 ),
