@@ -40,9 +40,14 @@ class GrassCarouselItem extends StatelessWidget {
               const SizedBox(
                 height: kDefaultSize * 2,
               ),
-              CachedNetworkImage(
+              Container(
+                width: MediaQuery.of(context).size.width * 0.4,
                 height: MediaQuery.of(context).size.height * 0.17,
-                imageUrl: book.imageUrl ?? '',
+                alignment: Alignment.center,
+                child: book.imageUrl ==
+                        'https://thumbnail.image.rakuten.co.jp/@0_mall/book/cabinet/noimage_01.gif?_ex=200x200'
+                    ? Image.asset('assets/images/no_image.png')
+                    : CachedNetworkImage(imageUrl: book.imageUrl ?? ''),
               ),
             ],
           ),

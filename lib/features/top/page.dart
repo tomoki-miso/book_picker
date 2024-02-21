@@ -6,13 +6,13 @@ import 'package:book_picker/features/selected_books/page.dart';
 import 'package:book_picker/features/top/components/app_ad.dart';
 import 'package:book_picker/features/top/components/grass_carousel_item.dart';
 import 'package:book_picker/features/top/components/picked_book_container.dart';
+import 'package:book_picker/features/top/components/searching_book_indicator.dart';
+import 'package:book_picker/features/top/components/top_floating_action_button.dart';
 import 'package:book_picker/features/top/view_model.dart';
-import 'package:book_picker/styles/colors.dart';
 import 'package:book_picker/styles/styles.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:lottie/lottie.dart';
 
 class TopPage extends ConsumerWidget {
   const TopPage({super.key});
@@ -97,6 +97,7 @@ class TopPage extends ConsumerWidget {
                     ),
                   ),
 
+                  /// 最近Selectされた本
                   Padding(
                     padding: const EdgeInsets.only(
                       top: kDefaultPadding * 2,
@@ -127,6 +128,7 @@ class TopPage extends ConsumerWidget {
                       ],
                     ),
                   ),
+
                   CarouselSlider.builder(
                     options: CarouselOptions(
                       height: MediaQuery.of(context).size.height * 0.25,
@@ -142,6 +144,7 @@ class TopPage extends ConsumerWidget {
                     ),
                   ),
 
+                  /// アプリ宣伝
                   const Padding(
                     padding: EdgeInsets.only(
                       top: kDefaultPadding * 4,
@@ -154,45 +157,28 @@ class TopPage extends ConsumerWidget {
                       textAlign: TextAlign.center,
                     ),
                   ),
-
-                  const AppAd(
-                    imageUrl:
-                        'https://is1-ssl.mzstatic.com/image/thumb/PurpleSource126/v4/5e/f7/4a/5ef74ab9-07b9-64ec-4b70-43ec4be43d85/42edd7e9-2774-4ae3-8b37-d8adec93035d__U30b9_U30e9_U30a4_U30c8_U30991.png/626x0w.webp',
-                    appUrl:
-                        'https://blog.flutteruniv.com/flutter-package-url_launcher/',
-                  ),
+                  for (final appAd in data.appAds)
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: kDefaultSize * 2),
+                      child: AppAdTile(
+                        imageUrl: appAd.imageUrl,
+                        appUrl: appAd.appUrl,
+                        googleUrl: appAd.googleUrl,
+                      ),
+                    ),
 
                   const SizedBox(
                     height: kDefaultPadding * 4,
                   ),
                 ],
               ),
-              if (data.isLoading)
-                Container(
-                  color: ColorName.whiteBase.withOpacity(0.6),
-                  height: double.infinity,
-                  width: double.infinity,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text('ほんをさがしています・・・'),
-                      SizedBox(
-                        height: 300,
-                        child: Lottie.asset('assets/lottie/cat_rocket.json'),
-                      ),
-                      const CircularProgressIndicator(),
-                    ],
-                  ),
-                ),
+              if (data.isLoading) const SearchingBookIndicator(),
             ],
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () async => ref
-              .read(topPageViewModelProvider.notifier)
-              .getBookFromKeyword()
-              .then((value) => ref.read(topPageViewModelProvider)),
-        ),
+        floatingActionButton:
+            TopFloatingActionButton(isLoading: data.isLoading),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       ),
       error: (error, stackTrace) => ErrorPage(error: error),
       loading: () => const Center(child: CircularProgressIndicator()),
