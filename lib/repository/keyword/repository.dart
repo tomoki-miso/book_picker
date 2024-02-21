@@ -28,7 +28,45 @@ class KeywordRepo extends _$KeywordRepo {
   Future<void> setKeywords() async {
     final CollectionReference collection =
         FirebaseFirestore.instance.collection('keywords');
-    final List<String> keywords = []; // キーワードのリスト
+    final List<String> keywords = [
+      '浅田次郎',
+      '恩田陸',
+      '三浦しをん',
+      '東野圭吾',
+      '荻原浩',
+      '伊坂幸太郎',
+      '角田光代',
+      '湊かなえ',
+      '瀬尾まいこ',
+      '恩田陸',
+      '村田沙耶香',
+      '小川洋子',
+      '凪良ゆう',
+      '逢坂冬馬',
+      '町田その子',
+      '塩田武士',
+      '知念実希人',
+      '横山秀夫',
+      '原田マハ',
+      '吉田修一',
+      '西加奈子',
+      '百田尚樹',
+      '万城目学',
+      '森見登美彦',
+      '辻村深月',
+      '有川浩',
+      '深緑野分',
+      '小川糸',
+      '北村薫',
+      '佐藤正午',
+      '絲山秋子',
+      '中山七里',
+      '朝井リョウ',
+      '羽田圭介',
+      '村山由佳',
+      '高村薫',
+      '恩田陸',
+    ]; // キーワードのリスト
 
     for (final String keyword in keywords) {
       await collection.add({
