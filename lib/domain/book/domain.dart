@@ -1,4 +1,5 @@
 import 'package:book_picker/converter/time_stamp_conveter.dart';
+import 'package:book_picker/domain/fetched_book/domain.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -23,4 +24,15 @@ class Book with _$Book {
   }) = _Book;
 
   factory Book.fromJson(Map<String, dynamic> json) => _$BookFromJson(json);
+
+  factory Book.fromFetchedBook(FetchedBook fetchedBook) => Book(
+        isbn: fetchedBook.isbn,
+        title: fetchedBook.title,
+        author: fetchedBook.author,
+        itemCaption: fetchedBook.itemCaption,
+        itemPrice: fetchedBook.itemPrice,
+        imageUrl: fetchedBook.largeImageUrl,
+        publisherName: fetchedBook.publisherName,
+        affiUrl: fetchedBook.affiUrl,
+      );
 }
