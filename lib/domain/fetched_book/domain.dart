@@ -18,16 +18,18 @@ class FetchedBook with _$FetchedBook {
     String? affiUrl,
   }) = _FetchedBook;
 
-  factory FetchedBook.fromJson(Map<String, dynamic> json, int index) =>
-      FetchedBook(
-        isbn: json['Items'][index]['Item']['isbn'],
-        title: json['Items'][index]['Item']['title'],
-        author: json['Items'][index]['Item']['author'],
-        itemCaption: json['Items'][index]['Item']['itemCaption'],
-        itemPrice: json['Items'][index]['Item']['itemPrice'],
-        largeImageUrl: json['Items'][index]['Item']['largeImageUrl'],
-        mediumImageUrl: json['Items'][index]['Item']['mediumImageUrl'],
-        publisherName: json['Items'][index]['Item']['publisherName'],
-        affiUrl: json['Items'][index]['Item']['affiliateUrl'],
-      );
+  factory FetchedBook.fromJson(Map<String, dynamic> json) {
+    final item = json['Item'];
+    return FetchedBook(
+      isbn: item['isbn'],
+      title: item['title'],
+      author: item['author'],
+      itemCaption: item['itemCaption'],
+      itemPrice: item['itemPrice'],
+      largeImageUrl: item['largeImageUrl'],
+      mediumImageUrl: item['mediumImageUrl'],
+      publisherName: item['publisherName'],
+      affiUrl: item['affiliateUrl'],
+    );
+  }
 }
