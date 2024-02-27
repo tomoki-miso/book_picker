@@ -7,7 +7,7 @@ part of 'repository.dart';
 // **************************************************************************
 
 String _$userStoringBookFirestoreHash() =>
-    r'29ba2224ef1f7a3df74fc3fe7294f835cfbcb2ae';
+    r'b87e972a84122dfe50997b1847c75c1984d6e36b';
 
 /// See also [userStoringBookFirestore].
 @ProviderFor(userStoringBookFirestore)
@@ -24,7 +24,7 @@ final userStoringBookFirestoreProvider =
 
 typedef UserStoringBookFirestoreRef = ProviderRef<CollectionReference<Book>>;
 String _$userStoringBookRepoHash() =>
-    r'5385c09f549943991b32462a0ebceaa3fa9c77e8';
+    r'58f26a0e2e9918ba0f40f3362737970907a80aa8';
 
 /// See also [UserStoringBookRepo].
 @ProviderFor(UserStoringBookRepo)

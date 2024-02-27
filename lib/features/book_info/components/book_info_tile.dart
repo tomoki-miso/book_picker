@@ -1,4 +1,5 @@
 import 'package:book_picker/components/grass_container.dart';
+import 'package:book_picker/components/primary_button.dart';
 import 'package:book_picker/styles/colors.dart';
 import 'package:book_picker/styles/styles.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -86,7 +87,7 @@ class BookInfoTile extends StatelessWidget {
                   height: kDefaultSize * 2,
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center, // 横方向に中央に寄せる
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
                       'ISBN-13',
@@ -102,7 +103,7 @@ class BookInfoTile extends StatelessWidget {
                   ],
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center, // 横方向に中央に寄せる
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
                       '出版社',
@@ -118,7 +119,7 @@ class BookInfoTile extends StatelessWidget {
                   ],
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center, // 横方向に中央に寄せる
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
                       '価格',
@@ -127,10 +128,16 @@ class BookInfoTile extends StatelessWidget {
                     const SizedBox(
                       width: kDefaultSize * 2,
                     ),
-                    Text(
-                      '$itemPrice円',
-                      style: Styles.greyDefaultBoldStyle,
-                    ), // TODO:null円とならないように
+                    if (itemPrice == '')
+                      const Text(
+                        '価格が登録されていません',
+                        style: Styles.greyDefaultBoldStyle,
+                      )
+                    else
+                      Text(
+                        '$itemPrice円',
+                        style: Styles.greyDefaultBoldStyle,
+                      ),
                   ],
                 ),
                 const SizedBox(
@@ -147,18 +154,26 @@ class BookInfoTile extends StatelessWidget {
               ],
             ),
             const SizedBox(
-              height: kDefaultPadding,
+              height: kDefaultPadding * 2,
             ),
-            ElevatedButton(
-              onPressed: () async {
-                final Uri url = Uri.parse(affiUrl!);
-                print(url);
-                await launchUrl(url);
-              },
-              child: const Text('楽天で買う'),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: kDefaultPadding * 2),
+              child: PrimaryButton(
+                isWithWidget: true,
+                height: MediaQuery.of(context).size.height * 0.05,
+                onPressed: () async {
+                  final Uri url = Uri.parse(affiUrl!);
+                  await launchUrl(url);
+                },
+                child: const Text('楽天で買う'),
+              ),
             ),
             const SizedBox(
               height: kDefaultPadding,
+            ),
+            const SizedBox(
+              height: kDefaultPadding * 2,
             ),
           ],
         ),

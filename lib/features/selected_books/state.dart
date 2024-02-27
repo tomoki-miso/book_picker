@@ -13,6 +13,8 @@ class SelectedBooksPageState with _$SelectedBooksPageState {
   // プロパティを指定
   const factory SelectedBooksPageState({
     required List<Book> storingBooks,
+    required List<String?> userStoringBooks,
     BookListType? bookListType,
+    @Default(false) bool isLoading,
   }) = _SelectedBooksPageState;
 }

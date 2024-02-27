@@ -7,7 +7,7 @@ part 'domain.g.dart';
 @freezed
 class AppAd with _$AppAd {
   factory AppAd({
-    String? appId,
+    required String appId,
     String? imageUrl,
     String? appUrl,
     String? googleUrl,

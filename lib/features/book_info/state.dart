@@ -12,5 +12,6 @@ class BookInfoPageState with _$BookInfoPageState {
   // プロパティを指定
   const factory BookInfoPageState({
     required Book book,
+    required bool isCanStoreBook,
   }) = _BookInfoPageState;
 }

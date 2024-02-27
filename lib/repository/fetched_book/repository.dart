@@ -26,7 +26,7 @@ class FetchedBookRepo extends _$FetchedBookRepo {
     try {
       final response = await dio.getUri(url);
       final data = response.data;
-      final FetchedBook book = FetchedBook.fromJson(data);
+      final FetchedBook book = FetchedBook.fromAPI(data);
       return book;
       // ignore: avoid_catches_without_on_clauses
     } catch (e) {
@@ -35,39 +35,7 @@ class FetchedBookRepo extends _$FetchedBookRepo {
     }
   }
 
-  Future<FetchedBook?> fetchBookInfoByKeword(String keyword, int index) async {
-    final dio = Dio();
-    final String appId = Env.key;
-    final String affId = Env.aKey;
-    const apiUrl =
-        'https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404';
-
-    final url = Uri.parse(
-      '$apiUrl?format=json&title=$keyword&affiliateId=$affId&applicationId=$appId',
-    );
-    print(url);
-
-    try {
-      final response = await dio.getUri(url);
-      final data = response.data;
-
-      // レスポンスデータから本のリストを取得
-      final List<dynamic> items = data['Items'];
-
-      // 指定されたインデックスの本の情報を取得し、FetchedBookオブジェクトに変換
-      if (index >= 0 && index < items.length) {
-        final FetchedBook book = FetchedBook.fromJson(items[index]['Item']);
-        return book;
-      } else {
-        // インデックスが範囲外の場合はnullを返す
-        return null;
-      }
-    } catch (e) {
-      // エラーが発生した場合は null を返す
-      return null;
-    }
-  }
-
+  /// キーワード検索
   Future<List<Book>> fetchBooksListByKeword(String keyword) async {
     final dio = Dio();
     final String appId = Env.key;
@@ -85,12 +53,41 @@ class FetchedBookRepo extends _$FetchedBookRepo {
 
       final List<Book> bookList = [];
 
-      for (var item in data['Items']) {
-        final FetchedBook fetchedBook = FetchedBook.fromJson(item);
+      for (final item in data['Items']) {
+        final FetchedBook fetchedBook = FetchedBook.fromAPI(item);
         final Book book = Book.fromFetchedBook(fetchedBook);
         bookList.add(book);
       }
-      print(bookList);
+      return bookList;
+    } catch (e) {
+      // エラーが発生した場合は空のリストを返す
+      return [];
+    }
+  }
+
+  /// キーワード検索
+  Future<List<Book>> fetchBooksListByAuthor(String keyword) async {
+    final dio = Dio();
+    final String appId = Env.key;
+    final String affId = Env.aKey;
+    const apiUrl =
+        'https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404';
+
+    final url = Uri.parse(
+      '$apiUrl?format=json&author=$keyword&affiliateId=$affId&applicationId=$appId',
+    );
+    print(url);
+    try {
+      final response = await dio.getUri(url);
+      final data = response.data;
+
+      final List<Book> bookList = [];
+
+      for (final item in data['Items']) {
+        final FetchedBook fetchedBook = FetchedBook.fromAPI(item);
+        final Book book = Book.fromFetchedBook(fetchedBook);
+        bookList.add(book);
+      }
       return bookList;
     } catch (e) {
       // エラーが発生した場合は空のリストを返す

@@ -1,3 +1,4 @@
+import 'package:book_picker/features/search_books/search_type.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -6,9 +7,11 @@ class SearchTextField extends ConsumerWidget {
     required this.controller,
     required this.onChanged,
     required this.onSubmitted,
+    required this.searchType,
     super.key,
   });
 
+  final SearchType searchType;
   final TextEditingController? controller;
   final ValueChanged<String> onSubmitted;
   final ValueChanged<String> onChanged;
@@ -20,7 +23,7 @@ class SearchTextField extends ConsumerWidget {
           controller: controller,
           onChanged: onChanged,
           onSubmitted: onSubmitted,
-          decoration: const InputDecoration(hintText: 'タイトルで検索'),
+          decoration: InputDecoration(hintText: searchType.displayName),
         ),
       );
 }

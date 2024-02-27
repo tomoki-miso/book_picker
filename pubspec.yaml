@@ -26,6 +26,16 @@ dependencies:
   carousel_slider: ^4.2.1
   url_launcher: ^6.2.4
   font_awesome_flutter: ^10.7.0
+  lottie: ^3.0.0
+  firebase_auth: ^4.17.4
+  google_sign_in: ^6.2.1
+  sign_in_button: ^3.2.0
+  sign_in_with_apple: ^5.0.0
+  intl: ^0.19.0
+  badges: ^3.1.2
+  loading_animation_widget: ^1.2.0+4
+  package_info_plus: ^5.0.1
+  firebase_remote_config: ^4.3.14
 
 dev_dependencies:
   flutter_test:
@@ -40,4 +50,12 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/
+    - assets/images/
+    - assets/lottie/
+
+  fonts:
+    - family: KiwiMaru
+      fonts:
+        - asset: assets/fonts/KiwiMaru-Light.ttf
+        - asset: assets/fonts/KiwiMaru-Medium.ttf
+        - asset: assets/fonts/KiwiMaru-Regular.ttf

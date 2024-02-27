@@ -6,4 +6,6 @@ part 'env.g.dart';
 abstract class Env {
   @EnviedField(varName: 'KEY', obfuscate: true)
   static String key = _Env.key;
+  @EnviedField(varName: 'AKEY', obfuscate: true)
+  static String aKey = _Env.aKey;
 }

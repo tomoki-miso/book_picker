@@ -22,7 +22,7 @@ final keywordFirestoreProvider =
 );
 
 typedef KeywordFirestoreRef = ProviderRef<CollectionReference<Keyword>>;
-String _$keywordRepoHash() => r'ac83aabb962a66bd0f45b6677cf31a1606a44462';
+String _$keywordRepoHash() => r'08a211657eb9e559dc443f0e78849125c64958de';
 
 /// See also [KeywordRepo].
 @ProviderFor(KeywordRepo)

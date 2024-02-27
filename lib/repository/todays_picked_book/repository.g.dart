@@ -7,7 +7,7 @@ part of 'repository.dart';
 // **************************************************************************
 
 String _$todaysPickedBookFirestoreHash() =>
-    r'126d5043b21e7dcdbd09c952cd38e338b3498fc0';
+    r'd96e1c5a95a065adbd1b844a219d8f859c042728';
 
 /// See also [todaysPickedBookFirestore].
 @ProviderFor(todaysPickedBookFirestore)

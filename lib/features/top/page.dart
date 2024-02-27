@@ -1,12 +1,15 @@
 import 'package:book_picker/components/back_ground.dart';
 import 'package:book_picker/components/error_page.dart';
+import 'package:book_picker/components/loading.dart';
 import 'package:book_picker/components/original_app_bar.dart';
+import 'package:book_picker/features/my_accocunt_page/page.dart';
 import 'package:book_picker/features/selected_books/bookListType.dart';
 import 'package:book_picker/features/selected_books/page.dart';
 import 'package:book_picker/features/top/components/app_ad.dart';
 import 'package:book_picker/features/top/components/grass_carousel_item.dart';
 import 'package:book_picker/features/top/components/picked_book_container.dart';
 import 'package:book_picker/features/top/components/searching_book_indicator.dart';
+import 'package:book_picker/features/top/components/top_drawer_part.dart';
 import 'package:book_picker/features/top/components/top_floating_action_button.dart';
 import 'package:book_picker/features/top/view_model.dart';
 import 'package:book_picker/styles/styles.dart';
@@ -16,33 +19,42 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class TopPage extends ConsumerWidget {
   const TopPage({super.key});
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(topPageViewModelProvider);
     return state.when(
       data: (data) => Scaffold(
-        appBar: const OriginalAppBar(),
+        endDrawer: const TopDrawerPart(),
+        appBar: OriginalAppBar(
+          isWithTitle: true,
+          imageUrl: data.user.userIcon,
+          onTapUserIcon: () async => Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const MyAccountPage()),
+          ),
+        ),
         body: BackGround(
           child: Stack(
             children: [
               ListView(
+                physics: const AlwaysScrollableScrollPhysics(),
                 children: [
                   const SizedBox(
                     height: kDefaultPadding,
                   ),
 
-                  /// 今日のPICK BOOK
+                  /// PICK BOOK
                   const Padding(
                     padding: EdgeInsets.only(
                       left: kDefaultPadding,
                       bottom: kDefaultSize * 2,
                     ),
                     child: Text(
-                      '今日のPicked BOOK!',
+                      'Picked BOOK!',
                       style: Styles.greyDefaultBoldStyle,
                     ),
                   ),
+
                   Padding(
                     padding:
                         const EdgeInsets.symmetric(horizontal: kDefaultPadding),
@@ -181,7 +193,7 @@ class TopPage extends ConsumerWidget {
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       ),
       error: (error, stackTrace) => ErrorPage(error: error),
-      loading: () => const Center(child: CircularProgressIndicator()),
+      loading: () => const LoadingPage(),
     );
   }
 }

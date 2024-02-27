@@ -24,7 +24,7 @@ final commonStoringBookFirestoreProvider =
 
 typedef CommonStoringBookFirestoreRef = ProviderRef<CollectionReference<Book>>;
 String _$commonStoringBookRepoHash() =>
-    r'3c257cf533f04b0fc907dd2f871054a27dfafb80';
+    r'a671c13ffa9dbcc1921ef32e5f0452a4a1efe080';
 
 /// See also [CommonStoringBookRepo].
 @ProviderFor(CommonStoringBookRepo)

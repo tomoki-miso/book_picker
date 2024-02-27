@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ColorName {
   ColorName._();
 
-  static const Color base = Color(0xFF223388);
+  static const Color base = Color(0xFF3c51cc);
 
   /// SkyBlue
   static const Color skyBlue = Color(0xFF68D1FE);

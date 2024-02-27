@@ -75,16 +75,31 @@ class KeywordRepo extends _$KeywordRepo {
     }
   }
 
+  Future<void> setKeyword(String keyword) async {
+    await collection.add(Keyword(keyword: keyword));
+  }
+
   /// キーワード取得
-  Future<String> getKeywords() async {
+  Future<String> getKeyword() async {
     final keywords = [
       ...await collection
           .get()
           .then((value) => value.docs.map((e) => e.data().keyword).toList()),
     ];
+    // ignore: cascade_invocations
     keywords.shuffle();
     final String keyword = keywords.first;
     print(keyword);
     return keyword;
+  }
+
+  Future<List<String>> getKeywords() async {
+    final keywords = [
+      ...await collection
+          .get()
+          .then((value) => value.docs.map((e) => e.data().keyword).toList()),
+    ];
+
+    return keywords;
   }
 }

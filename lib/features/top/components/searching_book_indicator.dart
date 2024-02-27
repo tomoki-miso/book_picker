@@ -1,4 +1,5 @@
 import 'package:book_picker/styles/colors.dart';
+import 'package:book_picker/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -13,7 +14,10 @@ class SearchingBookIndicator extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('ほんをさがしています・・・'),
+            const Text(
+              'ほんをさがしています・・・',
+              style: Styles.bookAuthorStyle,
+            ),
             SizedBox(
               height: 300,
               child: Lottie.asset('assets/lottie/cat_rocket.json'),

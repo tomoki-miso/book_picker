@@ -48,6 +48,23 @@ class CommonStoringBookRepo extends _$CommonStoringBookRepo {
     }
   }
 
+  Future<void> deletePickedBookCommon(
+    Book commonStoringBook,
+  ) async {
+    try {
+      // 保存した本の時間を更新
+      await collection.doc(commonStoringBook.isbn).update({
+        'storedTime': FieldValue.serverTimestamp(),
+      });
+
+      await collection.doc(commonStoringBook.isbn).update({
+        'numberOfStored': FieldValue.increment(-1),
+      });
+    } catch (e) {
+      print('Error storing picked book: $e');
+    }
+  }
+
   /// 保存数順に取り出し
   Future<Book?> getCommonStoringBookByISBN(String isbn) async {
     final Book? book = await collection.doc(isbn).get().then((value) {

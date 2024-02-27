@@ -1,7 +1,9 @@
 import 'package:book_picker/features/selected_books/bookListType.dart';
 import 'package:book_picker/features/selected_books/page.dart';
 import 'package:book_picker/features/top/page.dart';
+import 'package:book_picker/styles/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class BottomNav extends StatelessWidget {
@@ -22,20 +24,20 @@ class BottomNav extends StatelessWidget {
     return Scaffold(
       body: PersistentTabView(
         context,
-        controller: PersistentTabController(initialIndex: 1),
+        controller: PersistentTabController(),
         screens: pages,
         navBarStyle: NavBarStyle.simple,
         items: [
           PersistentBottomNavBarItem(
-            icon: const Icon(Icons.abc_outlined),
+            icon: const FaIcon(FontAwesomeIcons.rotate),
             title: 'Pick!',
-            activeColorPrimary: const Color.fromARGB(124, 252, 0, 0),
+            activeColorPrimary: ColorName.base,
             inactiveColorPrimary: Theme.of(context).disabledColor,
           ),
           PersistentBottomNavBarItem(
-            icon: const Icon(Icons.abc_outlined),
+            icon: const FaIcon(FontAwesomeIcons.rectangleList),
             title: 'Selected!',
-            activeColorPrimary: const Color.fromARGB(124, 252, 0, 0),
+            activeColorPrimary: ColorName.base,
             inactiveColorPrimary: Theme.of(context).disabledColor,
           ),
         ],

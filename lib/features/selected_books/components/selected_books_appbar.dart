@@ -5,7 +5,14 @@ import 'package:flutter/material.dart';
 
 class SelectedBooksAppbar extends StatelessWidget
     implements PreferredSizeWidget {
-  const SelectedBooksAppbar({super.key});
+  const SelectedBooksAppbar({
+    required this.onPressed,
+    required this.isWithSearch,
+    super.key,
+  });
+
+  final VoidCallback? onPressed;
+  final bool isWithSearch;
 
   @override
   Widget build(BuildContext context) => AppBar(
@@ -15,32 +22,40 @@ class SelectedBooksAppbar extends StatelessWidget
             context,
             MaterialPageRoute(builder: (context) => const SearchBooksPage()),
           ),
-          child: Container(
-            width: MediaQuery.of(context).size.width * 0.8,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: ColorName.greySecondBase,
-            ),
-            child: const Padding(
-              padding: EdgeInsets.symmetric(vertical: kDefaultSize * 1.5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    Icons.search,
-                    color: ColorName.greyBase,
-                  ),
-                  SizedBox(
-                    width: kDefaultSize * 2,
-                  ),
-                  Text(
-                    '本を検索してSelect！',
-                    style: Styles.greyDefaultStyle,
-                  ),
-                ],
-              ),
-            ),
-          ),
+          child: isWithSearch
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: MediaQuery.of(context).size.width * 0.8,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: ColorName.greySecondBase,
+                      ),
+                      child: const Padding(
+                        padding:
+                            EdgeInsets.symmetric(vertical: kDefaultSize * 1.5),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.search,
+                              color: ColorName.greyBase,
+                            ),
+                            SizedBox(
+                              width: kDefaultSize * 2,
+                            ),
+                            Text(
+                              '本を検索してSelect！',
+                              style: Styles.greyDefaultStyle,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              : const SizedBox(),
         ),
       );
 

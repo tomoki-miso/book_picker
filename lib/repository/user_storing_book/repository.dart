@@ -12,7 +12,9 @@ CollectionReference<Book> userStoringBookFirestore(
     ref
         .read(firestoreProvider)
         .collection('user')
-        .doc('Rrhwx2cGWjGWjNg7IcsY') // TODO:カレントユーザーに変更
+        .doc(
+          ref.read(firebaseAuthProvider).currentUser!.uid,
+        ) // TODO:カレントユーザーに変更
         .collection('user_storing_book')
         .withConverter<Book>(
           fromFirestore: (snapshot, _) => Book.fromJson(snapshot.data()!),
@@ -44,14 +46,32 @@ class UserStoringBookRepo extends _$UserStoringBookRepo {
     }
   }
 
+  Future<void> deletePickedBookUser(Book userStoringBook) async {
+    try {
+      await collection.doc(userStoringBook.isbn).delete();
+    } catch (e) {
+      print('Error storing picked book: $e');
+    }
+  }
+
   Future<List<Book>> getUserStoringBooks() async {
     final List<Book> userStoringBooks = [
       ...await collection
-          .orderBy('storedTime')
+          .orderBy('storedTime', descending: true)
           .get()
           .then((value) => value.docs.map((e) => e.data()).toList()),
     ];
 
     return userStoringBooks;
+  }
+
+  Future<List<String?>> getUserStoringBooksISBN() async {
+    final List<String?> userStoringBooksISBN = [
+      ...await collection
+          .get()
+          .then((value) => value.docs.map((e) => e.data().isbn).toList()),
+    ];
+
+    return userStoringBooksISBN;
   }
 }

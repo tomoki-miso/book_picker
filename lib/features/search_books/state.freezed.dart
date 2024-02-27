@@ -18,6 +18,8 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SearchBookPageState {
   TextEditingController get searchWordController =>
       throw _privateConstructorUsedError;
+  SearchType get searchType => throw _privateConstructorUsedError;
+  List<String?> get userStoringBooks => throw _privateConstructorUsedError;
   String? get keyword => throw _privateConstructorUsedError;
   List<Book>? get searchedBooks => throw _privateConstructorUsedError;
 
@@ -34,6 +36,8 @@ abstract class $SearchBookPageStateCopyWith<$Res> {
   @useResult
   $Res call(
       {TextEditingController searchWordController,
+      SearchType searchType,
+      List<String?> userStoringBooks,
       String? keyword,
       List<Book>? searchedBooks});
 }
@@ -52,6 +56,8 @@ class _$SearchBookPageStateCopyWithImpl<$Res, $Val extends SearchBookPageState>
   @override
   $Res call({
     Object? searchWordController = null,
+    Object? searchType = null,
+    Object? userStoringBooks = null,
     Object? keyword = freezed,
     Object? searchedBooks = freezed,
   }) {
@@ -60,6 +66,14 @@ class _$SearchBookPageStateCopyWithImpl<$Res, $Val extends SearchBookPageState>
           ? _value.searchWordController
           : searchWordController // ignore: cast_nullable_to_non_nullable
               as TextEditingController,
+      searchType: null == searchType
+          ? _value.searchType
+          : searchType // ignore: cast_nullable_to_non_nullable
+              as SearchType,
+      userStoringBooks: null == userStoringBooks
+          ? _value.userStoringBooks
+          : userStoringBooks // ignore: cast_nullable_to_non_nullable
+              as List<String?>,
       keyword: freezed == keyword
           ? _value.keyword
           : keyword // ignore: cast_nullable_to_non_nullable
@@ -82,6 +96,8 @@ abstract class _$$SearchBookPageStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {TextEditingController searchWordController,
+      SearchType searchType,
+      List<String?> userStoringBooks,
       String? keyword,
       List<Book>? searchedBooks});
 }
@@ -98,6 +114,8 @@ class __$$SearchBookPageStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? searchWordController = null,
+    Object? searchType = null,
+    Object? userStoringBooks = null,
     Object? keyword = freezed,
     Object? searchedBooks = freezed,
   }) {
@@ -106,6 +124,14 @@ class __$$SearchBookPageStateImplCopyWithImpl<$Res>
           ? _value.searchWordController
           : searchWordController // ignore: cast_nullable_to_non_nullable
               as TextEditingController,
+      searchType: null == searchType
+          ? _value.searchType
+          : searchType // ignore: cast_nullable_to_non_nullable
+              as SearchType,
+      userStoringBooks: null == userStoringBooks
+          ? _value._userStoringBooks
+          : userStoringBooks // ignore: cast_nullable_to_non_nullable
+              as List<String?>,
       keyword: freezed == keyword
           ? _value.keyword
           : keyword // ignore: cast_nullable_to_non_nullable
@@ -123,12 +149,26 @@ class __$$SearchBookPageStateImplCopyWithImpl<$Res>
 class _$SearchBookPageStateImpl implements _SearchBookPageState {
   const _$SearchBookPageStateImpl(
       {required this.searchWordController,
+      required this.searchType,
+      required final List<String?> userStoringBooks,
       this.keyword,
       final List<Book>? searchedBooks})
-      : _searchedBooks = searchedBooks;
+      : _userStoringBooks = userStoringBooks,
+        _searchedBooks = searchedBooks;
 
   @override
   final TextEditingController searchWordController;
+  @override
+  final SearchType searchType;
+  final List<String?> _userStoringBooks;
+  @override
+  List<String?> get userStoringBooks {
+    if (_userStoringBooks is EqualUnmodifiableListView)
+      return _userStoringBooks;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_userStoringBooks);
+  }
+
   @override
   final String? keyword;
   final List<Book>? _searchedBooks;
@@ -143,7 +183,7 @@ class _$SearchBookPageStateImpl implements _SearchBookPageState {
 
   @override
   String toString() {
-    return 'SearchBookPageState(searchWordController: $searchWordController, keyword: $keyword, searchedBooks: $searchedBooks)';
+    return 'SearchBookPageState(searchWordController: $searchWordController, searchType: $searchType, userStoringBooks: $userStoringBooks, keyword: $keyword, searchedBooks: $searchedBooks)';
   }
 
   @override
@@ -153,13 +193,22 @@ class _$SearchBookPageStateImpl implements _SearchBookPageState {
             other is _$SearchBookPageStateImpl &&
             (identical(other.searchWordController, searchWordController) ||
                 other.searchWordController == searchWordController) &&
+            (identical(other.searchType, searchType) ||
+                other.searchType == searchType) &&
+            const DeepCollectionEquality()
+                .equals(other._userStoringBooks, _userStoringBooks) &&
             (identical(other.keyword, keyword) || other.keyword == keyword) &&
             const DeepCollectionEquality()
                 .equals(other._searchedBooks, _searchedBooks));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, searchWordController, keyword,
+  int get hashCode => Object.hash(
+      runtimeType,
+      searchWordController,
+      searchType,
+      const DeepCollectionEquality().hash(_userStoringBooks),
+      keyword,
       const DeepCollectionEquality().hash(_searchedBooks));
 
   @JsonKey(ignore: true)
@@ -173,11 +222,17 @@ class _$SearchBookPageStateImpl implements _SearchBookPageState {
 abstract class _SearchBookPageState implements SearchBookPageState {
   const factory _SearchBookPageState(
       {required final TextEditingController searchWordController,
+      required final SearchType searchType,
+      required final List<String?> userStoringBooks,
       final String? keyword,
       final List<Book>? searchedBooks}) = _$SearchBookPageStateImpl;
 
   @override
   TextEditingController get searchWordController;
+  @override
+  SearchType get searchType;
+  @override
+  List<String?> get userStoringBooks;
   @override
   String? get keyword;
   @override

@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$BookInfoPageState {
   Book get book => throw _privateConstructorUsedError;
+  bool get isCanStoreBook => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BookInfoPageStateCopyWith<BookInfoPageState> get copyWith =>
@@ -29,7 +30,7 @@ abstract class $BookInfoPageStateCopyWith<$Res> {
           BookInfoPageState value, $Res Function(BookInfoPageState) then) =
       _$BookInfoPageStateCopyWithImpl<$Res, BookInfoPageState>;
   @useResult
-  $Res call({Book book});
+  $Res call({Book book, bool isCanStoreBook});
 
   $BookCopyWith<$Res> get book;
 }
@@ -48,12 +49,17 @@ class _$BookInfoPageStateCopyWithImpl<$Res, $Val extends BookInfoPageState>
   @override
   $Res call({
     Object? book = null,
+    Object? isCanStoreBook = null,
   }) {
     return _then(_value.copyWith(
       book: null == book
           ? _value.book
           : book // ignore: cast_nullable_to_non_nullable
               as Book,
+      isCanStoreBook: null == isCanStoreBook
+          ? _value.isCanStoreBook
+          : isCanStoreBook // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 
@@ -74,7 +80,7 @@ abstract class _$$BookInfoPageStateImplCopyWith<$Res>
       __$$BookInfoPageStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Book book});
+  $Res call({Book book, bool isCanStoreBook});
 
   @override
   $BookCopyWith<$Res> get book;
@@ -92,12 +98,17 @@ class __$$BookInfoPageStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? book = null,
+    Object? isCanStoreBook = null,
   }) {
     return _then(_$BookInfoPageStateImpl(
       book: null == book
           ? _value.book
           : book // ignore: cast_nullable_to_non_nullable
               as Book,
+      isCanStoreBook: null == isCanStoreBook
+          ? _value.isCanStoreBook
+          : isCanStoreBook // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -105,14 +116,17 @@ class __$$BookInfoPageStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$BookInfoPageStateImpl implements _BookInfoPageState {
-  const _$BookInfoPageStateImpl({required this.book});
+  const _$BookInfoPageStateImpl(
+      {required this.book, required this.isCanStoreBook});
 
   @override
   final Book book;
+  @override
+  final bool isCanStoreBook;
 
   @override
   String toString() {
-    return 'BookInfoPageState(book: $book)';
+    return 'BookInfoPageState(book: $book, isCanStoreBook: $isCanStoreBook)';
   }
 
   @override
@@ -120,11 +134,13 @@ class _$BookInfoPageStateImpl implements _BookInfoPageState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BookInfoPageStateImpl &&
-            (identical(other.book, book) || other.book == book));
+            (identical(other.book, book) || other.book == book) &&
+            (identical(other.isCanStoreBook, isCanStoreBook) ||
+                other.isCanStoreBook == isCanStoreBook));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, book);
+  int get hashCode => Object.hash(runtimeType, book, isCanStoreBook);
 
   @JsonKey(ignore: true)
   @override
@@ -135,11 +151,14 @@ class _$BookInfoPageStateImpl implements _BookInfoPageState {
 }
 
 abstract class _BookInfoPageState implements BookInfoPageState {
-  const factory _BookInfoPageState({required final Book book}) =
-      _$BookInfoPageStateImpl;
+  const factory _BookInfoPageState(
+      {required final Book book,
+      required final bool isCanStoreBook}) = _$BookInfoPageStateImpl;
 
   @override
   Book get book;
+  @override
+  bool get isCanStoreBook;
   @override
   @JsonKey(ignore: true)
   _$$BookInfoPageStateImplCopyWith<_$BookInfoPageStateImpl> get copyWith =>

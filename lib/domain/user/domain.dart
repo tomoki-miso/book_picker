@@ -6,17 +6,16 @@ part 'domain.g.dart';
 
 // freezedでコード生成するために「@freezed」を記述
 @freezed
-class UserInfo with _$UserInfo {
+class UserInfoClass with _$UserInfoClass {
   // withの後には「_$[class name]」の形式で記述
 
   // プロパティを指定
-  const factory UserInfo({
+  const factory UserInfoClass({
     required String userId,
-    required bool isCanGetTodaysBook,
-    String? userName,
-    String? userIcon,
+    required String userName,
+    required String userIcon,
   }) = _UserInfo;
 
-  factory UserInfo.fromJson(Map<String, dynamic> json) =>
-      _$UserInfoFromJson(json);
+  factory UserInfoClass.fromJson(Map<String, dynamic> json) =>
+      _$UserInfoClassFromJson(json);
 }

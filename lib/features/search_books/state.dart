@@ -1,4 +1,5 @@
 import 'package:book_picker/domain/book/domain.dart';
+import 'package:book_picker/features/search_books/search_type.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -13,6 +14,8 @@ class SearchBookPageState with _$SearchBookPageState {
   // プロパティを指定
   const factory SearchBookPageState({
     required TextEditingController searchWordController,
+    required SearchType searchType,
+    required List<String?> userStoringBooks,
     String? keyword,
     List<Book>? searchedBooks,
   }) = _SearchBookPageState;

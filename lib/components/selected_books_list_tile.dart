@@ -1,21 +1,29 @@
 import 'package:book_picker/components/grass_container.dart';
+import 'package:book_picker/styles/colors.dart';
 import 'package:book_picker/styles/styles.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SelectedBooksListTile extends StatelessWidget {
   const SelectedBooksListTile({
     required this.onTap,
+    required this.isCanSelect,
+    required this.selectBook,
     this.imageUrl,
     this.title,
     this.author,
+    this.day,
     super.key,
   });
 
+  final bool isCanSelect;
   final VoidCallback? onTap;
+  final VoidCallback? selectBook;
   final String? title;
   final String? imageUrl;
   final String? author;
+  final String? day;
 
   @override
   Widget build(BuildContext context) => GestureDetector(
@@ -57,23 +65,44 @@ class SelectedBooksListTile extends StatelessWidget {
                     const SizedBox(
                       height: kDefaultPadding,
                     ),
-                    const Row(
+                    Row(
                       children: [
-                        Text(
+                        const Text(
                           'Selectした日',
                           style: Styles.greyDefaultBoldStyle,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: kDefaultSize * 2,
                         ),
                         Text(
-                          '2024/2/29',
+                          day ?? '',
                           style: Styles.defaultStyle,
                         ),
                       ],
                     ),
                   ],
                 ),
+              ),
+
+              /// 右側のボタン
+              if (isCanSelect)
+                IconButton(
+                  iconSize: 18,
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.resolveWith<Color?>(
+                      (states) => ColorName.skyBlue,
+                    ),
+                  ),
+                  onPressed: selectBook,
+                  icon: const FaIcon(
+                    FontAwesomeIcons.heartCirclePlus,
+                    color: ColorName.whiteBase,
+                  ),
+                )
+              else
+                const SizedBox(),
+              const SizedBox(
+                width: kDefaultPadding,
               ),
               const SizedBox(
                 width: kDefaultPadding,

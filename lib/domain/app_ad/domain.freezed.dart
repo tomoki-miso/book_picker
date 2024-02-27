@@ -20,7 +20,7 @@ AppAd _$AppAdFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$AppAd {
-  String? get appId => throw _privateConstructorUsedError;
+  String get appId => throw _privateConstructorUsedError;
   String? get imageUrl => throw _privateConstructorUsedError;
   String? get appUrl => throw _privateConstructorUsedError;
   String? get googleUrl => throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ abstract class $AppAdCopyWith<$Res> {
       _$AppAdCopyWithImpl<$Res, AppAd>;
   @useResult
   $Res call(
-      {String? appId, String? imageUrl, String? appUrl, String? googleUrl});
+      {String appId, String? imageUrl, String? appUrl, String? googleUrl});
 }
 
 /// @nodoc
@@ -52,16 +52,16 @@ class _$AppAdCopyWithImpl<$Res, $Val extends AppAd>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? appId = freezed,
+    Object? appId = null,
     Object? imageUrl = freezed,
     Object? appUrl = freezed,
     Object? googleUrl = freezed,
   }) {
     return _then(_value.copyWith(
-      appId: freezed == appId
+      appId: null == appId
           ? _value.appId
           : appId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -86,7 +86,7 @@ abstract class _$$AppAdImplCopyWith<$Res> implements $AppAdCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String? appId, String? imageUrl, String? appUrl, String? googleUrl});
+      {String appId, String? imageUrl, String? appUrl, String? googleUrl});
 }
 
 /// @nodoc
@@ -100,16 +100,16 @@ class __$$AppAdImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? appId = freezed,
+    Object? appId = null,
     Object? imageUrl = freezed,
     Object? appUrl = freezed,
     Object? googleUrl = freezed,
   }) {
     return _then(_$AppAdImpl(
-      appId: freezed == appId
+      appId: null == appId
           ? _value.appId
           : appId // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
       imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
@@ -129,13 +129,14 @@ class __$$AppAdImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AppAdImpl implements _AppAd {
-  _$AppAdImpl({this.appId, this.imageUrl, this.appUrl, this.googleUrl});
+  _$AppAdImpl(
+      {required this.appId, this.imageUrl, this.appUrl, this.googleUrl});
 
   factory _$AppAdImpl.fromJson(Map<String, dynamic> json) =>
       _$$AppAdImplFromJson(json);
 
   @override
-  final String? appId;
+  final String appId;
   @override
   final String? imageUrl;
   @override
@@ -182,7 +183,7 @@ class _$AppAdImpl implements _AppAd {
 
 abstract class _AppAd implements AppAd {
   factory _AppAd(
-      {final String? appId,
+      {required final String appId,
       final String? imageUrl,
       final String? appUrl,
       final String? googleUrl}) = _$AppAdImpl;
@@ -190,7 +191,7 @@ abstract class _AppAd implements AppAd {
   factory _AppAd.fromJson(Map<String, dynamic> json) = _$AppAdImpl.fromJson;
 
   @override
-  String? get appId;
+  String get appId;
   @override
   String? get imageUrl;
   @override

@@ -18,7 +18,10 @@ class FetchedBook with _$FetchedBook {
     String? affiUrl,
   }) = _FetchedBook;
 
-  factory FetchedBook.fromJson(Map<String, dynamic> json) {
+  factory FetchedBook.fromJson(Map<String, dynamic> json) =>
+      _$FetchedBookFromJson(json);
+
+  factory FetchedBook.fromAPI(Map<String, dynamic> json) {
     final item = json['Item'];
     return FetchedBook(
       isbn: item['isbn'],

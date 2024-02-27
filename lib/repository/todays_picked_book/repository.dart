@@ -12,7 +12,7 @@ CollectionReference<Book> todaysPickedBookFirestore(
     ref
         .read(firestoreProvider)
         .collection('user')
-        .doc('Rrhwx2cGWjGWjNg7IcsY') // TODO:カレントユーザーに変更
+        .doc(ref.read(firebaseAuthProvider).currentUser!.uid) // TODO:カレントユーザーに変更
         .collection('user_todays_book')
         .withConverter<Book>(
           fromFirestore: (snapshot, _) => Book.fromJson(snapshot.data()!),

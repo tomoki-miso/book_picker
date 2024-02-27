@@ -14,39 +14,35 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-UserInfo _$UserInfoFromJson(Map<String, dynamic> json) {
+UserInfoClass _$UserInfoClassFromJson(Map<String, dynamic> json) {
   return _UserInfo.fromJson(json);
 }
 
 /// @nodoc
-mixin _$UserInfo {
+mixin _$UserInfoClass {
   String get userId => throw _privateConstructorUsedError;
-  bool get isCanGetTodaysBook => throw _privateConstructorUsedError;
-  String? get userName => throw _privateConstructorUsedError;
-  String? get userIcon => throw _privateConstructorUsedError;
+  String get userName => throw _privateConstructorUsedError;
+  String get userIcon => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UserInfoCopyWith<UserInfo> get copyWith =>
+  $UserInfoClassCopyWith<UserInfoClass> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserInfoCopyWith<$Res> {
-  factory $UserInfoCopyWith(UserInfo value, $Res Function(UserInfo) then) =
-      _$UserInfoCopyWithImpl<$Res, UserInfo>;
+abstract class $UserInfoClassCopyWith<$Res> {
+  factory $UserInfoClassCopyWith(
+          UserInfoClass value, $Res Function(UserInfoClass) then) =
+      _$UserInfoClassCopyWithImpl<$Res, UserInfoClass>;
   @useResult
-  $Res call(
-      {String userId,
-      bool isCanGetTodaysBook,
-      String? userName,
-      String? userIcon});
+  $Res call({String userId, String userName, String userIcon});
 }
 
 /// @nodoc
-class _$UserInfoCopyWithImpl<$Res, $Val extends UserInfo>
-    implements $UserInfoCopyWith<$Res> {
-  _$UserInfoCopyWithImpl(this._value, this._then);
+class _$UserInfoClassCopyWithImpl<$Res, $Val extends UserInfoClass>
+    implements $UserInfoClassCopyWith<$Res> {
+  _$UserInfoClassCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -57,49 +53,40 @@ class _$UserInfoCopyWithImpl<$Res, $Val extends UserInfo>
   @override
   $Res call({
     Object? userId = null,
-    Object? isCanGetTodaysBook = null,
-    Object? userName = freezed,
-    Object? userIcon = freezed,
+    Object? userName = null,
+    Object? userIcon = null,
   }) {
     return _then(_value.copyWith(
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
-      isCanGetTodaysBook: null == isCanGetTodaysBook
-          ? _value.isCanGetTodaysBook
-          : isCanGetTodaysBook // ignore: cast_nullable_to_non_nullable
-              as bool,
-      userName: freezed == userName
+      userName: null == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userIcon: freezed == userIcon
+              as String,
+      userIcon: null == userIcon
           ? _value.userIcon
           : userIcon // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 }
 
 /// @nodoc
 abstract class _$$UserInfoImplCopyWith<$Res>
-    implements $UserInfoCopyWith<$Res> {
+    implements $UserInfoClassCopyWith<$Res> {
   factory _$$UserInfoImplCopyWith(
           _$UserInfoImpl value, $Res Function(_$UserInfoImpl) then) =
       __$$UserInfoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String userId,
-      bool isCanGetTodaysBook,
-      String? userName,
-      String? userIcon});
+  $Res call({String userId, String userName, String userIcon});
 }
 
 /// @nodoc
 class __$$UserInfoImplCopyWithImpl<$Res>
-    extends _$UserInfoCopyWithImpl<$Res, _$UserInfoImpl>
+    extends _$UserInfoClassCopyWithImpl<$Res, _$UserInfoImpl>
     implements _$$UserInfoImplCopyWith<$Res> {
   __$$UserInfoImplCopyWithImpl(
       _$UserInfoImpl _value, $Res Function(_$UserInfoImpl) _then)
@@ -109,27 +96,22 @@ class __$$UserInfoImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? userId = null,
-    Object? isCanGetTodaysBook = null,
-    Object? userName = freezed,
-    Object? userIcon = freezed,
+    Object? userName = null,
+    Object? userIcon = null,
   }) {
     return _then(_$UserInfoImpl(
       userId: null == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
               as String,
-      isCanGetTodaysBook: null == isCanGetTodaysBook
-          ? _value.isCanGetTodaysBook
-          : isCanGetTodaysBook // ignore: cast_nullable_to_non_nullable
-              as bool,
-      userName: freezed == userName
+      userName: null == userName
           ? _value.userName
           : userName // ignore: cast_nullable_to_non_nullable
-              as String?,
-      userIcon: freezed == userIcon
+              as String,
+      userIcon: null == userIcon
           ? _value.userIcon
           : userIcon // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -138,10 +120,7 @@ class __$$UserInfoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$UserInfoImpl implements _UserInfo {
   const _$UserInfoImpl(
-      {required this.userId,
-      required this.isCanGetTodaysBook,
-      this.userName,
-      this.userIcon});
+      {required this.userId, required this.userName, required this.userIcon});
 
   factory _$UserInfoImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserInfoImplFromJson(json);
@@ -149,15 +128,13 @@ class _$UserInfoImpl implements _UserInfo {
   @override
   final String userId;
   @override
-  final bool isCanGetTodaysBook;
+  final String userName;
   @override
-  final String? userName;
-  @override
-  final String? userIcon;
+  final String userIcon;
 
   @override
   String toString() {
-    return 'UserInfo(userId: $userId, isCanGetTodaysBook: $isCanGetTodaysBook, userName: $userName, userIcon: $userIcon)';
+    return 'UserInfoClass(userId: $userId, userName: $userName, userIcon: $userIcon)';
   }
 
   @override
@@ -166,8 +143,6 @@ class _$UserInfoImpl implements _UserInfo {
         (other.runtimeType == runtimeType &&
             other is _$UserInfoImpl &&
             (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.isCanGetTodaysBook, isCanGetTodaysBook) ||
-                other.isCanGetTodaysBook == isCanGetTodaysBook) &&
             (identical(other.userName, userName) ||
                 other.userName == userName) &&
             (identical(other.userIcon, userIcon) ||
@@ -176,8 +151,7 @@ class _$UserInfoImpl implements _UserInfo {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, userId, isCanGetTodaysBook, userName, userIcon);
+  int get hashCode => Object.hash(runtimeType, userId, userName, userIcon);
 
   @JsonKey(ignore: true)
   @override
@@ -193,12 +167,11 @@ class _$UserInfoImpl implements _UserInfo {
   }
 }
 
-abstract class _UserInfo implements UserInfo {
+abstract class _UserInfo implements UserInfoClass {
   const factory _UserInfo(
       {required final String userId,
-      required final bool isCanGetTodaysBook,
-      final String? userName,
-      final String? userIcon}) = _$UserInfoImpl;
+      required final String userName,
+      required final String userIcon}) = _$UserInfoImpl;
 
   factory _UserInfo.fromJson(Map<String, dynamic> json) =
       _$UserInfoImpl.fromJson;
@@ -206,11 +179,9 @@ abstract class _UserInfo implements UserInfo {
   @override
   String get userId;
   @override
-  bool get isCanGetTodaysBook;
+  String get userName;
   @override
-  String? get userName;
-  @override
-  String? get userIcon;
+  String get userIcon;
   @override
   @JsonKey(ignore: true)
   _$$UserInfoImplCopyWith<_$UserInfoImpl> get copyWith =>

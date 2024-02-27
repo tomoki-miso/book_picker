@@ -7,7 +7,7 @@ part of 'domain.dart';
 // **************************************************************************
 
 _$AppAdImpl _$$AppAdImplFromJson(Map<String, dynamic> json) => _$AppAdImpl(
-      appId: json['appId'] as String?,
+      appId: json['appId'] as String,
       imageUrl: json['imageUrl'] as String?,
       appUrl: json['appUrl'] as String?,
       googleUrl: json['googleUrl'] as String?,

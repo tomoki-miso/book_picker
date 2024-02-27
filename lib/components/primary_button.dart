@@ -9,8 +9,8 @@ class PrimaryButton extends StatelessWidget {
     this.height,
     this.width,
     this.circularSize,
-    this.backgroundColor = ColorName.base,
-    this.foregroundColor,
+    this.backgroundColor = ColorName.whiteBase,
+    this.foregroundColor = ColorName.base,
     this.side = BorderSide.none,
     this.isWithWidget = false,
     this.text,
@@ -67,7 +67,7 @@ class PrimaryButton extends StatelessWidget {
               ? child
               : FittedBox(
                   child: Text(
-                    text!,
+                    text ?? '',
                     style: style ??
                         TextStyle(
                           fontWeight: FontWeight.bold,
