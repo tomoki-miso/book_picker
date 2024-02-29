@@ -10,7 +10,7 @@ class TopAdBanner extends StatelessWidget {
   final int index;
 
   final AdManagerBannerAd myBanner = AdManagerBannerAd(
-    adUnitId: 'ca-app-pub-3940256099942544/2934735716', //todo: リリース前に本物に変更
+    adUnitId: 'ca-app-pub-2209028789060457/3363746469', //todo: リリース前に本物に変更
     sizes: [AdSize.mediumRectangle],
     request: const AdManagerAdRequest(),
     listener: AdManagerBannerAdListener(),
