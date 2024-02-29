@@ -1,14 +1,14 @@
 import 'package:book_picker/components/back_ground.dart';
 import 'package:book_picker/components/error_page.dart';
 import 'package:book_picker/components/original_app_bar.dart';
-import 'package:book_picker/components/primary_button.dart';
 import 'package:book_picker/domain/book/domain.dart';
 import 'package:book_picker/features/book_info/components/book_info_tile.dart';
+import 'package:book_picker/features/book_info/components/cance_select_floating_button.dart';
+import 'package:book_picker/features/book_info/components/select_book_floating_button.dart';
 import 'package:book_picker/features/book_info/view_model.dart';
 import 'package:book_picker/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class BookInfoPage extends ConsumerWidget {
   const BookInfoPage({
@@ -35,6 +35,8 @@ class BookInfoPage extends ConsumerWidget {
             child: Padding(
               padding: const EdgeInsets.all(kDefaultPadding)
                   .copyWith(bottom: kDefaultPadding * 5),
+
+              /// 本の情報
               child: RepaintBoundary(
                 key: convertWidgetToImageKey,
                 child: BookInfoTile(
@@ -57,47 +59,24 @@ class BookInfoPage extends ConsumerWidget {
             ),
           ),
           floatingActionButton: data.isCanStoreBook
-              ? SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.9,
-                  child: PrimaryButton(
-                    isWithWidget: true,
-                    onPressed: () async {
-                      await ref
-                          .read(bookInfoPageViewModelProvider(book).notifier)
-                          .storeBook();
-                    },
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        FaIcon(FontAwesomeIcons.heartCirclePlus),
-                        SizedBox(
-                          width: kDefaultSize * 2,
-                        ),
-                        Text('この本をSELECT！'),
-                      ],
-                    ),
-                  ),
+
+              /// 本をSelectボタン
+              ? InfoSelectBookFloatingButton(
+                  onPressed: () async {
+                    await ref
+                        .read(bookInfoPageViewModelProvider(book).notifier)
+                        .deleteBook();
+                  },
                 )
-              : SizedBox(
-                  width: MediaQuery.of(context).size.width * 0.9,
-                  child: PrimaryButton(
-                    isWithWidget: true,
-                    onPressed: () async {
-                      await ref
-                          .read(bookInfoPageViewModelProvider(book).notifier)
-                          .deleteBook();
-                    },
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        FaIcon(FontAwesomeIcons.heartCircleMinus),
-                        SizedBox(
-                          width: kDefaultSize * 2,
-                        ),
-                        Text('この本のSELECTを取り消す'),
-                      ],
-                    ),
-                  ),
+              :
+
+              /// Selectキャンセルボタン
+              InfoCancelFloatingButton(
+                  onPressed: () async {
+                    await ref
+                        .read(bookInfoPageViewModelProvider(book).notifier)
+                        .deleteBook();
+                  },
                 ),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerFloat,
