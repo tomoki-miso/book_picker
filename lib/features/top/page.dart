@@ -6,6 +6,7 @@ import 'package:book_picker/features/my_accocunt_page/page.dart';
 import 'package:book_picker/features/selected_books/bookListType.dart';
 import 'package:book_picker/features/selected_books/page.dart';
 import 'package:book_picker/features/top/components/app_ad.dart';
+import 'package:book_picker/features/top/components/goole_ad_part.dart';
 import 'package:book_picker/features/top/components/grass_carousel_item.dart';
 import 'package:book_picker/features/top/components/picked_book_container.dart';
 import 'package:book_picker/features/top/components/searching_book_indicator.dart';
@@ -59,6 +60,7 @@ class TopPage extends ConsumerWidget {
                     padding:
                         const EdgeInsets.symmetric(horizontal: kDefaultPadding),
                     child: PickedBookContainer(
+                      isStored: data.isStored,
                       todaysPickedBook: data.todaysPickedBook!,
                     ),
                   ),
@@ -180,7 +182,15 @@ class TopPage extends ConsumerWidget {
                     ),
 
                   const SizedBox(
-                    height: kDefaultPadding * 4,
+                    height: kDefaultPadding,
+                  ),
+
+                  TopAdBanner(
+                    index: 0,
+                  ),
+
+                  const SizedBox(
+                    height: kDefaultPadding * 8,
                   ),
                 ],
               ),

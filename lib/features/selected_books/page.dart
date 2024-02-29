@@ -6,6 +6,7 @@ import 'package:book_picker/components/selected_books_list_tile.dart';
 import 'package:book_picker/domain/book/domain.dart';
 import 'package:book_picker/features/book_info/page.dart';
 import 'package:book_picker/features/selected_books/bookListType.dart';
+import 'package:book_picker/features/selected_books/components/goole_ad_part.dart';
 import 'package:book_picker/features/selected_books/components/selected_books_appbar.dart';
 import 'package:book_picker/features/selected_books/view_model.dart';
 import 'package:flutter/material.dart';
@@ -60,40 +61,47 @@ class SelectedBooksPage extends ConsumerWidget {
                         )
                         .refreshBookList(bookListType),
                     child: ListView.builder(
-                      itemCount: data.storingBooks.length,
+                      itemCount: data.storingBooks.length +
+                          (data.storingBooks.length ~/ 5),
                       itemBuilder: (context, index) {
-                        final Book bookData = data.storingBooks[index];
-                        final bool isCanSelect =
-                            !data.userStoringBooks.contains(bookData.isbn);
-                        return SelectedBooksListTile(
-                          onTap: () async {
-                            await Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => BookInfoPage(
-                                  book: data.storingBooks[index],
+                        if (index % 6 == 5) {
+                          return ListAdBanner(); // 広告ウィジェットを適切に置き換えてください
+                        } else {
+                          final int bookIndex =
+                              index - (index ~/ 6); // 広告用インデックスを除いたインデックスを計算
+                          final Book bookData = data.storingBooks[bookIndex];
+                          final bool isCanSelect =
+                              !data.userStoringBooks.contains(bookData.isbn);
+                          return SelectedBooksListTile(
+                            onTap: () async {
+                              await Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => BookInfoPage(
+                                    book: bookData,
+                                  ),
                                 ),
-                              ),
-                            );
-                          },
-                          selectBook: () async {
-                            await ref
-                                .read(
-                                  selectedBooksPageViewModelProvider(
-                                          bookListType)
-                                      .notifier,
-                                )
-                                .storePickedBook(bookData);
-                          },
-                          isCanSelect: isCanSelect,
-                          title: bookData.title,
-                          author: bookData.author,
-                          imageUrl: bookData.imageUrl,
-                          day: data.storingBooks[index].storedTime != null
-                              ? DateFormat('yyyy年MM月dd日')
-                                  .format(data.storingBooks[index].storedTime!)
-                              : 'No date available',
-                        );
+                              );
+                            },
+                            selectBook: () async {
+                              await ref
+                                  .read(
+                                    selectedBooksPageViewModelProvider(
+                                            bookListType)
+                                        .notifier,
+                                  )
+                                  .storePickedBook(bookData);
+                            },
+                            isCanSelect: isCanSelect,
+                            title: bookData.title,
+                            author: bookData.author,
+                            imageUrl: bookData.imageUrl,
+                            day: bookData.storedTime != null
+                                ? DateFormat('yyyy年MM月dd日')
+                                    .format(bookData.storedTime!)
+                                : 'No date available',
+                          );
+                        }
                       },
                     ),
                   ),
