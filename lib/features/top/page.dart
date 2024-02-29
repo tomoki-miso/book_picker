@@ -6,15 +6,16 @@ import 'package:book_picker/features/my_accocunt_page/page.dart';
 import 'package:book_picker/features/selected_books/bookListType.dart';
 import 'package:book_picker/features/selected_books/page.dart';
 import 'package:book_picker/features/top/components/app_ad.dart';
+import 'package:book_picker/features/top/components/carousel_title.dart';
 import 'package:book_picker/features/top/components/goole_ad_part.dart';
-import 'package:book_picker/features/top/components/grass_carousel_item.dart';
 import 'package:book_picker/features/top/components/picked_book_container.dart';
+import 'package:book_picker/features/top/components/popular_books_carousel.dart';
+import 'package:book_picker/features/top/components/recent_selected_carousel.dart';
 import 'package:book_picker/features/top/components/searching_book_indicator.dart';
 import 'package:book_picker/features/top/components/top_drawer_part.dart';
 import 'package:book_picker/features/top/components/top_floating_action_button.dart';
 import 'package:book_picker/features/top/view_model.dart';
 import 'package:book_picker/styles/styles.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -66,97 +67,36 @@ class TopPage extends ConsumerWidget {
                   ),
 
                   /// よくセレクトされてる本
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      top: kDefaultPadding * 2,
-                      left: kDefaultPadding,
-                      bottom: kDefaultSize * 2,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          'よくSELECTされてる本',
-                          style: Styles.greyDefaultBoldStyle,
+                  Carouseltitle(
+                    onPressed: () async => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SelectedBooksPage(
+                          bookListType: BookListType.popularBooks,
                         ),
-                        TextButton(
-                          onPressed: () async => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const SelectedBooksPage(
-                                bookListType: BookListType.popularBooks,
-                              ),
-                            ),
-                          ),
-                          child: const Text(
-                            'もっとみる ＞',
-                            style: Styles.greyDefaultStyle,
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
+                    title: 'よくSELECTされてる本',
                   ),
-                  CarouselSlider.builder(
-                    options: CarouselOptions(
-                      height: MediaQuery.of(context).size.height * 0.25,
-                      autoPlay: true,
-                      autoPlayInterval: const Duration(seconds: 8),
-                      autoPlayAnimationDuration: const Duration(seconds: 8),
-                      viewportFraction: 0.42,
-                    ),
-                    itemCount: data.commonStoringBookOrderByAmount.length,
-                    itemBuilder: (context, index, realIndex) =>
-                        GrassCarouselItem(
-                      book: data.commonStoringBookOrderByAmount[index],
-                    ),
-                  ),
+
+                  // カルーセル
+                  PopularaBoooksCarousel(data: data),
 
                   /// 最近Selectされた本
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      top: kDefaultPadding * 2,
-                      left: kDefaultPadding,
-                      bottom: kDefaultSize * 2,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text(
-                          '最近SELECTされた本',
-                          style: Styles.greyDefaultBoldStyle,
+                  Carouseltitle(
+                    onPressed: () async => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SelectedBooksPage(
+                          bookListType: BookListType.recentStoredBooks,
                         ),
-                        TextButton(
-                          onPressed: () async => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const SelectedBooksPage(
-                                bookListType: BookListType.recentStoredBooks,
-                              ),
-                            ),
-                          ),
-                          child: const Text(
-                            'もっとみる ＞',
-                            style: Styles.greyDefaultStyle,
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
+                    title: '最近SELECTされた本',
                   ),
 
-                  CarouselSlider.builder(
-                    options: CarouselOptions(
-                      height: MediaQuery.of(context).size.height * 0.25,
-                      autoPlay: true,
-                      autoPlayInterval: const Duration(seconds: 8),
-                      autoPlayAnimationDuration: const Duration(seconds: 8),
-                      viewportFraction: 0.42,
-                    ),
-                    itemCount: data.commonStoringBookOrderByTime.length,
-                    itemBuilder: (context, index, realIndex) =>
-                        GrassCarouselItem(
-                      book: data.commonStoringBookOrderByTime[index],
-                    ),
-                  ),
+                  /// カルーセル
+                  RecentSelectedCarousel(data: data),
 
                   /// アプリ宣伝
                   const Padding(
@@ -172,13 +112,10 @@ class TopPage extends ConsumerWidget {
                     ),
                   ),
                   for (final appAd in data.appAds)
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: kDefaultSize * 2),
-                      child: AppAdTile(
-                        imageUrl: appAd.imageUrl,
-                        appUrl: appAd.appUrl,
-                        googleUrl: appAd.googleUrl,
-                      ),
+                    AppAdTile(
+                      imageUrl: appAd.imageUrl,
+                      appUrl: appAd.appUrl,
+                      googleUrl: appAd.googleUrl,
                     ),
 
                   const SizedBox(

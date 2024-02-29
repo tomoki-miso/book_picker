@@ -20,7 +20,8 @@ class AppAdTile extends StatelessWidget {
   final String? googleUrl;
   @override
   Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20)
+            .copyWith(bottom: kDefaultPadding),
         child: GestureDetector(
           onTap: () async {
             if (Platform.isIOS && appUrl != '') {
