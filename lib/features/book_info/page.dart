@@ -27,69 +27,82 @@ class BookInfoPage extends ConsumerWidget {
     );
 
     return state.when(
-      data: (data) => Scaffold(
-        appBar: const OriginalAppBar(),
-        body: BackGround(
-          child: Padding(
-            padding: const EdgeInsets.all(kDefaultPadding)
-                .copyWith(bottom: kDefaultPadding * 5),
-            child: BookInfoTile(
-              title: data.book.title,
-              author: data.book.author,
-              imageUrl: data.book.imageUrl,
-              isbn: data.book.isbn,
-              itemPrice: data.book.itemPrice.toString(),
-              itemCaption: data.book.itemCaption,
-              publisherName: data.book.publisherName,
-              affiUrl: data.book.affiUrl,
-            ),
-          ),
-        ),
-        floatingActionButton: data.isCanStoreBook
-            ? SizedBox(
-                width: MediaQuery.of(context).size.width * 0.9,
-                child: PrimaryButton(
-                  isWithWidget: true,
-                  onPressed: () async {
-                    await ref
-                        .read(bookInfoPageViewModelProvider(book).notifier)
-                        .storeBook();
-                  },
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      FaIcon(FontAwesomeIcons.heartCirclePlus),
-                      SizedBox(
-                        width: kDefaultSize * 2,
+      data: (data) {
+        final convertWidgetToImageKey = GlobalKey();
+        return Scaffold(
+          appBar: const OriginalAppBar(),
+          body: BackGround(
+            child: Padding(
+              padding: const EdgeInsets.all(kDefaultPadding)
+                  .copyWith(bottom: kDefaultPadding * 5),
+              child: RepaintBoundary(
+                key: convertWidgetToImageKey,
+                child: BookInfoTile(
+                  title: data.book.title,
+                  author: data.book.author,
+                  imageUrl: data.book.imageUrl,
+                  isbn: data.book.isbn,
+                  itemPrice: data.book.itemPrice.toString(),
+                  itemCaption: data.book.itemCaption,
+                  publisherName: data.book.publisherName,
+                  affiUrl: data.book.affiUrl,
+                  share: () async => ref
+                      .read(bookInfoPageViewModelProvider(book).notifier)
+                      .shareWidgetImage(
+                        globalKey: convertWidgetToImageKey,
+                        bookName: data.book.title ?? '',
                       ),
-                      Text('この本をSELECT！'),
-                    ],
-                  ),
-                ),
-              )
-            : SizedBox(
-                width: MediaQuery.of(context).size.width * 0.9,
-                child: PrimaryButton(
-                  isWithWidget: true,
-                  onPressed: () async {
-                    await ref
-                        .read(bookInfoPageViewModelProvider(book).notifier)
-                        .deleteBook();
-                  },
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      FaIcon(FontAwesomeIcons.heartCircleMinus),
-                      SizedBox(
-                        width: kDefaultSize * 2,
-                      ),
-                      Text('この本のSELECTを取り消す'),
-                    ],
-                  ),
                 ),
               ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      ),
+            ),
+          ),
+          floatingActionButton: data.isCanStoreBook
+              ? SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  child: PrimaryButton(
+                    isWithWidget: true,
+                    onPressed: () async {
+                      await ref
+                          .read(bookInfoPageViewModelProvider(book).notifier)
+                          .storeBook();
+                    },
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        FaIcon(FontAwesomeIcons.heartCirclePlus),
+                        SizedBox(
+                          width: kDefaultSize * 2,
+                        ),
+                        Text('この本をSELECT！'),
+                      ],
+                    ),
+                  ),
+                )
+              : SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  child: PrimaryButton(
+                    isWithWidget: true,
+                    onPressed: () async {
+                      await ref
+                          .read(bookInfoPageViewModelProvider(book).notifier)
+                          .deleteBook();
+                    },
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        FaIcon(FontAwesomeIcons.heartCircleMinus),
+                        SizedBox(
+                          width: kDefaultSize * 2,
+                        ),
+                        Text('この本のSELECTを取り消す'),
+                      ],
+                    ),
+                  ),
+                ),
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerFloat,
+        );
+      },
       error: (error, stackTrace) => ErrorPage(error: error),
       loading: () => const Center(child: CircularProgressIndicator()),
     );

@@ -8,6 +8,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class BookInfoTile extends StatelessWidget {
   const BookInfoTile({
+    required this.share,
     this.title,
     this.author,
     this.imageUrl,
@@ -27,6 +28,7 @@ class BookInfoTile extends StatelessWidget {
   final String? itemCaption;
   final String? publisherName;
   final String? affiUrl;
+  final VoidCallback? share;
 
   @override
   Widget build(BuildContext context) => GrassContainer(
@@ -60,8 +62,10 @@ class BookInfoTile extends StatelessWidget {
                               style: Styles.bookAuthorStyle,
                             ),
                           ),
+
+                          /// 共有ボタン
                           IconButton(
-                            onPressed: () {},
+                            onPressed: share,
                             icon: const Icon(
                               Icons.ios_share,
                               color: ColorName.greyBase,
