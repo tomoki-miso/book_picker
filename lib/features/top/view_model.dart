@@ -167,7 +167,7 @@ class TopPageViewModel extends _$TopPageViewModel {
       final List<Book> fetchedBooks =
           await fetchedBookRepo.fetchBooksListByKeword(keyword);
       fetchedBooks.shuffle();
-      book = fetchedBooks.first;
+      book = fetchedBooks.firstOrNull;
 
       // 1秒待機
       await Future.delayed(const Duration(seconds: 1));

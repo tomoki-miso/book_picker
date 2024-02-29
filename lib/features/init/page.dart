@@ -22,10 +22,10 @@ class HomePage extends ConsumerWidget {
           return const DLNewVersion();
 
           /// バージョンに問題なければ認証情報を確認
-        } else if (user != null) {
-          return const BottomNav();
-        } else {
+        } else if (user == null) {
           return const SignInConfirmPage();
+        } else {
+          return const BottomNav();
         }
       },
       error: (error, stackTrace) => ErrorPage(error: error),
