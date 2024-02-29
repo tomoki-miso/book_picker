@@ -14,7 +14,7 @@ CollectionReference<Book> userStoringBookFirestore(
         .collection('user')
         .doc(
           ref.read(firebaseAuthProvider).currentUser!.uid,
-        ) // TODO:カレントユーザーに変更
+        )
         .collection('user_storing_book')
         .withConverter<Book>(
           fromFirestore: (snapshot, _) => Book.fromJson(snapshot.data()!),
