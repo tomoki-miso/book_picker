@@ -6,8 +6,10 @@ import 'package:book_picker/components/original_app_bar.dart';
 import 'package:book_picker/components/primary_button.dart';
 import 'package:book_picker/domain/user/domain.dart';
 import 'package:book_picker/features/my_accocunt_page/view_model.dart';
+import 'package:book_picker/features/top/components/top_delete_account_alert_dialog.dart';
 import 'package:book_picker/styles/styles.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -161,11 +163,17 @@ class MyAccountPage extends ConsumerWidget {
                   child: PrimaryButton(
                     isWithWidget: true,
                     height: MediaQuery.of(context).size.height * 0.05,
-                    onPressed: () {},
+                    onPressed: () async {
+                      await showCupertinoDialog(
+                        context: context,
+                        builder: (context) =>
+                            const TopDeleteAccountAlertDialog(),
+                      );
+                    },
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.abc),
+                        Icon(Icons.delete_forever),
                         SizedBox(
                           width: kDefaultSize * 2,
                         ),
