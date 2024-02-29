@@ -17,11 +17,11 @@ class InfoSelectBookFloatingButton extends StatelessWidget {
           child: const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              FaIcon(FontAwesomeIcons.heartCircleMinus),
+              FaIcon(FontAwesomeIcons.heartCirclePlus),
               SizedBox(
                 width: kDefaultSize * 2,
               ),
-              Text('この本のSELECTを取り消す'),
+              Text('この本をSELECT！'),
             ],
           ),
         ),

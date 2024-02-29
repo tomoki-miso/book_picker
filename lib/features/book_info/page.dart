@@ -65,7 +65,7 @@ class BookInfoPage extends ConsumerWidget {
                   onPressed: () async {
                     await ref
                         .read(bookInfoPageViewModelProvider(book).notifier)
-                        .deleteBook();
+                        .storeBook();
                   },
                 )
               :
