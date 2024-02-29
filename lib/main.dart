@@ -1,13 +1,14 @@
-import 'package:book_picker/features/auth/sign_in_confirm.dart';
 import 'package:book_picker/features/init/page.dart';
 import 'package:book_picker/firebase/firebase_options.dart';
 import 'package:book_picker/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await MobileAds.instance.initialize();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

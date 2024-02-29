@@ -7,6 +7,7 @@ import 'package:book_picker/components/primary_button.dart';
 import 'package:book_picker/components/selected_books_list_tile.dart';
 import 'package:book_picker/domain/book/domain.dart';
 import 'package:book_picker/features/book_info/page.dart';
+import 'package:book_picker/features/search_books/components/goole_ad_part.dart';
 import 'package:book_picker/features/search_books/components/search_text_field.dart';
 import 'package:book_picker/features/search_books/search_type.dart';
 import 'package:book_picker/features/search_books/view_model.dart';
@@ -79,7 +80,7 @@ class SearchBooksPage extends ConsumerWidget {
                     ),
                   ),
                 )
-              else if (data.searchedBooks!.isEmpty)
+              else if (data.searchedBooks == null)
                 Padding(
                   padding: const EdgeInsets.all(kDefaultSize * 2)
                       .copyWith(top: kDefaultPadding * 2),
@@ -106,30 +107,38 @@ class SearchBooksPage extends ConsumerWidget {
               else
                 Expanded(
                   child: ListView.builder(
-                    itemCount: data.searchedBooks!.length,
+                    itemCount: data.searchedBooks!.length +
+                        (data.searchedBooks!.length ~/ 5), // 広告用の追加数
                     itemBuilder: (context, index) {
-                      final Book bookData = data.searchedBooks![index];
-                      final bool isCanSelect =
-                          !data.userStoringBooks.contains(bookData.isbn);
-                      return SelectedBooksListTile(
-                        onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => BookInfoPage(
-                              book: bookData,
+                      if (index % 6 == 5) {
+                        // インデックスが5の倍数の場合に広告を挿入
+                        return SearchAdBanner(); // 広告ウィジェットを適切に置き換えてください
+                      } else {
+                        final int bookIndex =
+                            index - (index ~/ 6); // 広告用インデックスを除いたインデックスを計算
+                        final Book bookData = data.searchedBooks![bookIndex];
+                        final bool isCanSelect =
+                            !data.userStoringBooks.contains(bookData.isbn);
+                        return SelectedBooksListTile(
+                          onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => BookInfoPage(
+                                book: bookData,
+                              ),
                             ),
                           ),
-                        ),
-                        selectBook: () async {
-                          await ref
-                              .read(searchBookViewModelProvider.notifier)
-                              .storePickedBook(bookData);
-                        },
-                        isCanSelect: isCanSelect,
-                        title: bookData.title,
-                        author: bookData.author,
-                        imageUrl: bookData.imageUrl,
-                      );
+                          selectBook: () async {
+                            await ref
+                                .read(searchBookViewModelProvider.notifier)
+                                .storePickedBook(bookData);
+                          },
+                          isCanSelect: isCanSelect,
+                          title: bookData.title,
+                          author: bookData.author,
+                          imageUrl: bookData.imageUrl,
+                        );
+                      }
                     },
                   ),
                 ),
