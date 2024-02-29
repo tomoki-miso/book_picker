@@ -26,7 +26,7 @@ class TopFloatingActionButton extends ConsumerWidget {
                   await ref
                       .read(topPageViewModelProvider.notifier)
                       .getBookFromKeyword();
-                  ref.read(topPageViewModelProvider);
+                  // ref.read(topPageViewModelProvider);
                 },
                 child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -35,7 +35,7 @@ class TopFloatingActionButton extends ConsumerWidget {
                     SizedBox(
                       width: kDefaultSize * 2,
                     ),
-                    Text(' ブクピク！'),
+                    Text('ブクピク！'),
                   ],
                 ),
               )

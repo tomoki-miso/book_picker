@@ -19,6 +19,7 @@ class TopPageState with _$TopPageState {
     required List<AppAd> appAds,
     required UserInfoClass user,
     @Default(false) bool isLoading,
+    @Default(false) bool isStored,
     FetchedBook? fetchedBook,
     Book? todaysPickedBook,
   }) = _TopPageState;

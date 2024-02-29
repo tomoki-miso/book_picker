@@ -2,21 +2,25 @@ import 'package:badges/badges.dart' as badges;
 import 'package:book_picker/components/grass_container.dart';
 import 'package:book_picker/domain/book/domain.dart';
 import 'package:book_picker/features/book_info/page.dart';
+import 'package:book_picker/features/top/components/stored_notify_dialog.dart';
 import 'package:book_picker/features/top/view_model.dart';
 import 'package:book_picker/styles/colors.dart';
 import 'package:book_picker/styles/styles.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class PickedBookContainer extends ConsumerWidget {
   const PickedBookContainer({
+    required this.isStored,
     required this.todaysPickedBook,
     super.key,
   });
 
   final Book todaysPickedBook;
+  final bool isStored;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) => GestureDetector(
@@ -30,14 +34,27 @@ class PickedBookContainer extends ConsumerWidget {
         ),
         child: badges.Badge(
           badgeStyle: const badges.BadgeStyle(badgeColor: ColorName.skyBlue),
-          badgeContent: IconButton(
-            onPressed: () async =>
-                ref.read(topPageViewModelProvider.notifier).storePickedBook(),
-            icon: const FaIcon(
-              FontAwesomeIcons.heartCirclePlus,
-              color: ColorName.whiteBase,
-            ),
-          ),
+          badgeContent: !isStored
+              ? IconButton(
+                  onPressed: () async => ref
+                      .read(topPageViewModelProvider.notifier)
+                      .storePickedBook(),
+                  icon: const FaIcon(
+                    FontAwesomeIcons.heartCirclePlus,
+                    color: ColorName.whiteBase,
+                  ),
+                )
+              : IconButton(
+                  onPressed: () async {
+                    await showCupertinoDialog(
+                      context: context,
+                      builder: (context) => const StoredNotifyDialog(),
+                    );
+                  },
+                  icon: const Icon(
+                    Icons.check,
+                    color: ColorName.whiteBase,
+                  )),
           child: GrassContainer(
             colors: [
               ColorName.pickedBookGrass,

@@ -151,10 +151,13 @@ class TopPageViewModel extends _$TopPageViewModel {
 
   /// Keywordで適当な本を取り出す
   Future<Book> getBookFromKeyword() async {
+    print('aa');
     _updateLoading(true);
+    print(state.requireValue.isLoading);
     final Book book = await _getBook();
     await todaysPickedBookRepo.setTodaysBook(book);
     state = AsyncData(state.requireValue.copyWith(todaysPickedBook: book));
+    _updateIsStored(false);
     _updateLoading(false);
     return book;
   }
@@ -194,12 +197,16 @@ class TopPageViewModel extends _$TopPageViewModel {
 
   /// 本をアーカイブ（セレクト）
   Future<void> storePickedBook() async {
+    _updateIsStored(true);
     final bookData = state.requireValue.todaysPickedBook;
     // ユーザーの本と一般的な本をそれぞれ保存
     await userStoringBookRepo.storePickedBookUser(bookData!);
     await commonStoringBookRepo.storePickedBookCommon(bookData);
   }
 
-  void _updateLoading(bool isLoading) =>
-      state = AsyncData(state.requireValue.copyWith(isLoading: isLoading));
+  void _updateIsStored(bool isStored) =>
+      state = AsyncData(state.requireValue.copyWith(isStored: isStored));
+
+  void _updateLoading(bool isStored) =>
+      state = AsyncData(state.requireValue.copyWith(isLoading: isStored));
 }
