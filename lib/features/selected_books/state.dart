@@ -1,5 +1,5 @@
 import 'package:book_picker/domain/book/domain.dart';
-import 'package:book_picker/features/selected_books/bookListType.dart';
+import 'package:book_picker/features/selected_books/book_list_type.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 // 生成されるdartファイルを記述

@@ -1,5 +1,5 @@
 import 'package:book_picker/domain/book/domain.dart';
-import 'package:book_picker/features/selected_books/bookListType.dart';
+import 'package:book_picker/features/selected_books/book_list_type.dart';
 import 'package:book_picker/features/selected_books/state.dart';
 import 'package:book_picker/repository/common_storing_book/repository.dart';
 import 'package:book_picker/repository/keyword/repository.dart';
@@ -132,12 +132,13 @@ class SelectedBooksPageViewModel extends _$SelectedBooksPageViewModel {
                     )
                     .toList(),
               );
-          state = AsyncData(SelectedBooksPageState(
-            userStoringBooks: userStoringBooks,
-            bookListType: bookListType,
-            storingBooks: storingBooks,
-          ));
-          break;
+          state = AsyncData(
+            SelectedBooksPageState(
+              userStoringBooks: userStoringBooks,
+              bookListType: bookListType,
+              storingBooks: storingBooks,
+            ),
+          );
 
         case BookListType.recentStoredBooks:
           final List<Book> storingBooks = await commonStoringBookRepo
@@ -158,12 +159,13 @@ class SelectedBooksPageViewModel extends _$SelectedBooksPageViewModel {
                     )
                     .toList(),
               );
-          state = AsyncData(SelectedBooksPageState(
-            userStoringBooks: userStoringBooks,
-            bookListType: bookListType,
-            storingBooks: storingBooks,
-          ));
-          break;
+          state = AsyncData(
+            SelectedBooksPageState(
+              userStoringBooks: userStoringBooks,
+              bookListType: bookListType,
+              storingBooks: storingBooks,
+            ),
+          );
 
         case BookListType.userStoringBooks:
           final List<Book> storingBooks =
@@ -184,12 +186,13 @@ class SelectedBooksPageViewModel extends _$SelectedBooksPageViewModel {
                         )
                         .toList(),
                   );
-          state = AsyncData(SelectedBooksPageState(
-            userStoringBooks: userStoringBooks,
-            bookListType: bookListType,
-            storingBooks: storingBooks,
-          ));
-          break;
+          state = AsyncData(
+            SelectedBooksPageState(
+              userStoringBooks: userStoringBooks,
+              bookListType: bookListType,
+              storingBooks: storingBooks,
+            ),
+          );
       }
 
       _updateLoading(false); // ローディング状態を解除
@@ -200,7 +203,6 @@ class SelectedBooksPageViewModel extends _$SelectedBooksPageViewModel {
 
   /// 本を保存
   Future<void> storePickedBook(Book book) async {
-    print(state.requireValue.userStoringBooks);
     // ユーザーの本と一般的な本をそれぞれ保存
     await userStoringBookRepo.storePickedBookUser(book);
     await commonStoringBookRepo.storePickedBookCommon(book);
@@ -211,7 +213,6 @@ class SelectedBooksPageViewModel extends _$SelectedBooksPageViewModel {
     state = AsyncData(
       state.requireValue.copyWith(userStoringBooks: userStoringBook),
     );
-    print(state.requireValue.userStoringBooks);
   }
 
   void _updateLoading(bool isLoading) =>

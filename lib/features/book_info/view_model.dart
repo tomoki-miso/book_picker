@@ -82,6 +82,7 @@ class BookInfoPageViewModel extends _$BookInfoPageViewModel {
     final directory = await getApplicationDocumentsDirectory();
 
     final exportFile = File('${directory.path}/$text.png');
+    // ignore: avoid_slow_async_io
     if (!(await exportFile.exists())) {
       // ファイルが存在しない場合は作成します。
       await exportFile.create(recursive: true);

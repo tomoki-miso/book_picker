@@ -45,8 +45,7 @@ class TopPageViewModel extends _$TopPageViewModel {
       commonStoringBookOrderByTime: commonStoringBookOrderByTime,
       todaysPickedBook: todaysPickedBook,
     );
-    print(state);
-    print(state.commonStoringBookOrderByAmount);
+
     return state;
   }
 
@@ -151,9 +150,7 @@ class TopPageViewModel extends _$TopPageViewModel {
 
   /// Keywordで適当な本を取り出す
   Future<Book> getBookFromKeyword() async {
-    print('aa');
     _updateLoading(true);
-    print(state.requireValue.isLoading);
     final Book book = await _getBook();
     await todaysPickedBookRepo.setTodaysBook(book);
     state = AsyncData(state.requireValue.copyWith(todaysPickedBook: book));

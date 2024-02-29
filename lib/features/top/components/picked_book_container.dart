@@ -54,7 +54,8 @@ class PickedBookContainer extends ConsumerWidget {
                   icon: const Icon(
                     Icons.check,
                     color: ColorName.whiteBase,
-                  )),
+                  ),
+                ),
           child: GrassContainer(
             colors: [
               ColorName.pickedBookGrass,

@@ -1,4 +1,4 @@
-import 'package:book_picker/features/selected_books/bookListType.dart';
+import 'package:book_picker/features/selected_books/book_list_type.dart';
 import 'package:book_picker/features/selected_books/page.dart';
 import 'package:book_picker/features/top/page.dart';
 import 'package:book_picker/styles/colors.dart';

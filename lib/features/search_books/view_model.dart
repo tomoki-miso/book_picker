@@ -38,7 +38,6 @@ class SearchBookViewModel extends _$SearchBookViewModel {
     state = AsyncData(
       data.copyWith(keyword: data.searchWordController.text.trim()),
     );
-    print(data.keyword);
   }
 
   /// タイトルで検索
@@ -81,7 +80,6 @@ class SearchBookViewModel extends _$SearchBookViewModel {
   Future<bool> checkIsCanStoreBook(Book book) async {
     final List<String?> userStoredBooks =
         await userStoringBookRepo.getUserStoringBooksISBN();
-    print(userStoredBooks);
 
     if (userStoredBooks.contains(book.isbn)) {
       return false;
@@ -92,7 +90,6 @@ class SearchBookViewModel extends _$SearchBookViewModel {
 
   /// 本をアーカイブ（セレクト）
   Future<void> storePickedBook(Book book) async {
-    print(state.requireValue.userStoringBooks);
     // ユーザーの本と一般的な本をそれぞれ保存
     await userStoringBookRepo.storePickedBookUser(book);
     await commonStoringBookRepo.storePickedBookCommon(book);
@@ -103,6 +100,5 @@ class SearchBookViewModel extends _$SearchBookViewModel {
     state = AsyncData(
       state.requireValue.copyWith(userStoringBooks: userStoringBook),
     );
-    print(state.requireValue.userStoringBooks);
   }
 }

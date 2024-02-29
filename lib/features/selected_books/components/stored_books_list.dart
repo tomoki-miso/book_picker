@@ -1,7 +1,7 @@
 import 'package:book_picker/components/selected_books_list_tile.dart';
 import 'package:book_picker/domain/book/domain.dart';
 import 'package:book_picker/features/book_info/page.dart';
-import 'package:book_picker/features/selected_books/bookListType.dart';
+import 'package:book_picker/features/selected_books/book_list_type.dart';
 import 'package:book_picker/features/selected_books/components/goole_ad_part.dart';
 import 'package:book_picker/features/selected_books/view_model.dart';
 import 'package:flutter/material.dart';
@@ -9,8 +9,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
 class StoredBooksList extends ConsumerWidget {
-  const StoredBooksList(
-      {required this.data, required this.bookListType, super.key});
+  const StoredBooksList({
+    required this.data,
+    required this.bookListType,
+    super.key,
+  });
 
   final data;
   final BookListType bookListType;

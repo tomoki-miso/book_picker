@@ -1,7 +1,7 @@
 import 'package:book_picker/components/back_ground.dart';
 import 'package:book_picker/components/error_page.dart';
 import 'package:book_picker/components/loading.dart';
-import 'package:book_picker/features/selected_books/bookListType.dart';
+import 'package:book_picker/features/selected_books/book_list_type.dart';
 import 'package:book_picker/features/selected_books/components/selected_books_appbar.dart';
 import 'package:book_picker/features/selected_books/components/stored_books_list.dart';
 import 'package:book_picker/features/selected_books/components/when_storing_book_is_null.dart';

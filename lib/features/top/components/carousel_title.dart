@@ -2,8 +2,11 @@ import 'package:book_picker/styles/styles.dart';
 import 'package:flutter/material.dart';
 
 class Carouseltitle extends StatelessWidget {
-  const Carouseltitle(
-      {required this.onPressed, required this.title, super.key});
+  const Carouseltitle({
+    required this.onPressed,
+    required this.title,
+    super.key,
+  });
 
   final String title;
   final VoidCallback? onPressed;

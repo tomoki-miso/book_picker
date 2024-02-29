@@ -32,7 +32,6 @@ class UserStoringBookRepo extends _$UserStoringBookRepo {
   void build() {}
 
   /// 本の保存
-  /// TODO:トランザクション検討
 
   Future<void> storePickedBookUser(Book userStoringBook) async {
     await db.runTransaction((t) async {

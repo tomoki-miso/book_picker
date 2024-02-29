@@ -28,9 +28,7 @@ class InitModel extends _$InitModel {
     } else {
       recomemdedVersion = '';
     }
-    final state = InitState(
-        currentVersion: version, recomemdedVersion: recomemdedVersion);
-    print(state);
+
     return InitState(
       currentVersion: version,
       recomemdedVersion: recomemdedVersion,
@@ -51,10 +49,8 @@ class InitModel extends _$InitModel {
     }
 
     if (await canLaunchUrlString(url)) {
-      print(url);
       await launchUrlString(url);
     } else {
-      print(url);
       throw 'Could not launch $url';
     }
   }

@@ -3,7 +3,7 @@ import 'package:book_picker/components/error_page.dart';
 import 'package:book_picker/components/loading.dart';
 import 'package:book_picker/components/original_app_bar.dart';
 import 'package:book_picker/features/my_accocunt_page/page.dart';
-import 'package:book_picker/features/selected_books/bookListType.dart';
+import 'package:book_picker/features/selected_books/book_list_type.dart';
 import 'package:book_picker/features/selected_books/page.dart';
 import 'package:book_picker/features/top/components/app_ad.dart';
 import 'package:book_picker/features/top/components/carousel_title.dart';

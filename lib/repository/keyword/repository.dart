@@ -89,7 +89,7 @@ class KeywordRepo extends _$KeywordRepo {
     // ignore: cascade_invocations
     keywords.shuffle();
     final String keyword = keywords.first;
-    print(keyword);
+
     return keyword;
   }
 

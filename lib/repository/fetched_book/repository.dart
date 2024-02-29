@@ -46,7 +46,6 @@ class FetchedBookRepo extends _$FetchedBookRepo {
     final url = Uri.parse(
       '$apiUrl?format=json&title=$keyword&affiliateId=$affId&applicationId=$appId',
     );
-    print(url);
     try {
       final response = await dio.getUri(url);
       final data = response.data;
@@ -76,7 +75,6 @@ class FetchedBookRepo extends _$FetchedBookRepo {
     final url = Uri.parse(
       '$apiUrl?format=json&author=$keyword&affiliateId=$affId&applicationId=$appId',
     );
-    print(url);
     try {
       final response = await dio.getUri(url);
       final data = response.data;

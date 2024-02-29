@@ -26,7 +26,7 @@ class SearchedBooksList extends ConsumerWidget {
             final bool isCanSelect =
                 !data.userStoringBooks.contains(bookData.isbn);
             return SelectedBooksListTile(
-              onTap: () => Navigator.push(
+              onTap: () async => Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => BookInfoPage(
