@@ -29,8 +29,6 @@ class UserInfoRepo extends _$UserInfoRepo {
           .doc(ref.read(firebaseAuthProvider).currentUser!.uid)
           .get()
           .then((value) {
-        print(value.data());
-        // TODO:現在のユーザーに変更
         if (value.data() == null) {
           final String user = ref.read(firebaseAuthProvider).currentUser!.uid;
           throw ArgumentError('$userデータが存在しません');
