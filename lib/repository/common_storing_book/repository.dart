@@ -28,24 +28,29 @@ class CommonStoringBookRepo extends _$CommonStoringBookRepo {
   void build() {}
 
   /// common_storing_bookの追加
-  /// TODO:トランザクションにして、数が増えるか検証
-  Future<void> storePickedBookCommon(
-    Book commonStoringBook,
-  ) async {
-    try {
-      await collection.doc(commonStoringBook.isbn).set(commonStoringBook);
 
-      // 保存した本の時間を更新
-      await collection.doc(commonStoringBook.isbn).update({
-        'storedTime': FieldValue.serverTimestamp(),
-      });
+  Future<void> storePickedBookCommon(Book commonStoringBook) async {
+    await db.runTransaction((t) async {
+      final DocumentReference commonStoringBookRef =
+          db.collection('common_storing_book').doc(commonStoringBook.isbn);
 
-      await collection.doc(commonStoringBook.isbn).update({
-        'numberOfStored': FieldValue.increment(1),
-      });
-    } catch (e) {
-      print('Error storing picked book: $e');
-    }
+      final DocumentSnapshot docSnapshot = await commonStoringBookRef.get();
+
+      if (docSnapshot.exists) {
+        // ドキュメントが存在する場合の処理
+        t.update(commonStoringBookRef, {
+          'storedTime': FieldValue.serverTimestamp(),
+          'numberOfStored': FieldValue.increment(1),
+        });
+      } else {
+        // ドキュメントが存在しない場合の処理
+        t.set(commonStoringBookRef, {
+          ...commonStoringBook.toJson(),
+          'storedTime': FieldValue.serverTimestamp(),
+          'numberOfStored': 1,
+        });
+      }
+    });
   }
 
   Future<void> deletePickedBookCommon(

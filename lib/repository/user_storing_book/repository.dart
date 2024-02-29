@@ -33,17 +33,26 @@ class UserStoringBookRepo extends _$UserStoringBookRepo {
 
   /// 本の保存
   /// TODO:トランザクション検討
-  Future<void> storePickedBookUser(Book userStoringBook) async {
-    try {
-      await collection.doc(userStoringBook.isbn).set(userStoringBook);
 
-      // 保存した本の時間を更新
-      await collection.doc(userStoringBook.isbn).update({
-        'storedTime': FieldValue.serverTimestamp(),
-      });
-    } catch (e) {
-      print('Error storing picked book: $e');
-    }
+  Future<void> storePickedBookUser(Book userStoringBook) async {
+    await db.runTransaction((t) async {
+      final DocumentReference userStoringBookRef = db
+          .collection('user')
+          .doc(
+            ref.read(firebaseAuthProvider).currentUser!.uid,
+          )
+          .collection('user_storing_book')
+          .doc(userStoringBook.isbn);
+
+      t
+        ..set(
+          userStoringBookRef,
+          userStoringBook.toJson(),
+        )
+        ..update(userStoringBookRef, {
+          'storedTime': FieldValue.serverTimestamp(),
+        });
+    });
   }
 
   Future<void> deletePickedBookUser(Book userStoringBook) async {
