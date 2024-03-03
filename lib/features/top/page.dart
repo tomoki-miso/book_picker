@@ -10,7 +10,6 @@ import 'package:book_picker/features/top/components/carousel_title.dart';
 import 'package:book_picker/features/top/components/goole_ad_part.dart';
 import 'package:book_picker/features/top/components/picked_book_container.dart';
 import 'package:book_picker/features/top/components/popular_books_carousel.dart';
-import 'package:book_picker/features/top/components/recent_selected_carousel.dart';
 import 'package:book_picker/features/top/components/searching_book_indicator.dart';
 import 'package:book_picker/features/top/components/top_drawer_part.dart';
 import 'package:book_picker/features/top/components/top_floating_action_button.dart';
@@ -39,7 +38,7 @@ class TopPage extends ConsumerWidget {
           child: Stack(
             children: [
               ListView(
-                physics: const AlwaysScrollableScrollPhysics(),
+                cacheExtent: 100,
                 children: [
                   const SizedBox(
                     height: kDefaultPadding,
@@ -82,21 +81,21 @@ class TopPage extends ConsumerWidget {
                   // カルーセル
                   PopularaBoooksCarousel(data: data),
 
-                  /// 最近Selectされた本
-                  Carouseltitle(
-                    onPressed: () async => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const SelectedBooksPage(
-                          bookListType: BookListType.recentStoredBooks,
-                        ),
-                      ),
-                    ),
-                    title: '最近SELECTされた本',
-                  ),
+                  // /// 最近Selectされた本
+                  // Carouseltitle(
+                  //   onPressed: () async => Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //       builder: (context) => const SelectedBooksPage(
+                  //         bookListType: BookListType.recentStoredBooks,
+                  //       ),
+                  //     ),
+                  //   ),
+                  //   title: '最近SELECTされた本',
+                  // ),
 
-                  /// カルーセル
-                  RecentSelectedCarousel(data: data),
+                  // /// カルーセル
+                  // RecentSelectedCarousel(data: data),
 
                   /// アプリ宣伝
                   const Padding(

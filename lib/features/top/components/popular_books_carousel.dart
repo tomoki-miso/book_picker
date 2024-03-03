@@ -14,13 +14,12 @@ class PopularaBoooksCarousel extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) => CarouselSlider.builder(
         options: CarouselOptions(
+          enableInfiniteScroll: false,
+          initialPage: 1,
           height: MediaQuery.of(context).size.height * 0.25,
-          autoPlay: true,
-          autoPlayInterval: const Duration(seconds: 8),
-          autoPlayAnimationDuration: const Duration(seconds: 8),
           viewportFraction: 0.42,
         ),
-        itemCount: data.commonStoringBookOrderByAmount.length,
+        itemCount: 10,
         itemBuilder: (context, index, realIndex) => GrassCarouselItem(
           book: data.commonStoringBookOrderByAmount[index],
         ),

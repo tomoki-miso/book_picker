@@ -49,7 +49,7 @@ class BookInfoPageViewModel extends _$BookInfoPageViewModel {
   /// ユーザーと全体が本をそれぞれ保存
   Future<void> storeBook() async {
     final bookData = state.requireValue.book;
-    await userStoringBookRepo.deletePickedBookUser(bookData);
+    await userStoringBookRepo.storePickedBookUser(bookData);
     await commonStoringBookRepo.storePickedBookCommon(bookData);
     state = AsyncData(state.requireValue.copyWith(isCanStoreBook: false));
   }

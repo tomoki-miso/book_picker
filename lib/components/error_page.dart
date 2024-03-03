@@ -26,8 +26,14 @@ class ErrorPage extends StatelessWidget {
 
               /// TODO:リリース前に削除
               ElevatedButton(
-                onPressed: () {
-                  print(error);
+                onPressed: () async {
+                  await showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                      title: const Text('エラー'),
+                      content: Text(error.toString()),
+                    ),
+                  );
                 },
                 child: const Text('エラーチェック'),
               ),

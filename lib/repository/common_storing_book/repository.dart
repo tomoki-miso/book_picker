@@ -93,11 +93,35 @@ class CommonStoringBookRepo extends _$CommonStoringBookRepo {
     return commonStoringBookOrderByAmount;
   }
 
+  /// 保存数順に１０番目まで取り出し
+  Future<List<Book>> getCommonStoringBookOrderByAmountTopTen() async {
+    final List<Book> commonStoringBookOrderByAmount = [
+      ...await collection
+          .orderBy('numberOfStored')
+          .limit(10)
+          .get()
+          .then((value) => value.docs.map((e) => e.data()).toList()),
+    ];
+    return commonStoringBookOrderByAmount;
+  }
+
   /// 保存が最近の順に取り出し
   Future<List<Book>> getCommonStoringBookOrderByTime() async {
     final List<Book> commonStoringBookOrderByTime = [
       ...await collection
           .orderBy('storedTime')
+          .get()
+          .then((value) => value.docs.map((e) => e.data()).toList()),
+    ];
+    return commonStoringBookOrderByTime;
+  }
+
+  /// 保存が最近の順に取り出し
+  Future<List<Book>> getCommonStoringBookOrderByTimeTop10() async {
+    final List<Book> commonStoringBookOrderByTime = [
+      ...await collection
+          .orderBy('storedTime')
+          .limit(10)
           .get()
           .then((value) => value.docs.map((e) => e.data()).toList()),
     ];

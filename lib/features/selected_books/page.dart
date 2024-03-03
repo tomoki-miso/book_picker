@@ -36,10 +36,8 @@ class SelectedBooksPage extends ConsumerWidget {
                 /// 本が保存されていないとき
                 ? StoringBookIsNull(
                     reloadPage: () async => ref
-                        .read(
-                          selectedBooksPageViewModelProvider(bookListType)
-                              .notifier,
-                        )
+                        .read(selectedBooksPageViewModelProvider(bookListType)
+                            .notifier)
                         .refreshBookList(bookListType),
                   )
                 : RefreshIndicator(

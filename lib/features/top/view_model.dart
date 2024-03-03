@@ -30,9 +30,9 @@ class TopPageViewModel extends _$TopPageViewModel {
   @override
   FutureOr<TopPageState> build() async {
     final List<Book> commonStoringBookOrderByAmount =
-        await commonStoringBookRepo.getCommonStoringBookOrderByAmount();
+        await commonStoringBookRepo.getCommonStoringBookOrderByAmountTopTen();
     final List<Book> commonStoringBookOrderByTime =
-        await commonStoringBookRepo.getCommonStoringBookOrderByTime();
+        await commonStoringBookRepo.getCommonStoringBookOrderByTimeTop10();
 
     final List<AppAd> appAds = await appAdRepo.getAppAds();
     final UserInfoClass userInfo = await userInfoRepo.getUserInfo();

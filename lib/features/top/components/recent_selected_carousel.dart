@@ -12,17 +12,17 @@ class RecentSelectedCarousel extends ConsumerWidget {
   final data;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) => CarouselSlider.builder(
-        options: CarouselOptions(
-          height: MediaQuery.of(context).size.height * 0.25,
-          autoPlay: true,
-          autoPlayInterval: const Duration(seconds: 8),
-          autoPlayAnimationDuration: const Duration(seconds: 8),
-          viewportFraction: 0.42,
-        ),
-        itemCount: data.commonStoringBookOrderByTime.length,
-        itemBuilder: (context, index, realIndex) => GrassCarouselItem(
-          book: data.commonStoringBookOrderByTime[index],
+  Widget build(BuildContext context, WidgetRef ref) => SizedBox(
+        height: MediaQuery.of(context).size.height * 0.2,
+        child: CarouselSlider.builder(
+          options: CarouselOptions(
+            height: MediaQuery.of(context).size.height * 0.25,
+            viewportFraction: 0.42,
+          ),
+          itemCount: 10,
+          itemBuilder: (context, index, realIndex) => GrassCarouselItem(
+            book: data.commonStoringBookOrderByTime[index],
+          ),
         ),
       );
 }

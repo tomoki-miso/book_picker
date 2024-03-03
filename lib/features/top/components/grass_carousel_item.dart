@@ -21,6 +21,7 @@ class GrassCarouselItem extends StatelessWidget {
         ),
         child: GrassContainer(
           width: 0.4,
+          height: 0.5,
           child: Column(
             children: [
               const SizedBox(

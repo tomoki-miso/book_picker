@@ -14,6 +14,7 @@ class SelectedBooksListTile extends StatelessWidget {
     this.title,
     this.author,
     this.day,
+    this.displayStoredTime = true,
     super.key,
   });
 
@@ -24,6 +25,7 @@ class SelectedBooksListTile extends StatelessWidget {
   final String? imageUrl;
   final String? author;
   final String? day;
+  final bool displayStoredTime;
 
   @override
   Widget build(BuildContext context) => GestureDetector(
@@ -65,21 +67,24 @@ class SelectedBooksListTile extends StatelessWidget {
                     const SizedBox(
                       height: kDefaultPadding,
                     ),
-                    Row(
-                      children: [
-                        const Text(
-                          'Selectした日',
-                          style: Styles.greyDefaultBoldStyle,
-                        ),
-                        const SizedBox(
-                          width: kDefaultSize * 2,
-                        ),
-                        Text(
-                          day ?? '',
-                          style: Styles.defaultStyle,
-                        ),
-                      ],
-                    ),
+                    if (displayStoredTime)
+                      Row(
+                        children: [
+                          const Text(
+                            'Selectした日',
+                            style: Styles.greyDefaultBoldStyle,
+                          ),
+                          const SizedBox(
+                            width: kDefaultSize * 2,
+                          ),
+                          Text(
+                            day ?? '',
+                            style: Styles.defaultStyle,
+                          ),
+                        ],
+                      )
+                    else
+                      const SizedBox(),
                   ],
                 ),
               ),
