@@ -1,31 +1,59 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
-class TopAdBanner extends StatelessWidget {
-  TopAdBanner({
-    required this.index,
-    super.key,
-  });
+class AdaptiveAdBanner extends StatelessWidget {
+  const AdaptiveAdBanner({super.key, this.onLoaded});
 
-  final int index;
-
-  final AdManagerBannerAd myBanner = AdManagerBannerAd(
-    adUnitId: 'ca-app-pub-2209028789060457/3363746469', //todo: リリース前に本物に変更
-    sizes: [AdSize.mediumRectangle],
-    request: const AdManagerAdRequest(),
-    listener: AdManagerBannerAdListener(),
-  );
+  final VoidCallback? onLoaded;
 
   @override
   Widget build(BuildContext context) {
-    myBanner.load();
-    final AdWidget adWidget = AdWidget(ad: myBanner);
-    return Align(
-      child: Container(
-        width: myBanner.sizes[index].width.toDouble(),
-        height: myBanner.sizes[index].height.toDouble(),
-        alignment: Alignment.center,
-        child: adWidget,
+    const adUnitId = 'ca-app-pub-2209028789060457/3363746469';
+    return LayoutBuilder(
+      builder: (context, constraint) => HookBuilder(
+        builder: (context) {
+          final bannerLoaded = useState(false);
+          final bannerAd = useFuture(
+            useMemoized(
+              () async => BannerAd(
+                size: AdSize.mediumRectangle,
+                adUnitId: adUnitId,
+                listener: BannerAdListener(
+                  onAdFailedToLoad: (ad, error) {
+                    ad.dispose();
+                    bannerLoaded.value = false;
+                  },
+                  onAdLoaded: (ad) {
+                    bannerLoaded.value = true;
+                    onLoaded?.call();
+                  },
+                ),
+                request: const AdRequest(),
+              ),
+            ),
+          ).data;
+
+          if (bannerAd == null) {
+            return const SizedBox.shrink();
+          }
+
+          useEffect(
+            () {
+              bannerAd.load();
+              return () async => await bannerAd.dispose();
+            },
+            [bannerAd],
+          );
+
+          return bannerLoaded.value
+              ? SizedBox(
+                  width: bannerAd.size.width.toDouble(),
+                  height: bannerAd.size.height.toDouble(),
+                  child: AdWidget(ad: bannerAd),
+                )
+              : const SizedBox.shrink();
+        },
       ),
     );
   }

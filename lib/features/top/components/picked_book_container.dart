@@ -57,12 +57,8 @@ class PickedBookContainer extends ConsumerWidget {
                   ),
                 ),
           child: GrassContainer(
-            colors: [
-              ColorName.pickedBookGrass,
-              ColorName.pickedBookGrass,
-            ],
             width: 0.9,
-            height: 0.4,
+            height: 0.43,
             child: Column(
               children: [
                 const SizedBox(
@@ -127,24 +123,26 @@ class PickedBookContainer extends ConsumerWidget {
                       const SizedBox(
                         width: kDefaultSize * 2,
                       ),
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.42,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              '${todaysPickedBook.itemPrice}円',
-                              style: Styles.defaultStyle,
-                            ),
-                            const SizedBox(
-                              height: kDefaultSize * 2,
-                            ),
-                            Text(
-                              todaysPickedBook.itemCaption ?? '',
-                              style: Styles.defaultStyle,
-                              maxLines: 10,
-                            ),
-                          ],
+                      Expanded(
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.42,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '${todaysPickedBook.itemPrice}円',
+                                style: Styles.defaultStyle,
+                              ),
+                              const SizedBox(
+                                height: kDefaultSize * 2,
+                              ),
+                              Text(
+                                todaysPickedBook.itemCaption ?? '',
+                                style: Styles.defaultStyle,
+                                maxLines: 10,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],

@@ -16,6 +16,7 @@ class RecentSelectedCarousel extends ConsumerWidget {
         height: MediaQuery.of(context).size.height * 0.2,
         child: CarouselSlider.builder(
           options: CarouselOptions(
+            autoPlay: true,
             height: MediaQuery.of(context).size.height * 0.25,
             viewportFraction: 0.42,
           ),

@@ -9,10 +9,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class TopFloatingActionButton extends ConsumerWidget {
   const TopFloatingActionButton({
     required this.isLoading,
+    required this.controller,
     super.key,
   });
 
   final bool isLoading;
+  final ScrollController controller;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) => SizedBox(
@@ -23,6 +25,11 @@ class TopFloatingActionButton extends ConsumerWidget {
                 foregroundColor: ColorName.whiteBase,
                 isWithWidget: true,
                 onPressed: () async {
+                  await controller.animateTo(
+                    0,
+                    duration: const Duration(milliseconds: 5),
+                    curve: Curves.bounceInOut,
+                  );
                   await ref
                       .read(topPageViewModelProvider.notifier)
                       .getBookFromKeyword();
