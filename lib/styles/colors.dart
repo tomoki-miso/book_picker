@@ -7,7 +7,7 @@ class ColorName {
 
   /// SkyBlue
   static const Color skyBlue = Color(0xFF68D1FE);
-  static Color skyBlueSec = const Color(0xFF4DEAFF).withOpacity(0.4);
+  static Color skyBlueSec = const Color.fromARGB(172, 199, 249, 255);
 
   /// Black
   static const Color blackBase = Color(0xFF2E2E2E);
@@ -16,9 +16,9 @@ class ColorName {
   static const Color whiteBase = Color(0xFFFFFFFF);
 
   /// grass
-  static Color grassWhiteStart = const Color(0xFFFFFFFF).withOpacity(0.3);
-  static Color grassWhiteEnd = const Color(0xFFFFFFFF).withOpacity(0.3);
-  static Color pickedBookGrass = const Color(0xFFFFFFFF).withOpacity(0.4);
+  static Color grassWhiteStart = const Color.fromARGB(190, 255, 255, 255);
+  static Color grassWhiteEnd = const Color.fromARGB(78, 255, 255, 255);
+  static Color pickedBookGrass = const Color.fromARGB(95, 255, 255, 255);
 
   /// Garadation
   static const Color gradationStart = Color(0xFF3C3ABF);
