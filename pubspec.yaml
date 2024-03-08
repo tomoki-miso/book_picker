@@ -1,7 +1,7 @@
 name: book_picker
 description: "A new Flutter project."
 publish_to: "none"
-version: 0.1.0
+version: 1.0.0
 
 environment:
   sdk: ">=3.2.3 <4.0.0"
@@ -41,6 +41,8 @@ dependencies:
   path_provider: ^2.1.2
   flutter_launcher_icons: ^0.13.1
   collection: ^1.18.0
+  blurrycontainer: ^1.0.2
+  flutter_hooks: ^0.20.5
 
 dev_dependencies:
   flutter_test:
