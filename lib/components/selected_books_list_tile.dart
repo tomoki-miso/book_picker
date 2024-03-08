@@ -32,7 +32,7 @@ class SelectedBooksListTile extends StatelessWidget {
         onTap: onTap,
         child: GrassContainer(
           width: 1,
-          height: 0.15,
+          height: 0.16,
           child: Row(
             children: [
               const SizedBox(

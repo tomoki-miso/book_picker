@@ -1,28 +1,59 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class ListAdBanner extends StatelessWidget {
-  ListAdBanner({
-    super.key,
-  });
+  const ListAdBanner({super.key, this.onLoaded});
 
-  final AdManagerBannerAd myBanner = AdManagerBannerAd(
-    adUnitId: 'ca-app-pub-2209028789060457/8376771120', //todo: リリース前に本物に変更
-    sizes: [AdSize.banner],
-    request: const AdManagerAdRequest(),
-    listener: AdManagerBannerAdListener(),
-  );
+  final VoidCallback? onLoaded;
 
   @override
   Widget build(BuildContext context) {
-    myBanner.load();
-    final AdWidget adWidget = AdWidget(ad: myBanner);
-    return Align(
-      child: Container(
-        width: myBanner.sizes[0].width.toDouble(),
-        height: myBanner.sizes[0].height.toDouble(),
-        alignment: Alignment.center,
-        child: adWidget,
+    const adUnitId = 'ca-app-pub-2209028789060457/8376771120';
+    return LayoutBuilder(
+      builder: (context, constraint) => HookBuilder(
+        builder: (context) {
+          final bannerLoaded = useState(false);
+          final bannerAd = useFuture(
+            useMemoized(
+              () async => BannerAd(
+                size: AdSize.banner,
+                adUnitId: adUnitId,
+                listener: BannerAdListener(
+                  onAdFailedToLoad: (ad, error) {
+                    ad.dispose();
+                    bannerLoaded.value = false;
+                  },
+                  onAdLoaded: (ad) {
+                    bannerLoaded.value = true;
+                    onLoaded?.call();
+                  },
+                ),
+                request: const AdRequest(),
+              ),
+            ),
+          ).data;
+
+          if (bannerAd == null) {
+            return const SizedBox.shrink();
+          }
+
+          useEffect(
+            () {
+              bannerAd.load();
+              return () async => await bannerAd.dispose();
+            },
+            [bannerAd],
+          );
+
+          return bannerLoaded.value
+              ? SizedBox(
+                  width: bannerAd.size.width.toDouble(),
+                  height: bannerAd.size.height.toDouble(),
+                  child: AdWidget(ad: bannerAd),
+                )
+              : const SizedBox.shrink();
+        },
       ),
     );
   }

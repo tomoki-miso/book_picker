@@ -12,7 +12,7 @@ class BookIsNull extends StatelessWidget {
             .copyWith(top: kDefaultPadding * 2),
         child: GrassContainer(
           width: 1,
-          height: 0.4,
+          height: 0.45,
           child: Column(
             children: [
               const SizedBox(

@@ -32,10 +32,6 @@ class BookInfoTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => GrassContainer(
-        colors: [
-          ColorName.pickedBookGrass,
-          ColorName.pickedBookGrass,
-        ],
         child: ListView(
           children: [
             Column(
