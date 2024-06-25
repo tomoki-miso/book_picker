@@ -20,13 +20,18 @@ Book _$BookFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Book {
+  String? get isbn => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
   String? get author => throw _privateConstructorUsedError;
   String? get itemCaption => throw _privateConstructorUsedError;
   int? get itemPrice => throw _privateConstructorUsedError;
-  String? get largeImageUrl => throw _privateConstructorUsedError;
+  String? get imageUrl => throw _privateConstructorUsedError;
   String? get mediumImageUrl => throw _privateConstructorUsedError;
   String? get publisherName => throw _privateConstructorUsedError;
+  String? get affiUrl => throw _privateConstructorUsedError;
+  int? get numberOfStored => throw _privateConstructorUsedError;
+  @TimestampConverter()
+  DateTime? get storedTime => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,13 +44,17 @@ abstract class $BookCopyWith<$Res> {
       _$BookCopyWithImpl<$Res, Book>;
   @useResult
   $Res call(
-      {String? title,
+      {String? isbn,
+      String? title,
       String? author,
       String? itemCaption,
       int? itemPrice,
-      String? largeImageUrl,
+      String? imageUrl,
       String? mediumImageUrl,
-      String? publisherName});
+      String? publisherName,
+      String? affiUrl,
+      int? numberOfStored,
+      @TimestampConverter() DateTime? storedTime});
 }
 
 /// @nodoc
@@ -61,15 +70,23 @@ class _$BookCopyWithImpl<$Res, $Val extends Book>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? isbn = freezed,
     Object? title = freezed,
     Object? author = freezed,
     Object? itemCaption = freezed,
     Object? itemPrice = freezed,
-    Object? largeImageUrl = freezed,
+    Object? imageUrl = freezed,
     Object? mediumImageUrl = freezed,
     Object? publisherName = freezed,
+    Object? affiUrl = freezed,
+    Object? numberOfStored = freezed,
+    Object? storedTime = freezed,
   }) {
     return _then(_value.copyWith(
+      isbn: freezed == isbn
+          ? _value.isbn
+          : isbn // ignore: cast_nullable_to_non_nullable
+              as String?,
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -86,9 +103,9 @@ class _$BookCopyWithImpl<$Res, $Val extends Book>
           ? _value.itemPrice
           : itemPrice // ignore: cast_nullable_to_non_nullable
               as int?,
-      largeImageUrl: freezed == largeImageUrl
-          ? _value.largeImageUrl
-          : largeImageUrl // ignore: cast_nullable_to_non_nullable
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
       mediumImageUrl: freezed == mediumImageUrl
           ? _value.mediumImageUrl
@@ -98,6 +115,18 @@ class _$BookCopyWithImpl<$Res, $Val extends Book>
           ? _value.publisherName
           : publisherName // ignore: cast_nullable_to_non_nullable
               as String?,
+      affiUrl: freezed == affiUrl
+          ? _value.affiUrl
+          : affiUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      numberOfStored: freezed == numberOfStored
+          ? _value.numberOfStored
+          : numberOfStored // ignore: cast_nullable_to_non_nullable
+              as int?,
+      storedTime: freezed == storedTime
+          ? _value.storedTime
+          : storedTime // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ) as $Val);
   }
 }
@@ -110,13 +139,17 @@ abstract class _$$BookImplCopyWith<$Res> implements $BookCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String? title,
+      {String? isbn,
+      String? title,
       String? author,
       String? itemCaption,
       int? itemPrice,
-      String? largeImageUrl,
+      String? imageUrl,
       String? mediumImageUrl,
-      String? publisherName});
+      String? publisherName,
+      String? affiUrl,
+      int? numberOfStored,
+      @TimestampConverter() DateTime? storedTime});
 }
 
 /// @nodoc
@@ -129,15 +162,23 @@ class __$$BookImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? isbn = freezed,
     Object? title = freezed,
     Object? author = freezed,
     Object? itemCaption = freezed,
     Object? itemPrice = freezed,
-    Object? largeImageUrl = freezed,
+    Object? imageUrl = freezed,
     Object? mediumImageUrl = freezed,
     Object? publisherName = freezed,
+    Object? affiUrl = freezed,
+    Object? numberOfStored = freezed,
+    Object? storedTime = freezed,
   }) {
     return _then(_$BookImpl(
+      isbn: freezed == isbn
+          ? _value.isbn
+          : isbn // ignore: cast_nullable_to_non_nullable
+              as String?,
       title: freezed == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -154,9 +195,9 @@ class __$$BookImplCopyWithImpl<$Res>
           ? _value.itemPrice
           : itemPrice // ignore: cast_nullable_to_non_nullable
               as int?,
-      largeImageUrl: freezed == largeImageUrl
-          ? _value.largeImageUrl
-          : largeImageUrl // ignore: cast_nullable_to_non_nullable
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
       mediumImageUrl: freezed == mediumImageUrl
           ? _value.mediumImageUrl
@@ -166,6 +207,18 @@ class __$$BookImplCopyWithImpl<$Res>
           ? _value.publisherName
           : publisherName // ignore: cast_nullable_to_non_nullable
               as String?,
+      affiUrl: freezed == affiUrl
+          ? _value.affiUrl
+          : affiUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
+      numberOfStored: freezed == numberOfStored
+          ? _value.numberOfStored
+          : numberOfStored // ignore: cast_nullable_to_non_nullable
+              as int?,
+      storedTime: freezed == storedTime
+          ? _value.storedTime
+          : storedTime // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -174,17 +227,23 @@ class __$$BookImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$BookImpl implements _Book {
   _$BookImpl(
-      {this.title,
+      {this.isbn,
+      this.title,
       this.author,
       this.itemCaption,
       this.itemPrice,
-      this.largeImageUrl,
+      this.imageUrl,
       this.mediumImageUrl,
-      this.publisherName});
+      this.publisherName,
+      this.affiUrl,
+      this.numberOfStored,
+      @TimestampConverter() this.storedTime});
 
   factory _$BookImpl.fromJson(Map<String, dynamic> json) =>
       _$$BookImplFromJson(json);
 
+  @override
+  final String? isbn;
   @override
   final String? title;
   @override
@@ -194,15 +253,22 @@ class _$BookImpl implements _Book {
   @override
   final int? itemPrice;
   @override
-  final String? largeImageUrl;
+  final String? imageUrl;
   @override
   final String? mediumImageUrl;
   @override
   final String? publisherName;
+  @override
+  final String? affiUrl;
+  @override
+  final int? numberOfStored;
+  @override
+  @TimestampConverter()
+  final DateTime? storedTime;
 
   @override
   String toString() {
-    return 'Book(title: $title, author: $author, itemCaption: $itemCaption, itemPrice: $itemPrice, largeImageUrl: $largeImageUrl, mediumImageUrl: $mediumImageUrl, publisherName: $publisherName)';
+    return 'Book(isbn: $isbn, title: $title, author: $author, itemCaption: $itemCaption, itemPrice: $itemPrice, imageUrl: $imageUrl, mediumImageUrl: $mediumImageUrl, publisherName: $publisherName, affiUrl: $affiUrl, numberOfStored: $numberOfStored, storedTime: $storedTime)';
   }
 
   @override
@@ -210,24 +276,41 @@ class _$BookImpl implements _Book {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$BookImpl &&
+            (identical(other.isbn, isbn) || other.isbn == isbn) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.author, author) || other.author == author) &&
             (identical(other.itemCaption, itemCaption) ||
                 other.itemCaption == itemCaption) &&
             (identical(other.itemPrice, itemPrice) ||
                 other.itemPrice == itemPrice) &&
-            (identical(other.largeImageUrl, largeImageUrl) ||
-                other.largeImageUrl == largeImageUrl) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
             (identical(other.mediumImageUrl, mediumImageUrl) ||
                 other.mediumImageUrl == mediumImageUrl) &&
             (identical(other.publisherName, publisherName) ||
-                other.publisherName == publisherName));
+                other.publisherName == publisherName) &&
+            (identical(other.affiUrl, affiUrl) || other.affiUrl == affiUrl) &&
+            (identical(other.numberOfStored, numberOfStored) ||
+                other.numberOfStored == numberOfStored) &&
+            (identical(other.storedTime, storedTime) ||
+                other.storedTime == storedTime));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, title, author, itemCaption,
-      itemPrice, largeImageUrl, mediumImageUrl, publisherName);
+  int get hashCode => Object.hash(
+      runtimeType,
+      isbn,
+      title,
+      author,
+      itemCaption,
+      itemPrice,
+      imageUrl,
+      mediumImageUrl,
+      publisherName,
+      affiUrl,
+      numberOfStored,
+      storedTime);
 
   @JsonKey(ignore: true)
   @override
@@ -245,16 +328,22 @@ class _$BookImpl implements _Book {
 
 abstract class _Book implements Book {
   factory _Book(
-      {final String? title,
+      {final String? isbn,
+      final String? title,
       final String? author,
       final String? itemCaption,
       final int? itemPrice,
-      final String? largeImageUrl,
+      final String? imageUrl,
       final String? mediumImageUrl,
-      final String? publisherName}) = _$BookImpl;
+      final String? publisherName,
+      final String? affiUrl,
+      final int? numberOfStored,
+      @TimestampConverter() final DateTime? storedTime}) = _$BookImpl;
 
   factory _Book.fromJson(Map<String, dynamic> json) = _$BookImpl.fromJson;
 
+  @override
+  String? get isbn;
   @override
   String? get title;
   @override
@@ -264,11 +353,18 @@ abstract class _Book implements Book {
   @override
   int? get itemPrice;
   @override
-  String? get largeImageUrl;
+  String? get imageUrl;
   @override
   String? get mediumImageUrl;
   @override
   String? get publisherName;
+  @override
+  String? get affiUrl;
+  @override
+  int? get numberOfStored;
+  @override
+  @TimestampConverter()
+  DateTime? get storedTime;
   @override
   @JsonKey(ignore: true)
   _$$BookImplCopyWith<_$BookImpl> get copyWith =>

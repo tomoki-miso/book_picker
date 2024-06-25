@@ -7,22 +7,31 @@ part of 'domain.dart';
 // **************************************************************************
 
 _$BookImpl _$$BookImplFromJson(Map<String, dynamic> json) => _$BookImpl(
+      isbn: json['isbn'] as String?,
       title: json['title'] as String?,
       author: json['author'] as String?,
       itemCaption: json['itemCaption'] as String?,
       itemPrice: json['itemPrice'] as int?,
-      largeImageUrl: json['largeImageUrl'] as String?,
+      imageUrl: json['imageUrl'] as String?,
       mediumImageUrl: json['mediumImageUrl'] as String?,
       publisherName: json['publisherName'] as String?,
+      affiUrl: json['affiUrl'] as String?,
+      numberOfStored: json['numberOfStored'] as int?,
+      storedTime:
+          const TimestampConverter().fromJson(json['storedTime'] as Timestamp?),
     );
 
 Map<String, dynamic> _$$BookImplToJson(_$BookImpl instance) =>
     <String, dynamic>{
+      'isbn': instance.isbn,
       'title': instance.title,
       'author': instance.author,
       'itemCaption': instance.itemCaption,
       'itemPrice': instance.itemPrice,
-      'largeImageUrl': instance.largeImageUrl,
+      'imageUrl': instance.imageUrl,
       'mediumImageUrl': instance.mediumImageUrl,
       'publisherName': instance.publisherName,
+      'affiUrl': instance.affiUrl,
+      'numberOfStored': instance.numberOfStored,
+      'storedTime': const TimestampConverter().toJson(instance.storedTime),
     };

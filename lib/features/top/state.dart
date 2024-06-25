@@ -1,6 +1,8 @@
+import 'package:book_picker/domain/app_ad/domain.dart';
 import 'package:book_picker/domain/book/domain.dart';
+import 'package:book_picker/domain/fetched_book/domain.dart';
+import 'package:book_picker/domain/user/domain.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 
 // 生成されるdartファイルを記述
 part 'state.freezed.dart';
@@ -12,6 +14,13 @@ class TopPageState with _$TopPageState {
 
   // プロパティを指定
   const factory TopPageState({
-    required Book book,
+    required List<Book> commonStoringBookOrderByAmount,
+    required List<Book> commonStoringBookOrderByTime,
+    required List<AppAd> appAds,
+    required UserInfoClass user,
+    @Default(false) bool isLoading,
+    @Default(false) bool isStored,
+    FetchedBook? fetchedBook,
+    Book? todaysPickedBook,
   }) = _TopPageState;
 }
